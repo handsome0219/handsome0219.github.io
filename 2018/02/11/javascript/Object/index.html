@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="多多少少听到过一句话，javascript中一切皆对象。其中有哪些东西是我们需要了解的呢">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Object">
+<meta property="og:url" content="http://yoursite.com/2018/02/11/javascript/Object/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="多多少少听到过一句话，javascript中一切皆对象。其中有哪些东西是我们需要了解的呢">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-10T08:22:06.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Object">
+<meta name="twitter:description" content="多多少少听到过一句话，javascript中一切皆对象。其中有哪些东西是我们需要了解的呢">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/11/javascript/Object/"/>
+
+
+
+
+
+  <title>Object | 付帅帅</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/javascript/Object/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="handsomeFu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Object</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-11T15:22:55+08:00">
+                2018-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2018/02/11/javascript/Object/" class="leancloud_visitors" data-flag-title="Object">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,549 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>多多少少听到过一句话，javascript中一切皆对象。其中有哪些东西是我们需要了解的呢</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h1><blockquote>
+<p>ECMAScript中，引用类型是一种结构好比一个类，将数据和功能结合到一起。描述一类对象的属性和方法。</p>
+</blockquote>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>js中属于 <em>Object</em> 数据类型的很多数组、日期、正则、甚至是函数。创建对象的方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// new 关键字</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字面量对象</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p>对象可以有自己的方法和属性，例如可以给obj扩展 <em>property</em> 和方法 <em>method</em> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">"xq"</span>;</span><br><span class="line">person.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.name) &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key value形式书写 key可以加引号或者不加</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;<span class="attr">name</span>: <span class="string">"xq"</span>, <span class="attr">say</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.name) &#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p>访问对象的属性和方法可以采用方括号的语法 <code>[]</code> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(person[<span class="string">'name'</span>]);</span><br><span class="line"><span class="keyword">var</span> method = <span class="string">'say'</span>;</span><br><span class="line">person[method]();</span><br><span class="line"><span class="comment">// 为什么会有这样的写法呢？</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;<span class="string">"e-mail"</span>: <span class="string">"youname@mail.com"</span>, <span class="string">"first name"</span>: <span class="string">"xx"</span>&#125;;</span><br><span class="line">person.e-mail;       <span class="comment">// error</span></span><br><span class="line">person.first name    <span class="comment">// error</span></span><br><span class="line">person[<span class="string">"e-mail"</span>]     <span class="comment">// bingo</span></span><br><span class="line">person[<span class="string">"first name"</span>] <span class="comment">// bingo</span></span><br></pre></td></tr></table></figure>
+<p>上边访问方式可以看到也可以用一个变量，但是能去点访问就不要写变量，毕竟多一个变量多一份担忧。</p>
+<h2 id="in-amp-hasOwnProperty"><a href="#in-amp-hasOwnProperty" class="headerlink" title="in &amp; hasOwnProperty"></a>in &amp; hasOwnProperty</h2><blockquote>
+<p>去检测一个对象中的属性是否存在是非常必要的，比如当我们去合并数据的时候，或者对这个数据做一些筛选的时候</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"xx"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// in </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"name"</span> <span class="keyword">in</span> obj);    <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"valueOf"</span> <span class="keyword">in</span> obj); <span class="comment">// true</span></span><br><span class="line"><span class="comment">// hasOwnProperty</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">"name"</span>));    <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">"valueOf"</span>)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>检测 <code>name</code> 字段都没问题返回 <em>true</em> ，检测 <code>valueOf</code> 字段结果不同，因为 <code>valueOf</code> 是所有对象都具有的也就是继承父类的，<em>in</em>是可以检测到的，相反<em>hasOwnProperty</em>是不会去检测继承的与在原型扩展的属性只检测<strong>自有属性 </strong></p>
+<p>合并数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date1 = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>， d: <span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> date2 = &#123;<span class="attr">b</span>: <span class="number">3</span>, <span class="attr">c</span>: <span class="number">4</span>&#125;;</span><br><span class="line"><span class="comment">// 将date1合并到date2中 相同的合并</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> date1)&#123;</span><br><span class="line">    <span class="comment">// 做检测是否是date1的自有属性</span></span><br><span class="line">    <span class="keyword">if</span>(date1.hasOwnProperty(k))&#123;</span><br><span class="line">    	date2[k] = date1[k]    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(date2); <span class="comment">// &#123;a: 1, b: 3, c: 4, d: 5&#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.assign(&#123;&#125;, date1, date2)); <span class="comment">// 原生提供的方法，在不破坏原有对象属性的情况下进行合并 自己也可以写一个合并数据的方法</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mixin</span>(<span class="params">target, source</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 不定参</span></span><br><span class="line">    <span class="keyword">var</span> args = [].slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">if</span>(args.length == <span class="number">1</span>) <span class="keyword">return</span> target;</span><br><span class="line">    <span class="keyword">var</span> index = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (source = args[index++]) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> source)&#123;</span><br><span class="line">            <span class="keyword">if</span>(source.hasOwnProperty(k))&#123;</span><br><span class="line">                target[k] = source[k];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mixin</span>(<span class="params">target, ...source</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> source.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> (</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> b)<span class="keyword">if</span>(b.hasOwnProperty(k))&#123;</span><br><span class="line">            a[k] = b[k]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    ), target);</span><br><span class="line">    <span class="comment">// source.forEach(item =&gt; &#123;</span></span><br><span class="line">    <span class="comment">//     for(var k in item)if(item.hasOwnProperty(k))&#123;</span></span><br><span class="line">    <span class="comment">//         target[k] = item[k]</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">// &#125;);</span></span><br><span class="line">    <span class="comment">// return target;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h2><blockquote>
+<p>对象的属性和方法是可以被删除的</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">delete</span> b;</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// not defined</span></span><br><span class="line"><span class="comment">// 定义在window作用域中的属性和方法相当于对 window对象扩展属性和方法 没有var定义的会被delete删除</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">obj.num = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.num); <span class="comment">// 10</span></span><br><span class="line"><span class="keyword">delete</span> obj.num;</span><br><span class="line"><span class="built_in">console</span>.log(obj.num); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><blockquote>
+<p>this是javascript中很头疼的一个东西</p>
+</blockquote>
+<p>this，<em>call</em>、<em>apply</em>、<em>bind</em> 的使用与区别</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo(); <span class="comment">// window</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// window</span></span><br></pre></td></tr></table></figure>
+<p>定义在 <em>script</em> 标签下的全局函数相当于给 <em>window</em> 对象添加了一个方法上边的调用还可以写成 window.foo()。this的指向为调用该方法的对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">   a: <span class="number">10</span>,</span><br><span class="line">   say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.say(); <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">window</span>.obj.say(); <span class="comment">// 10</span></span><br><span class="line"><span class="comment">// this的指向都是调用这个方法的对象也就是obj</span></span><br></pre></td></tr></table></figure>
+<p>但是当把函数的引用指向一个变量的时候就有点问题了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = obj.say;</span><br><span class="line">fn(); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">window</span>.fn(); <span class="comment">// 相当于此 this === window this的指向都是调用它的那个对象</span></span><br></pre></td></tr></table></figure>
+<p><strong>this</strong> 指向的偏移，打一个不恰当的比方就相当于移情别恋了。。。</p>
+<ul>
+<li><em>call</em></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">   name: <span class="string">'如花'</span>,</span><br><span class="line">   say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"你只能爱我一人。。。"</span>+ <span class="keyword">this</span>.name);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = &#123;</span><br><span class="line">   name: <span class="string">'凤姐'</span></span><br><span class="line">&#125;</span><br><span class="line">a.say();       <span class="comment">// a爱着如花</span></span><br><span class="line">a.say.call(b); <span class="comment">// a变心了爱上了凤姐</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>apply</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.say.apply(b) <span class="comment">// 凤姐</span></span><br></pre></td></tr></table></figure>
+<p><code>call</code> <code>apply</code> 有什么区别呢？现在a想说点其它的，于是乎</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">   name: <span class="string">'如花'</span>,</span><br><span class="line">   say: <span class="function"><span class="keyword">function</span>(<span class="params">param1, param2</span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(param1 + <span class="string">"你只能爱我一人。。。"</span>+ <span class="keyword">this</span>.name + parma2);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = &#123;</span><br><span class="line">   name: <span class="string">'凤姐'</span></span><br><span class="line">&#125;</span><br><span class="line">a.say(<span class="string">'皇天在上'</span>, <span class="string">'永远不变'</span>);            <span class="comment">// 皇天在上你只能爱我一人。。。如花永远不变</span></span><br><span class="line">a.say.call(b, <span class="string">'皇天在上'</span>, <span class="string">'永远不变'</span>);    <span class="comment">// 皇天在上你只能爱我一人。。。凤姐永远不变 </span></span><br><span class="line">a.say.apply(b, [<span class="string">'皇天在上'</span>, <span class="string">'永远不变'</span>]); <span class="comment">// 皇天在上你只能爱我一人。。。凤姐永远不变</span></span><br></pre></td></tr></table></figure>
+<p>call() 和 apply()，两个方法可用于调用函数，两个方法的第一个参数必须是对象本身。</p>
+<p>apply() 方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数。</p>
+<ul>
+<li>bind</li>
+</ul>
+<p><em>bind</em> 与 <em>call</em> 在传递参数上没什么区别，区别在于 bind()方法<strong>创建</strong>一个新的函数， 并且 <em>bind</em> 有兼容问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a.say.call(b, <span class="string">'皇天在上'</span>, <span class="string">'永远不变'</span>); <span class="comment">// 说话了</span></span><br><span class="line">a.say.bind(b, <span class="string">'皇天在上'</span>, <span class="string">'永远不变'</span>); <span class="comment">// 不说话</span></span><br><span class="line"><span class="comment">// 再次调用</span></span><br><span class="line">a.say.bind(b, <span class="string">'皇天在上'</span>, <span class="string">'永远不变'</span>)();</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line">a.say.bind(b)(<span class="string">'皇天在上'</span>, <span class="string">'永远不变'</span>);</span><br></pre></td></tr></table></figure>
+<p>还有 <code>new</code> 也可以改变this指向，构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">   obj.name = name;</span><br><span class="line">   obj.age = age;</span><br><span class="line">   <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(Person(<span class="string">"xxx"</span>, <span class="number">18</span>));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.name = name;</span><br><span class="line">   <span class="keyword">this</span>.age = age;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>);  <span class="comment">// Person() this指向window</span></span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> Person(<span class="string">'xxx'</span>, <span class="number">18</span>)); <span class="comment">// this指向 Person对象 通过new改变了this的指向</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.name = name;</span><br><span class="line">   <span class="keyword">this</span>.age = age;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>);  <span class="comment">// Person() this指向window</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> Person(<span class="string">'xxx'</span>, <span class="number">18</span>)); <span class="comment">// 构造函数默认返回this 所以可以不写</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/10/javascript/Date/" rel="next" title="Date">
+                <i class="fa fa-chevron-left"></i> Date
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/12/javascript/RegExp/" rel="prev" title="RegExp">
+                RegExp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="handsomeFu" />
+            
+              <p class="site-author-name" itemprop="name">handsomeFu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Object"><span class="nav-number">1.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#in-amp-hasOwnProperty"><span class="nav-number">1.2.</span> <span class="nav-text">in &amp; hasOwnProperty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete"><span class="nav-number">1.3.</span> <span class="nav-text">delete</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this"><span class="nav-number">1.4.</span> <span class="nav-text">this</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">handsomeFu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">50.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("l8WGuspt3KwjnR8MRd9OD7cB-gzGzoHsz", "EKLio9rLppwFqQDtawi78vLN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

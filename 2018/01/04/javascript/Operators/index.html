@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Operators javascript中的操作符 算术运算符 赋值运算符 关系运算符 逻辑运算符 位运算符 逗号运算符  这里我们着重看一下关系运算符 逻辑运算符 位运算符 逗号运算符 关系运算符js的关系操作符需要 注意 几个点  如果比较的是数值, 则执行数值比较 1234567var str = &quot;10&quot;;var num = 11;console.log(str &amp;lt; num); /">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作符">
+<meta property="og:url" content="http://yoursite.com/2018/01/04/javascript/Operators/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="Operators javascript中的操作符 算术运算符 赋值运算符 关系运算符 逻辑运算符 位运算符 逗号运算符  这里我们着重看一下关系运算符 逻辑运算符 位运算符 逗号运算符 关系运算符js的关系操作符需要 注意 几个点  如果比较的是数值, 则执行数值比较 1234567var str = &quot;10&quot;;var num = 11;console.log(str &amp;lt; num); /">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/img/javascript/Binary.png">
+<meta property="og:image" content="http://yoursite.com/img/javascript/Binary01.png">
+<meta property="og:image" content="http://yoursite.com/img/javascript/Binary02.png">
+<meta property="og:image" content="http://yoursite.com/img/javascript/Binary03.png">
+<meta property="og:image" content="http://yoursite.com/img/javascript/Binary04.png">
+<meta property="og:image" content="http://yoursite.com/img/javascript/Binary05.png">
+<meta property="og:updated_time" content="2018-03-10T08:22:16.485Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作符">
+<meta name="twitter:description" content="Operators javascript中的操作符 算术运算符 赋值运算符 关系运算符 逻辑运算符 位运算符 逗号运算符  这里我们着重看一下关系运算符 逻辑运算符 位运算符 逗号运算符 关系运算符js的关系操作符需要 注意 几个点  如果比较的是数值, 则执行数值比较 1234567var str = &quot;10&quot;;var num = 11;console.log(str &amp;lt; num); /">
+<meta name="twitter:image" content="http://yoursite.com/img/javascript/Binary.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/04/javascript/Operators/"/>
+
+
+
+
+
+  <title>操作符 | 付帅帅</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/javascript/Operators/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="handsomeFu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">操作符</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T20:09:44+08:00">
+                2018-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2018/01/04/javascript/Operators/" class="leancloud_visitors" data-flag-title="操作符">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,924 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<h1 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h1><blockquote>
+<p>javascript中的操作符 算术运算符 赋值运算符 关系运算符 逻辑运算符 位运算符 逗号运算符</p>
+</blockquote>
+<p>这里我们着重看一下关系运算符 逻辑运算符 位运算符 逗号运算符</p>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p>js的关系操作符需要 <strong>注意</strong> 几个点 </p>
+<p>如果比较的是数值, 则执行数值比较</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"10"</span>;</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">11</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str &lt; num); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"100"</span>;</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str &gt; num); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>如果比较的是两个字符, 则比较两个字符对应的编码ASCII值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"100"</span>;</span><br><span class="line"><span class="keyword">var</span> num = <span class="string">"2"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str &gt; num); <span class="comment">// false 比较第一位 如果相等比较第二位</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = <span class="string">"mike"</span> &lt; <span class="string">"haha"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(result); 	<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>如果比较的是布尔值, 则先将其转换为数值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> boolean = <span class="literal">true</span>; 	<span class="comment">// Number(true) 为 1</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(boolean &lt; num); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>来看几个特殊的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"x"</span> &lt; <span class="number">10</span>; 			<span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="literal">undefined</span> == <span class="literal">null</span>; <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="literal">undefined</span> === <span class="literal">null</span>;<span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="literal">null</span> == <span class="number">0</span>;			<span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="literal">null</span> &gt;= <span class="number">0</span>; 		<span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="literal">NaN</span> == <span class="literal">NaN</span>; 		<span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> result = [] == ![]; 		<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>“x”字符不能被合理的转化成数字即Number(“x”) = NaN, 然而NaN和任何操作数比较都返回false, 毕竟NaN == NaN都返回false, 我连我自己都不认识</p>
+<p>undefined与null, 两个都表示<strong>无</strong>, 转成数值undefined为NaN, null为0 当进行两个等号判断返回true, 三个等号返回false, 但是在某些特定情况下, 例如定义变量未初始化, 对象扩展属性未赋值, 函数默认返回undefined在这些情况下null是无法替代的, 因为null会被转换成0可能造成运算错误.这个特性记住就好了.</p>
+<p>null与0直接判断==操作时返回false, 惊不惊喜意不意外, null的数据类型是object, <strong>如果比较的是对象, 则调用valueOf()方法或者toLocaleString()方法返回的结果去比较</strong>, 但是null很特殊没有这些方法, null做为原型链的尽头,所以null == 0不会做特殊处理 返回false. null &gt;= 0比较时这个问题在ECMA规定中&gt;,=存在运算优先级的问题被分为了两部分,需要注意的是并不是&gt;和=判断的结合,这里只是当 null &gt;= 0判断是会转换成Number(null) &gt;= 0, 记住就好.</p>
+<p>在关系判断中会存在很多的数据类型的转化, 抓住本质才好哟. 这个稍后再看</p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p><code>&amp;&amp;</code> and <code>||</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">if</span>( <span class="number">10</span>&lt; num &lt; <span class="number">19</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1  因为 10 &lt; 20 &lt; 19 是依次从左向右执行 true &lt; 19 true被转换成1 &lt; 19 返回true 打印1 这也就是为什么必须要有 &amp;&amp; 操作符 应当改写成 num &gt; 10 &amp;&amp; num &lt; 19</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里就不得不提到 三目运算符 条件 ? 语句1 : 语句2</span></span><br><span class="line"><span class="keyword">var</span> max = (num1 &gt; num2) ? num1 : num2;</span><br></pre></td></tr></table></figure>
+<p>并且操作符其它用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;;</span><br><span class="line">(<span class="number">2</span>&gt;<span class="number">1</span>) &amp;&amp; fn(); 		<span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">10</span> &amp;&amp; <span class="number">5</span>;  <span class="comment">// 5</span></span><br><span class="line"><span class="comment">// &amp;&amp; 碰到假才停止 只要前后表达式都是真就一直向后运算 那么|| 与之相反 碰到真就停止 也就是常说的惰性赋值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">0</span> || <span class="number">1</span>; 	<span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>当一个表达式中并且, 或者同时出现, 并且优先级高于或者 适当的添加括号去进行合理的判断</p>
+<h2 id="逗号运算符"><a href="#逗号运算符" class="headerlink" title="逗号运算符"></a>逗号运算符</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>, b = <span class="number">20</span>, c = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">var</span> num = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> arr = ([<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]);</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> y = (x++,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>逗号操作符可以用来声明多个变量，用于赋值的时候总是返回表达式最后一项。利用好这个特性可以很方便我们简化代码。</p>
+<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><blockquote>
+<p>一个字节的大小 8个二进制位, 有符号的整数占4个字节 32个二进制位, 其中31位用于表示整数的值, 最高位为符号位</p>
+</blockquote>
+<p>在学习位运算符首先我们需要清楚计算机存储数字的是怎么样的表现形式. </p>
+<p>位运算符包括 右移(&gt;&gt;)、 左移(&lt;&lt;)、 无符号右移(&gt;&gt;&gt;)、 按位或(|)、 按位与(&amp;)、 按位异或(^)、按位非(~)</p>
+<ul>
+<li><p>右移、左移</p>
+<p>​                <img src="/img/javascript/Binary.png" alt="binary"></p>
+<p>​    <img src="/img/javascript/Binary01.png" alt="binary"> <img src="/img/javascript/Binary02.png" alt="binary"></p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">8</span> &lt;&lt; <span class="number">1</span>); 	<span class="comment">// 16   10000 = 2^4*1 + 2^3*0 + 2^2*0 + 2^1*0 + 2^0*0 = 16</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">8</span> &gt;&gt; <span class="number">2</span>); 	<span class="comment">// 2  	00010 = 2^1*1 + 2^0*0</span></span><br></pre></td></tr></table></figure>
+<p>简单记左移乘以2, 右移除以2, 无符号右移和右移的区别. 对于正数没有什么区别, 因为每次移动都会在最高位补符号位, 负数是正数的二进制补码直接右移之后会被当成正数的二进制, 会产生很大的误差.</p>
+<ul>
+<li><p>按位与、按位或</p>
+<p>​        <img src="/img/javascript/Binary03.png" alt="binary"> <img src="/img/javascript/Binary04.png" alt="binary"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> &amp; <span class="number">15</span>); <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> | <span class="number">15</span>); <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
+<p>原理和逻辑运算符中一致，&amp;运算同1返回1， |运算同0返回0， 在哪里使用？其实当我们想要返回一个数字的有效位就要用到&amp;运算了，可以尝试写一个进制转换的函数。运用一下, 另外在对一个数字取整时可以使用位或0</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.floor(<span class="number">6.19</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="number">6.19</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">6.19</span> | <span class="number">0</span>); <span class="comment">// 6  因为二进制是没有小数的</span></span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>按位异或</p>
+</li>
+</ul>
+<p><img src="/img/javascript/Binary05.png" alt="binary"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> ^ <span class="number">7</span>); <span class="comment">// 13</span></span><br></pre></td></tr></table></figure>
+<p>看图不做解释了， 这里说一下按位异或的用法。当对一个数字连续位异或同一个数字的时候会返回原来的数字也就是说, 可以用来交换两个变量的值，或者toggle一个变量，或者检测两个数正负是否一致</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> ^ <span class="number">7</span> ^ <span class="number">7</span>); <span class="comment">// 10</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">20</span>;</span><br><span class="line">a ^= b;</span><br><span class="line">b ^= b; <span class="comment">// a ^ b ^ b = a</span></span><br><span class="line">a ^= b; <span class="comment">// a ^ a ^ b = b</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// toggle变量</span></span><br><span class="line"><span class="keyword">if</span> (x === a) &#123;</span><br><span class="line">  x = b</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (x === b) &#123;</span><br><span class="line">  x = a</span><br><span class="line">&#125;</span><br><span class="line">x = a ^ b ^ x;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检测正负</span></span><br><span class="line"><span class="keyword">if</span> ((x ^ y) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 高效判断符号是否相同</span></span><br><span class="line"><span class="built_in">console</span>.log((a ^ b) &gt;= <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>按位非</li>
+</ul>
+<p>把二进制的每一位取反就是 <code>~</code> ,一个整数的负数逐位取反加一. 这里就不介绍二进制补码的运算原理了可以自行查阅资料.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">8</span>;</span><br><span class="line"><span class="built_in">console</span>.log(~num+<span class="number">1</span>); <span class="comment">// -8</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 取整一个整数</span></span><br><span class="line"><span class="built_in">console</span>.log(~~<span class="number">8.5</span>); <span class="comment">// 8</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">8.5</span> | <span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">8.5</span> &gt;&gt; <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="convert"><a href="#convert" class="headerlink" title="convert"></a>convert</h2><blockquote>
+<p>数据类型与运算符之间还有一个问题就是类型之间的转换问题，特别是js中的隐式类型转换</p>
+</blockquote>
+<p><em>强制类型转换</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  字符数字,布尔值转数字类型</span></span><br><span class="line"><span class="comment">  Number parseInt parseFloat</span></span><br><span class="line"><span class="comment">  parseInt(num, radix)</span></span><br><span class="line"><span class="comment">  radix代表进制</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"123"</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"123.2"</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseFloat</span>(<span class="string">"123.2"</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"123+"</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseFloat</span>(<span class="string">"123.1+"</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="literal">true</span>), <span class="built_in">parseInt</span>(<span class="literal">false</span>), <span class="built_in">parseFloat</span>(<span class="literal">true</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  其它数据类型转成字符串</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num.toString());</span><br><span class="line"><span class="keyword">var</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(bool.toString());</span><br></pre></td></tr></table></figure>
+<p><em>javascript</em> 中的算术运算符引起的一些问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> + <span class="string">"10"</span> + <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> + <span class="number">10</span> + <span class="string">"10"</span>);</span><br><span class="line"><span class="comment">// 两条语句会得到不同的答案 因为 “+” 在这个地方做为了拼接 虽然结果变成了string字符串 但是在过程中转换的地方不一样</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> * <span class="string">"10"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> / <span class="string">"10"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> % <span class="string">"10"</span>);</span><br><span class="line"><span class="comment">// 都没有出问题 “* / %” 发生了隐式转换</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> + +<span class="string">"10"</span> + <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + <span class="number">1</span> + <span class="string">"1"</span>);</span><br><span class="line"><span class="comment">// 看似很不正常的一个语句 结果可能有点差异 其实很容易想明白 typeof +"10" 结果为number </span></span><br><span class="line"><span class="comment">// 所以上边其实可以写成 10 + (+"10") + 10 这里的加号有将字符数字隐式转换成了number 同理 “-” 也一样</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(([][[]]+[])[+!![]]+([]+&#123;&#125;)[!+[]+!![]]); <span class="comment">// 神奇的隐式转换 nb</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/28/javascript/01 dataType/" rel="next" title="数据类型">
+                <i class="fa fa-chevron-left"></i> 数据类型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/04/javascript/02 Operators/" rel="prev" title="操作符">
+                操作符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="handsomeFu" />
+            
+              <p class="site-author-name" itemprop="name">handsomeFu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Operators"><span class="nav-number">1.</span> <span class="nav-text">Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关系运算符"><span class="nav-number">1.1.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">1.2.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逗号运算符"><span class="nav-number">1.3.</span> <span class="nav-text">逗号运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位运算符"><span class="nav-number">1.4.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#convert"><span class="nav-number">1.5.</span> <span class="nav-text">convert</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">handsomeFu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">50.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("l8WGuspt3KwjnR8MRd9OD7cB-gzGzoHsz", "EKLio9rLppwFqQDtawi78vLN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

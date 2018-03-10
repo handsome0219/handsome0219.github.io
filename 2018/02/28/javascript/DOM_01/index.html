@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DOM,domReady," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="网页生成过程、DOM发展1. 理解网页的性能,先了解一下网页的生成过程  HTML代码转化成DOM CSS代码转化成CSSOM（CSS Object Model） 结合DOM和CSSOM，生成一棵渲染树（包含每个节点的视觉信息） 生成布局（layout），即将所有渲染树的所有节点进行平面合成 将布局绘制（paint）在屏幕上   webkit渲染流程  Geoko渲染过程  从第一步到第三步都是很">
+<meta name="keywords" content="DOM,domReady">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM 发展">
+<meta property="og:url" content="http://yoursite.com/2018/02/28/javascript/DOM_01/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="网页生成过程、DOM发展1. 理解网页的性能,先了解一下网页的生成过程  HTML代码转化成DOM CSS代码转化成CSSOM（CSS Object Model） 结合DOM和CSSOM，生成一棵渲染树（包含每个节点的视觉信息） 生成布局（layout），即将所有渲染树的所有节点进行平面合成 将布局绘制（paint）在屏幕上   webkit渲染流程  Geoko渲染过程  从第一步到第三步都是很">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015091502.png">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/Geoko.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/dom_1.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/dom_2.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/dom_22.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/dom_3.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/dom_tree1.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/dom_tree.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/dom_his.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/dom_type.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/nodeType.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/load.jpg">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/render.jpg">
+<meta property="og:updated_time" content="2018-03-10T08:21:47.030Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM 发展">
+<meta name="twitter:description" content="网页生成过程、DOM发展1. 理解网页的性能,先了解一下网页的生成过程  HTML代码转化成DOM CSS代码转化成CSSOM（CSS Object Model） 结合DOM和CSSOM，生成一棵渲染树（包含每个节点的视觉信息） 生成布局（layout），即将所有渲染树的所有节点进行平面合成 将布局绘制（paint）在屏幕上   webkit渲染流程  Geoko渲染过程  从第一步到第三步都是很">
+<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015091502.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/28/javascript/DOM_01/"/>
+
+
+
+
+
+  <title>DOM 发展 | 付帅帅</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/28/javascript/DOM_01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="handsomeFu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DOM 发展</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T13:46:29+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2018/02/28/javascript/DOM_01/" class="leancloud_visitors" data-flag-title="DOM 发展">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,301 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="网页生成过程、DOM发展"><a href="#网页生成过程、DOM发展" class="headerlink" title="网页生成过程、DOM发展"></a>网页生成过程、DOM发展</h3><h4 id="1-理解网页的性能-先了解一下网页的生成过程"><a href="#1-理解网页的性能-先了解一下网页的生成过程" class="headerlink" title="1. 理解网页的性能,先了解一下网页的生成过程"></a>1. 理解网页的性能,先了解一下网页的生成过程</h4><blockquote>
+<ol>
+<li>HTML代码转化成DOM</li>
+<li>CSS代码转化成CSSOM（CSS Object Model）</li>
+<li>结合DOM和CSSOM，生成一棵渲染树（包含每个节点的视觉信息）</li>
+<li>生成布局（layout），即将所有渲染树的所有节点进行平面合成</li>
+<li>将布局绘制（paint）在屏幕上</li>
+</ol>
+</blockquote>
+<p><strong>webkit渲染流程</strong></p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015091502.png" alt="webkit流程"></p>
+<p><strong>Geoko渲染过程</strong></p>
+<p><img src="/img/javascript/dom/Geoko.jpg" alt="Geoko"></p>
+<p>从第一步到第三步都是很快速的, 第四步与第五步是很耗时的</p>
+<p><strong>“生成布局”（flow）和”绘制”（paint）这两步，合称为”渲染”（render）。</strong> </p>
+<blockquote>
+<p><strong>ps: 火狐把Layout过程成为回流是一个意思</strong></p>
+</blockquote>
+<h4 id="2-重排与重绘"><a href="#2-重排与重绘" class="headerlink" title="2. 重排与重绘"></a>2. 重排与重绘</h4><p><strong>网页生成的时候，至少会渲染一次。用户访问的过程中，还会不断重新渲染。</strong></p>
+<p>以下情况, 会导致网页的重新渲染</p>
+<ul>
+<li>修改DOM</li>
+<li>修改样式表</li>
+<li>用户事件（比如鼠标悬停、页面滚动、输入框键入文字、改变窗口大小等等）</li>
+<li>添加、删除元素(回流+重绘)</li>
+<li>隐藏元素，display:none(回流+重绘)，visibility:hidden(只重绘，不回流)</li>
+</ul>
+<ol>
+<li>移动元素，比如改变top,left(jquery的animate方法就是,改变top,left不一定会影响回流)，或者移动元素到另外1个父元素中。(重绘+回流)</li>
+<li>对style的操作(对不同的属性操作，影响不一样)</li>
+</ol>
+<p><strong>重新渲染，就需要重新生成布局和重新绘制。前者叫做”重排”（reflow），后者叫做”重绘”（repaint）。</strong></p>
+<p>需要注意的是，<strong>“重绘”不一定需要”重排”</strong>，比如改变某个网页元素的颜色，就只会触发”重绘”，不会触发”重排”，因为布局没有改变。但是，<strong>“重排”必然导致”重绘”</strong>，比如改变一个网页元素的位置，就会同时触发”重排”和”重绘”，因为布局改变了。</p>
+<p>传送门 <a href="http://kb.cnblogs.com/page/129756/" target="_blank" rel="noopener">浏览器内部工作原理</a></p>
+<h4 id="3-对性能的影响"><a href="#3-对性能的影响" class="headerlink" title="3. 对性能的影响"></a>3. 对性能的影响</h4><blockquote>
+<p>重排和重绘会不断触发，这是不可避免的。但是，它们非常耗费资源，是导致网页性能低下的根本原因。</p>
+</blockquote>
+<p><strong>提高网页性能，就是要降低”重排”和”重绘”的频率和成本，尽量少触发重新渲染。</strong></p>
+<p>前面提到，DOM变动和样式变动，都会触发重新渲染。但是，浏览器已经很智能了，会尽量把所有的变动集中在一起，排成一个队列，然后一次性执行，尽量避免多次重新渲染。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">div.style.color = <span class="string">'blue'</span>;</span><br><span class="line">div.style.marginTop = <span class="string">'30px'</span>;</span><br></pre></td></tr></table></figure>
+<p>上述代码会触发浏览器一次的重排重绘</p>
+<p><strong>如果写的不好就会导致浏览器执行多次</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">div.style.color = <span class="string">'blue'</span>;</span><br><span class="line"><span class="comment">// 这里再次出现了元素的位置 浏览器不得不重新排列一次</span></span><br><span class="line"><span class="keyword">var</span> margin = <span class="built_in">parseInt</span>(div.style.marginTop);</span><br><span class="line">div.style.marginTop = margin + <span class="number">10</span> + <span class="string">'px'</span>;</span><br></pre></td></tr></table></figure>
+<p>一般来说浏览器对于一些样式的<strong>写</strong>操作之后,出现一下的读属性操作,都会引发浏览器的重新渲染</p>
+<ul>
+<li>offsetTop/offsetLeft/offsetWidth/offsetHeight</li>
+<li>scrollTop/scrollLeft/scrollWidth/scrollHeight</li>
+<li>clientTop/clientLeft/clientWidth/clientHeight</li>
+<li>getComputedStyle()</li>
+</ul>
+<p><strong>尽量不要把读写操作混到一起</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">div.style.left = div.offsetLeft + <span class="number">10</span> + <span class="string">'px'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> l = div.offsetLeft;</span><br><span class="line">div.style.left = l + <span class="number">10</span> + <span class="string">'px'</span>;</span><br></pre></td></tr></table></figure>
+<p>一般的规则是:</p>
+<ul>
+<li>样式表越简单，重排和重绘就越快。</li>
+</ul>
+<ul>
+<li>重排和重绘的DOM元素层级越高，成本就越高。</li>
+</ul>
+<ul>
+<li>table元素的重排和重绘成本，要高于div元素</li>
+</ul>
+<h4 id="4-提高性能的几种方式"><a href="#4-提高性能的几种方式" class="headerlink" title="4. 提高性能的几种方式"></a>4. 提高性能的几种方式</h4><ol>
+<li>DOM 的多个读操作（或多个写操作），应该放在一起。不要两个读操作之间，加入一个写操作</li>
+<li>如果某个样式是通过重排得到的，那么最好缓存结果。避免下一次用到的时候，浏览器又要重排。</li>
+<li>不要一条条地改变样式，而要通过改变class，或者csstext属性，一次性地改变样式。</li>
+<li>尽量使用离线DOM，而不是真实的网面DOM，来改变元素样式。比如，操作Document Fragment对象，完成后再把这个对象加入DOM。再比如，使用 cloneNode() 方法，在克隆的节点上进行操作，然后再用克隆的节点替换原始节点。 documentFragment ( 文档片段:虚拟的节点在重复的渲染过程中避免产生渲染回流,其实可以理解为重排 )</li>
+<li>先将元素设为<code>display: none</code>（需要1次重排和重绘），然后对这个节点进行100次操作，最后再恢复显示（需要1次重排和重绘）。这样一来，你就用两次重新渲染，取代了可能高达100次的重新渲染。</li>
+<li>position属性为<code>absolute</code>或<code>fixed</code>的元素，重排的开销会比较小，因为不用考虑它对其他元素的影响。</li>
+<li>只在必要的时候，才将元素的display属性为可见，因为不可见的元素不影响重排和重绘。另外，<code>visibility : hidden</code>的元素只对重绘有影响，不影响重排。</li>
+<li>虚拟DOM框架 vue、react</li>
+<li>使用 window.requestAnimationFrame()、window.requestIdleCallback() 这两个方法调节重新渲染</li>
+</ol>
+<p><a href="http://www.ruanyifeng.com/blog/2015/09/web-page-performance-in-depth.html" target="_blank" rel="noopener">详见阮一峰大大文章</a></p>
+<h4 id="5-什么是DOM"><a href="#5-什么是DOM" class="headerlink" title="5. 什么是DOM"></a>5. 什么是DOM</h4><p>DOM，文档对象模型（Document Object Model）。DOM是 W3C（万维网联盟）的标准，DOM定义了访问HTML和XML文档的标准。在W3C的标准中，DOM是独于平台和语言的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。</p>
+<p>DOM（文档对象模型）是针对xml经过扩展用于html的应用程序编程接口，我们又叫API。DOM把整个页面映射为一个多层的节点结构，html或xml页面中的每个组成部分都是某种类型的节点，这些节点又包含着不同类型的数据。</p>
+<h4 id="6-DOM的地位"><a href="#6-DOM的地位" class="headerlink" title="6. DOM的地位"></a>6. DOM的地位</h4><p>一个网页是由html来搭建结构的，通过css来定义网页的样式，而JavaScript赋予了页面的行为，通过它我们可以与页面进行交互，实现页面的动画效果等等。那javascript究竟通过什么来实现的呢？通过ECMAScript这个标准，我们可以编写程序让浏览器来解析，利用ECMAScript，我们可以通过BOM对象（即browser object model）来操作浏览器窗口、浏览器导航对象(navigator)、屏幕分辨率(screen)、浏览器历史(history)、cookie等等。但这个通过BOM来实现的交互远远不够。要实现页面的动态交互和效果，操作html才是核心。那如何操作html呢？对，就是DOM，简单的说，DOM给我们提供了用程序来动态控制html的接口，也就是早期的DHTMl的概念。因此，DOM处在javascript赋予html具备动态交互和效果的能力的核心地位上。</p>
+<h4 id="7-DOM的发展-DOM1、DOM2、DOM3的区别"><a href="#7-DOM的发展-DOM1、DOM2、DOM3的区别" class="headerlink" title="7. DOM的发展 DOM1、DOM2、DOM3的区别"></a>7. DOM的发展 DOM1、DOM2、DOM3的区别</h4><ul>
+<li><p>DOM0</p>
+<p>JavaScript在早期版本中提供了查询和操作Web文档的内容API（如：图像和表单），在JavaScript中定义了定义了’images’、’forms’等，因此我们可以像下这样访问第一张图片或名为“user”的表单</p>
+<p>这实际上是未形成标准的试验性质的初级阶段的DOM，现在习惯上被称为DOM0，即：第0级DOM。由于DOM0在W3C进行标准备化之前出现，还处于未形成标准的初期阶段，这时Netscape和Microsoft各自推出自己的第四代浏览器，自此DOM遍开始出各种问题。</p>
+<p>​</p>
+</li>
+<li><p>DOM1</p>
+<p>在浏览器厂商进行浏览器大站的同时，W3C结合大家的优点推出了一个标准化的DOM，并于1998年10月完成了第一级 DOM，即：DOM1。W3C将DOM定义为一个与平台和编程语言无关的接口，通过这个接口程序和脚本可以动态的访问和修改文档的内容、结构和样式</p>
+<p>DOM1级主要定义了HTML和XML文档的底层结构。在DOM1中，DOM由两个模块组成：DOM Core（DOM核心）和DOM HTML。其中，DOM Core规定了基于XML的文档结构标准，通过这个标准简化了对文档中任意部分的访问和操作。DOM HTML则在DOM核心的基础上加以扩展，添加了针对HTML的对象和方法，如：JavaScript中的Document对象.</p>
+<p><img src="/img/javascript/dom/dom_1.jpg" alt=""></p>
+</li>
+<li><p>DOM2</p>
+<p>在DOM1的基础上DOM2引入了更多的交互能力，也支持了更高级的XML特性。DOM2将DOM分为更多具有联系的模块。DOM2级在原来DOM的基础上又扩充了鼠标、用户界面事件、范围、遍历等细分模块，而且通过对象接口增加了对CSS的支持。DOM1级中的DOM核心模块也经过扩展开始支持XML命名空间。在DOM2中引入了下列模块，在模块包含了众多新类型和新接口：</p>
+<ol>
+<li>DOM视图（DOM Views）：定义了跟踪不同文档视图的接口</li>
+<li>DOM事件（DOM Events）：定义了事件和事件处理的接口</li>
+<li>DOM样式（DOM Style）：定义了基于CSS为元素应用样式的接口</li>
+<li>DOM遍历和范围（DOM Traversal and Range）：定义了遍历和操作文档树的接口</li>
+</ol>
+<p><img src="/img/javascript/dom/dom_2.jpg" alt=""></p>
+<p>百度百科完整DOM2标准</p>
+<p><img src="/img/javascript/dom/dom_22.jpg" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>DOM3</p>
+<p>DOM3级：进一步扩展了DOM，引入了以统一方式加载和保存文档的方法，它在DOM Load And Save这个模块中定义；同时新增了验证文档的方法，是在DOM Validation这个模块中定义的。</p>
+<p>DOM3进一步扩展了DOM，在DOM3中引入了以下模块：</p>
+<ol>
+<li>DOM加载和保存模块（DOM Load and Save）：引入了以统一方式加载和保存文档的方法</li>
+<li>DOM验证模块（DOM Validation）：定义了验证文档的方法</li>
+<li>DOM核心的扩展（DOM Style）：支持XML 1.0规范，涉及XML Infoset、XPath和XML Base</li>
+</ol>
+<p><img src="/img/javascript/dom/dom_3.jpg" alt=""></p>
+</li>
+</ul>
+<h4 id="8-认识DOM"><a href="#8-认识DOM" class="headerlink" title="8. 认识DOM"></a>8. 认识DOM</h4><p>DOM可以将任何HTML描绘成一个由多层节点构成的结构。节点分为12种不同类型，每种类型分别表示文档中不同的信息及标记。每个节点都拥有各自的特点、数据和方法，也与其他节点存在某种关系。节点之间的关系构成了层次，而所有页面标记则表现为一个以特定节点为根节点的树形结构。</p>
+<p><img src="/img/javascript/dom/dom_tree1.jpg" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>javascript DOM<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>对HTML元素进行操作，可添加、改变或移除css样式等<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>Javascript<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>DOM<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>将HTML代码分解成DOM节点层次</p>
+<p><img src="/img/javascript/dom/dom_tree.jpg" alt=""></p>
+<ul>
+<li><p>文档节点的发展历史</p>
+<blockquote>
+<p>我们说DOM文档对象模型是从文档中抽象出来的，DOM操作的对象也是文档，因此我们有必要了解一下文档的类型。文档随着历史的发展演变为多种类型，如下:</p>
+</blockquote>
+<p><img src="/img/javascript/dom/dom_his.jpg" alt=""></p>
+<p>​</p>
+</li>
+<li><p>DOM节点的类型</p>
+<blockquote>
+<p>DOM1级定义了一个Node接口，这个Node接口在javascript中是作为Node类型来实现的。除了IE以外，其他所有浏览器都可以访问这个类型。每个节点都有一个nodeType属性，用于表明节点的类型。节点类型通过定义数值常量和字符常量两种方式来表示，IE只支持数值常量。节点类型一共有12种，这里介绍常用的7种类型。如下图：</p>
+</blockquote>
+<p><img src="/img/javascript/dom/dom_type.jpg" alt=""></p>
+<ol>
+<li><h4 id="Element-元素节点"><a href="#Element-元素节点" class="headerlink" title="Element(元素节点)"></a>Element(元素节点)</h4><blockquote>
+<p>是组成文档树的重要部分，它表示了html、xml文档中的元素。通常元素因为有子元素、文本节点或者两者的结合，元素节点是唯一能够拥有属性的节点类型。</p>
+</blockquote>
+<p>​</p>
+</li>
+<li><h4 id="Attr-属性节点"><a href="#Attr-属性节点" class="headerlink" title="Attr(属性节点)"></a>Attr(属性节点)</h4><blockquote>
+<p>代表了元素中的属性，因为属性实际上是附属于元素的，因此属性节点不能被看做是元素的子节点。因而在DOM中属性没有被认为是文档树的一部分。换句话说，属性节点其实被看做是包含它的元素节点的一部分，它并不作为单独的一个节点在文档树中出现。</p>
+</blockquote>
+<p>​</p>
+</li>
+<li><h4 id="Text-文本节点"><a href="#Text-文本节点" class="headerlink" title="Text(文本节点)"></a>Text(文本节点)</h4><blockquote>
+<p>是只包含文本内容的节点，在xml中称为字符数据，它可以由更多的信息组成，也可以只包含空白。在文档树中元素的文本内容和属性的文本内容都是由文本节点来表示的。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><h3 id="DOM的nodeType、nodeName、nodeValue"><a href="#DOM的nodeType、nodeName、nodeValue" class="headerlink" title="DOM的nodeType、nodeName、nodeValue"></a>DOM的nodeType、nodeName、nodeValue</h3><blockquote>
+<p>通过DOM节点类型，我们可知，可以通过某个节点的nodeType属性来获得节点的类型，节点的类型可以是数值常量或者字符常量。示例代码如下：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>nodeName,nodeValue<span class="tag">&lt;/<span class="name">title</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>  </span><br><span class="line">    <span class="comment">&lt;!--nodeName,nodeValue实验--&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span>这是一个元素节点<span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">  </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> divNode = <span class="built_in">document</span>.getElementById(<span class="string">'container'</span>);  </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(divNode.nodeName + <span class="string">"/"</span> + divNode.nodeValue);     </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果:    DIV/null  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> attrNode = divNode.attributes[<span class="number">0</span>];  </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(attrNode.nodeName + <span class="string">"/"</span> + attrNode.nodeValue);      </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果：   id/container  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> textNode = divNode.childNodes[<span class="number">0</span>];  </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(textNode.nodeName + <span class="string">"/"</span> + textNode.nodeValue);      </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果：   #text/这是一个元素节点  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> commentNode = <span class="built_in">document</span>.body.childNodes[<span class="number">1</span>];  </span></span><br><span class="line"><span class="javascript">        <span class="comment">//表示取第二个注释节点，因为body下面的第一个注释节点为空白符。  </span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(commentNode.nodeName + <span class="string">"/"</span> +commentNode.nodeValue);  </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果：  #comment/nodeName,nodeValue实验  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">document</span>.doctype.nodeName + <span class="string">"/"</span> + <span class="built_in">document</span>.doctype.nodeValue);   </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果： html/null  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment();  </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(frag.nodeName + <span class="string">"/"</span> + frag.nodeValue);    </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果： #document-fragment/null  </span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>总结:</p>
+<p><img src="/img/javascript/dom/nodeType.jpg" alt=""></p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="9-关于domReady、onload"><a href="#9-关于domReady、onload" class="headerlink" title="9. 关于domReady、onload"></a>9. 关于domReady、onload</h4><blockquote>
+<p>html是一种标记语言，它告诉我们这个页面有什么内容，但行为交互是需要通过DOM操作来实现的。我们不要以为有两个尖括号就以为它是一个DOM了，html标签要通过浏览器解析才会变成DOM节点，当我们向地址栏传入一个url的时候，我们开始加载页面，就能看到内容，在这期间就有一个DOM节点构建的过程。节点是以树的形式组织的，当页面上所有的html都转换为节点以后，就叫做<code>DOM树构建完毕</code>，简称为<code>domReady</code>。</p>
+</blockquote>
+<p>上边已经介绍了浏览器的渲染引擎的基本渲染流程</p>
+<blockquote>
+<p>浏览器渲染要做的事情就是把css、html、图片等静态资源显示到用户的面前</p>
+</blockquote>
+<p><img src="/img/javascript/dom/load.jpg" alt=""></p>
+<blockquote>
+<p>渲染引擎首先通过网络获得所请求文档的内容，通常以8k分块的方法来完成：</p>
+</blockquote>
+<p><img src="/img/javascript/dom/render.jpg" alt=""></p>
+<blockquote>
+<p>上图就是html渲染的基本过程，但这并不包含解析过程中浏览器加载外部资源，比如图片、脚本、iframe等的一些过程。说白了，<strong>上面的4步仅仅是html结构的渲染过程</strong>。而外部资源的加载在html结构的渲染过程中是贯彻始终的，即便绘制DOM节点已经完成，而外部资源仍然可能正在加载或者尚未加载。</p>
+</blockquote>
+<p>然而我们并不是要在去了解浏览器渲染引擎到底是怎么来工作的、我们需要了解的是domReady的实现策略</p>
+<ul>
+<li>实例1</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Dom not ready<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.getElementById(<span class="string">"header"</span>).style.color = <span class="string">"red"</span>;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">"header"</span>&gt;</span>这里是h1元素包含的内容<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里文字并没有变成红色,开始学习DOM的操作多少都会碰到这个问题,原因就在于没有区分清楚<code>HTML标签</code>与<code>DOM节点</code>的区别, 浏览器通过解析器解析html语义标签,解析css样式表构建生成一个DOM节点树,就叫做DOM树构建,结束的过程代表<code>domReady</code></p>
+<ol>
+<li>这里可以通过一个定时器来不断的去执行也可以实现效果</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'header'</span>).style.color = <span class="string">'red'</span>;</span><br><span class="line">&#125;,<span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+<p>虽然也可以实现效果但是用户界面总会有一个短暂的闪烁,颜色在随之改变.不利于用户的体验.</p>
+<ol>
+<li>另外一个解决方式</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">'header'</span>).style.color = <span class="string">'red'</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有一定了解的这里肯定会去使用<code>window.onload</code> 来解决这个问题,没有任何问题</p>
+<blockquote>
+<p>window.onload方法，表示当页面所有的元素都加载完毕，并且所有要请求的资源也加载完毕才触发执行function这个匿名函数里边的具体内容。这样肯定保证了代码在domReady之后执行。使用window.onload方法在文档外部资源不多的情况下不会有什么问题，但是当页面中有大量远程图片或要请求的远程资源时，我们需要让js在点击每张图片时，进行相应的操作，如果此时外部资源还没有加载完毕，点击图片是不会有任何反应的，大大降低了用户体验。那既然window.onload方法不可行，又该怎么做呢？</p>
+</blockquote>
+<ul>
+<li>实例2</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Dom not ready<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">"header"</span>&gt;</span>这里是h1元素包含的内容<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.getElementById(<span class="string">"header"</span>).style.color = <span class="string">"red"</span>;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里并没有考虑 domReady 程序也可以正常运行, 因为浏览器是从上而下,从左到右渲染元素的, js代码肯定会在domReady之后去执行, 那为什么还要去写domReady呢? 在编写大型项目的时候，js文件往往非常多，而且之间会相互调用，大多数都是外部引用的，不把js代码直接写在页面上。这样的话，如果有个domReady这个方法，我们想用它就调用，不管逻辑代码写在哪里，都是等到domReady之后去执行的。</p>
+</blockquote>
+<p>jQuery中的readey事件其实就是domReady完成执行其中的代码块,算是弥补了window.onload的短板, 用的是w3c提供的<code>DOMContentLoaded</code>事件, 但是DOMContentLoaded不支持低版本的IE(<a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded" target="_blank" rel="noopener">DOMContentLoaded</a>)MDN文档</p>
+<p>简单的来说,在页面的DOM树创建完成后（也就是HTML解析第一步完成）即触发，而无需等待其他资源的加载。即domReady实现策略:</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 1. 支持DOMContentLoaded事件的，就使用DOMContentLoaded事件。</span><br><span class="line">&gt; 2. 不支持的就用来自Diego Perini发现的著名Hack兼容。兼容原理大概就是通过IE中的document，</span><br><span class="line">&gt; documentElement.doScroll(&apos;left&apos;)来判断DOM树是否创建完毕。</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="10-javascript对DOMReady的实现"><a href="#10-javascript对DOMReady的实现" class="headerlink" title="10. javascript对DOMReady的实现"></a>10. javascript对DOMReady的实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ready</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 目前Mozilla、Opera和webkit 525+内核支持DOMContentLoaded事件</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">document</span>.addEventListener) &#123;</span><br><span class="line">        <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">document</span>.removeEventListener(<span class="string">'DOMContentLoaded'</span>,<span class="built_in">arguments</span>.callee, <span class="literal">false</span>);</span><br><span class="line">            fn();</span><br><span class="line">        &#125;, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果IE</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.attachEvent) &#123;</span><br><span class="line">        <span class="comment">// 确保当页面是在iframe中加载时，事件依旧会被安全触发</span></span><br><span class="line">        <span class="built_in">document</span>.attachEvent(<span class="string">'onreadystatechange'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">document</span>.readyState == <span class="string">'complete'</span>) &#123;</span><br><span class="line">                <span class="built_in">document</span>.detachEvent(<span class="string">'onreadystatechange'</span>, <span class="built_in">arguments</span>.callee);</span><br><span class="line">                fn();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果是IE且页面不在iframe中时，轮询调用doScroll 方法检测DOM是否加载完毕</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">document</span>.documentElement.doScroll &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">window</span>.frameElement === <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="built_in">document</span>.documentElement.doScroll(<span class="string">'left'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span>(error)&#123;</span><br><span class="line">                <span class="keyword">return</span> setTimeout(<span class="built_in">arguments</span>.callee, <span class="number">20</span>);</span><br><span class="line">            &#125;;</span><br><span class="line">            fn();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myReady</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//对于现代浏览器，对DOMContentLoaded事件的处理采用标准的事件绑定方式</span></span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">document</span>.addEventListener ) &#123;</span><br><span class="line">        <span class="built_in">document</span>.addEventListener(<span class="string">"DOMContentLoaded"</span>, fn, <span class="literal">false</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        IEContentLoaded(fn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//IE模拟DOMContentLoaded</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">IEContentLoaded</span> (<span class="params">fn</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> d = <span class="built_in">window</span>.document;</span><br><span class="line">        <span class="keyword">var</span> done = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//只执行一次用户的回调函数init()</span></span><br><span class="line">        <span class="keyword">var</span> init = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!done) &#123;</span><br><span class="line">                done = <span class="literal">true</span>;</span><br><span class="line">                fn();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// DOM树未创建完之前调用doScroll会抛出错误</span></span><br><span class="line">                d.documentElement.doScroll(<span class="string">'left'</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">                <span class="comment">//延迟再试一次~</span></span><br><span class="line">                setTimeout(<span class="built_in">arguments</span>.callee, <span class="number">50</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 没有错误就表示DOM树创建完毕，然后立马执行用户回调</span></span><br><span class="line">            init();</span><br><span class="line">        &#125;)();</span><br><span class="line">        <span class="comment">//监听document的加载状态</span></span><br><span class="line">        d.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 如果用户是在domReady之后绑定的函数，就立马执行</span></span><br><span class="line">            <span class="keyword">if</span> (d.readyState == <span class="string">'complete'</span>) &#123;</span><br><span class="line">                d.onreadystatechange = <span class="literal">null</span>;</span><br><span class="line">                init();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// jQuery实现的过程</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bindReady</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( readyBound ) <span class="keyword">return</span>;</span><br><span class="line">    readyBound = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// Mozilla, Opera and webkit nightlies currently support this event</span></span><br><span class="line">     <span class="keyword">if</span> ( <span class="built_in">document</span>.addEventListener ) &#123;</span><br><span class="line">        <span class="comment">// Use the handy event callback</span></span><br><span class="line">         <span class="built_in">document</span>.addEventListener( <span class="string">"DOMContentLoaded"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">document</span>.removeEventListener( <span class="string">"DOMContentLoaded"</span>, <span class="built_in">arguments</span>.callee, <span class="literal">false</span> );</span><br><span class="line">            jQuery.ready();</span><br><span class="line">        &#125;, <span class="literal">false</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If IE event model is used</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ( <span class="built_in">document</span>.attachEvent ) &#123;</span><br><span class="line">        <span class="comment">// ensure firing before onload,</span></span><br><span class="line">        <span class="comment">// maybe late but safe also for iframes</span></span><br><span class="line">        <span class="built_in">document</span>.attachEvent(<span class="string">"onreadystatechange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> ( <span class="built_in">document</span>.readyState === <span class="string">"complete"</span> ) &#123;</span><br><span class="line">                <span class="built_in">document</span>.detachEvent( <span class="string">"onreadystatechange"</span>, <span class="built_in">arguments</span>.callee );</span><br><span class="line">                jQuery.ready();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// If IE and not an iframe</span></span><br><span class="line">        <span class="comment">// continually check to see if the document is ready</span></span><br><span class="line">        <span class="keyword">if</span> ( <span class="built_in">document</span>.documentElement.doScroll &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">window</span>.frameElement === <span class="string">"undefined"</span> ) (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> ( jQuery.isReady ) <span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// If IE is used, use the trick by Diego Perini</span></span><br><span class="line">                <span class="comment">// http://javascript.nwbox.com/IEContentLoaded/</span></span><br><span class="line">                <span class="built_in">document</span>.documentElement.doScroll(<span class="string">"left"</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span>( error ) &#123;</span><br><span class="line">                setTimeout( <span class="built_in">arguments</span>.callee, <span class="number">0</span> );</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// and execute any waiting functions</span></span><br><span class="line">            jQuery.ready();</span><br><span class="line">        &#125;)();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// A fallback to window.onload, that will always work</span></span><br><span class="line">    jQuery.event.add( <span class="built_in">window</span>, <span class="string">"load"</span>, jQuery.ready );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/JulyZhang/archive/2011/02/12/1952484.html" target="_blank" rel="noopener">各大主流JS框架中对DOMReady事件的实现</a></p>
+<p>本文借鉴了很多大神的blog，自己也对DOM有了更深的理解，希望可以帮助到更多人。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DOM/" rel="tag"># DOM</a>
+          
+            <a href="/tags/domReady/" rel="tag"># domReady</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/12/javascript/RegExp/" rel="next" title="RegExp">
+                <i class="fa fa-chevron-left"></i> RegExp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/javascript/DOM-02/" rel="prev" title="DOM 属性和方法">
+                DOM 属性和方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="handsomeFu" />
+            
+              <p class="site-author-name" itemprop="name">handsomeFu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#网页生成过程、DOM发展"><span class="nav-number">1.</span> <span class="nav-text">网页生成过程、DOM发展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-理解网页的性能-先了解一下网页的生成过程"><span class="nav-number">1.1.</span> <span class="nav-text">1. 理解网页的性能,先了解一下网页的生成过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-重排与重绘"><span class="nav-number">1.2.</span> <span class="nav-text">2. 重排与重绘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-对性能的影响"><span class="nav-number">1.3.</span> <span class="nav-text">3. 对性能的影响</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-提高性能的几种方式"><span class="nav-number">1.4.</span> <span class="nav-text">4. 提高性能的几种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-什么是DOM"><span class="nav-number">1.5.</span> <span class="nav-text">5. 什么是DOM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-DOM的地位"><span class="nav-number">1.6.</span> <span class="nav-text">6. DOM的地位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-DOM的发展-DOM1、DOM2、DOM3的区别"><span class="nav-number">1.7.</span> <span class="nav-text">7. DOM的发展 DOM1、DOM2、DOM3的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-认识DOM"><span class="nav-number">1.8.</span> <span class="nav-text">8. 认识DOM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Element-元素节点"><span class="nav-number">1.9.</span> <span class="nav-text">Element(元素节点)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attr-属性节点"><span class="nav-number">1.10.</span> <span class="nav-text">Attr(属性节点)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Text-文本节点"><span class="nav-number">1.11.</span> <span class="nav-text">Text(文本节点)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM的nodeType、nodeName、nodeValue"><span class="nav-number">2.</span> <span class="nav-text">DOM的nodeType、nodeName、nodeValue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-关于domReady、onload"><span class="nav-number">2.1.</span> <span class="nav-text">9. 关于domReady、onload</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-javascript对DOMReady的实现"><span class="nav-number">2.2.</span> <span class="nav-text">10. javascript对DOMReady的实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">handsomeFu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">50.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("l8WGuspt3KwjnR8MRd9OD7cB-gzGzoHsz", "EKLio9rLppwFqQDtawi78vLN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

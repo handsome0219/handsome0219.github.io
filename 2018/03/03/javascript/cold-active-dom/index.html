@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DOM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="DOM 操作 - colddom的操作有很多在平时操作中很少用到的，但是却十分好用的API。 insert与 insertBefore 类似的几个 API 查看 MDN开发者手册，在这里赘述一下。 1234567891011121314151617181920改方法将一个给定的元素节点插入到相对于被调用的元素的给定的一个位置。1. node.insertAdjacentElement(positi">
+<meta name="keywords" content="DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM 节点操作">
+<meta property="og:url" content="http://yoursite.com/2018/03/03/javascript/cold-active-dom/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="DOM 操作 - colddom的操作有很多在平时操作中很少用到的，但是却十分好用的API。 insert与 insertBefore 类似的几个 API 查看 MDN开发者手册，在这里赘述一下。 1234567891011121314151617181920改方法将一个给定的元素节点插入到相对于被调用的元素的给定的一个位置。1. node.insertAdjacentElement(positi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-10T08:21:23.357Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM 节点操作">
+<meta name="twitter:description" content="DOM 操作 - colddom的操作有很多在平时操作中很少用到的，但是却十分好用的API。 insert与 insertBefore 类似的几个 API 查看 MDN开发者手册，在这里赘述一下。 1234567891011121314151617181920改方法将一个给定的元素节点插入到相对于被调用的元素的给定的一个位置。1. node.insertAdjacentElement(positi">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/03/javascript/cold-active-dom/"/>
+
+
+
+
+
+  <title>DOM 节点操作 | 付帅帅</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/03/javascript/cold-active-dom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="handsomeFu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DOM 节点操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T22:27:55+08:00">
+                2018-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2018/03/03/javascript/cold-active-dom/" class="leancloud_visitors" data-flag-title="DOM 节点操作">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,451 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="DOM-操作-cold"><a href="#DOM-操作-cold" class="headerlink" title="DOM 操作 - cold"></a>DOM 操作 - cold</h3><p>dom的操作有很多在平时操作中很少用到的，但是却十分好用的API。</p>
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><p>与 <em>insertBefore</em> 类似的几个 <em>API</em> 查看 MDN开发者手册，在这里赘述一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">改方法将一个给定的元素节点插入到相对于被调用的元素的给定的一个位置。</span><br><span class="line">1. node.insertAdjacentElement(position, element)</span><br><span class="line"></span><br><span class="line">将指定的文本解析为HTML或XML，并将结果节点插入到DOM树中的指定位置。它不会重新解析它正在使用的元素，因此它不会破坏元素内的现有元素。这避免了额外的序列化步骤，使其比直接innerHTML操作更快。</span><br><span class="line">如果只是为了插入文本内容(而不是HTML节点), 不建议使用这个方法, 建议使用node.textContent 或者 node.insertAdjacentText() . 因为这样不需要经过HTML解释器的转换, 性能会好一点.</span><br><span class="line">看到这想说为什么不用innerHTML innerHTML不属于标准DOM 所以并没有被推荐，但是innerHTML的性能也是很好</span><br><span class="line">2. node.insertAdjacentHTML(position, element)</span><br><span class="line"></span><br><span class="line">将一个给定的文本节点插入在相对于被调用的元素给定的位置。</span><br><span class="line">3. node.insertAdjacentText(position, element)</span><br><span class="line"></span><br><span class="line">参数示意 三个方法都具有四个位置</span><br><span class="line">position</span><br><span class="line">&lt;!-- beforebegin --&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">    &lt;!-- afterbegin --&gt;</span><br><span class="line">    foo</span><br><span class="line">    &lt;!-- beforeend --&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;!-- afterend --&gt;</span><br></pre></td></tr></table></figure>
+<p><em>example</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"line"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> boxDom = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</span><br><span class="line"><span class="keyword">var</span> pDom1 = <span class="built_in">document</span>.createElement(<span class="string">"p"</span>);</span><br><span class="line">pDom1.insertAdjacentText(<span class="string">'afterbegin'</span>, <span class="string">"afterbegin"</span>);</span><br><span class="line"><span class="keyword">var</span> pDom2 = <span class="built_in">document</span>.createElement(<span class="string">"p"</span>);</span><br><span class="line">pDom2.insertAdjacentText(<span class="string">'beforeend'</span>, <span class="string">"beforeend"</span>);</span><br><span class="line">boxDom.insertAdjacentElement(<span class="string">'afterbegin'</span>, pDom1);</span><br><span class="line">boxDom.insertAdjacentElement(<span class="string">'beforeend'</span>, pDom2);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	change</span></span><br><span class="line"><span class="comment">	&lt;div id="box"&gt;</span></span><br><span class="line"><span class="comment">        &lt;p&gt;afterbegin&lt;/p&gt;</span></span><br><span class="line"><span class="comment">        &lt;div class="line"&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="comment">        &lt;p&gt;beforeend&lt;/p&gt;</span></span><br><span class="line"><span class="comment">    &lt;/div&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><em>example</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">	<span class="selector-tag">div</span> &#123;<span class="attribute">width</span>: <span class="number">50px</span>; <span class="attribute">height</span>: <span class="number">50px</span>; <span class="attribute">margin</span>: <span class="number">3px</span>; <span class="attribute">border</span>: <span class="number">3px</span> solid black; <span class="attribute">display</span>: inline-block; <span class="attribute">background-color</span>: red; <span class="attribute">float</span>: left&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">section</span>&#123;<span class="attribute">overflow</span>: hidden;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>点击彩色框选择它，然后使用下面的前两个按钮在选择之前和之后插入元素。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"before"</span>&gt;</span>Insert before<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"after"</span>&gt;</span>Insert after<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"reset"</span>&gt;</span>Reset demo<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> beforeBtn = <span class="built_in">document</span>.querySelector(<span class="string">'.before'</span>);</span><br><span class="line"><span class="keyword">var</span> afterBtn = <span class="built_in">document</span>.querySelector(<span class="string">'.after'</span>);</span><br><span class="line"><span class="keyword">var</span> resetBtn = <span class="built_in">document</span>.querySelector(<span class="string">'.reset'</span>);</span><br><span class="line"><span class="keyword">var</span> container = <span class="built_in">document</span>.querySelector(<span class="string">'section'</span>);</span><br><span class="line"><span class="keyword">var</span> activeElem;</span><br><span class="line">resetBtn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (container.firstChild) &#123;</span><br><span class="line">        container.removeChild(container.firstChild);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;=<span class="number">3</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">var</span> tempDiv = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">      container.appendChild(tempDiv);</span><br><span class="line">      setListener(tempDiv);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">beforeBtn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tempDiv = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    tempDiv.style.backgroundColor = randomColor();</span><br><span class="line">    activeElem.insertAdjacentElement(<span class="string">'beforebegin'</span>,tempDiv);</span><br><span class="line">    setListener(tempDiv);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">afterBtn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tempDiv = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    tempDiv.style.backgroundColor = randomColor();</span><br><span class="line">    activeElem.insertAdjacentElement(<span class="string">'afterend'</span>,tempDiv);</span><br><span class="line">    setListener(tempDiv);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setListener</span>(<span class="params">elem</span>) </span>&#123;</span><br><span class="line">    elem.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> allElems = <span class="built_in">document</span>.querySelectorAll(<span class="string">'section div'</span>);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; allElems.length; i++) &#123;</span><br><span class="line">            allElems[i].style.border = <span class="string">'3px solid black'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        elem.style.border = <span class="string">'3px solid aqua'</span>;</span><br><span class="line">        activeElem = elem;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomColor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">random</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> result = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">255</span>);</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'rgb('</span> + random() + <span class="string">','</span> + random() + <span class="string">','</span> + random() + <span class="string">')'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> initElems = <span class="built_in">document</span>.querySelectorAll(<span class="string">'section div'</span>);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; initElems.length; i++) &#123;</span><br><span class="line">      setListener(initElems[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+<h4 id="scrollIntoView"><a href="#scrollIntoView" class="headerlink" title="scrollIntoView"></a>scrollIntoView</h4><ul>
+<li><p>MDN官网注解</p>
+<p>scrollIntoView：让当前的元素滚动到浏览器窗口的可视区域内。</p>
+</li>
+<li><p>​参数 （<em>boolean</em>  |  <em>object</em>）</p>
+<p>boolean</p>
+<ul>
+<li>如果为<code>true</code>，元素的顶端将和其所在滚动区的可视区域的顶端对齐。</li>
+<li>如果为<code>false</code>， 元素的底端将和其所在滚动区的可视区域的底端对齐。</li>
+</ul>
+<p>object </p>
+<ul>
+<li>{block: ‘start’} 对应boolean <code>true</code></li>
+<li>{block:’end’} 对应boolean <code>false</code></li>
+<li>object中还有一个<code>key</code> behavior 三种值 auto、instant、smooth 其中 smooth 支持动画效果 obj.scrollIntoView( {block: true, behavior: ‘smooth’} )</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-id">#up</span>,<span class="selector-id">#down</span>&#123;<span class="attribute">width</span>: <span class="number">120px</span>;<span class="attribute">height</span>: <span class="number">30px</span>;<span class="attribute">text-align</span>: center;<span class="attribute">line-height</span>: <span class="number">30px</span>;<span class="attribute">position</span>: fixed;<span class="attribute">right</span>: <span class="number">10px</span>;<span class="attribute">top</span>: <span class="number">330px</span>;<span class="attribute">background</span>: red;<span class="attribute">color</span>: <span class="number">#fff</span>;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-id">#down</span>&#123;<span class="attribute">top</span>: <span class="number">380px</span>&#125;</span></span><br><span class="line"><span class="css"><span class="selector-id">#wrap</span>&#123;<span class="attribute">height</span>: <span class="number">20vh</span>;<span class="attribute">background</span>: skyblue;<span class="attribute">margin-top</span>: <span class="number">100vh</span>;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"wrap"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"up"</span>&gt;</span>up<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"down"</span>&gt;</span>down<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wrap = <span class="built_in">document</span>.getElementById(<span class="string">"wrap"</span>);</span><br><span class="line"><span class="keyword">var</span> up = <span class="built_in">document</span>.getElementById(<span class="string">"up"</span>);</span><br><span class="line"><span class="keyword">var</span> down = <span class="built_in">document</span>.getElementById(<span class="string">"down"</span>);</span><br><span class="line">up.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// wrap.scrollIntoView(true)</span></span><br><span class="line">    wrap.scrollIntoView(&#123;</span><br><span class="line">        block: <span class="string">'start'</span>,</span><br><span class="line">        behavior: <span class="string">'smooth'</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">down.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// wrap.scrollIntoView(false)</span></span><br><span class="line">    wrap.scrollIntoView(&#123;</span><br><span class="line">        block: <span class="string">'end'</span>,</span><br><span class="line">        behavior: <span class="string">'smooth'</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="scrollIntoViewIfNeeded"><a href="#scrollIntoViewIfNeeded" class="headerlink" title="scrollIntoViewIfNeeded"></a>scrollIntoViewIfNeeded</h4><ul>
+<li><p>MDN官方注解</p>
+<p>用来将不在浏览器窗口的可见区域内的元素滚动到浏览器窗口的可见区域。 如果该元素已经在浏览器窗口的可见区域内，则不会发生滚动。 此方法是标准的 Element.scrollIntoView() 方法的专有变体。</p>
+<p><em>PS</em>：MDN官方说一个说明 这个是非标注的一个方法。其中有些小问题</p>
+</li>
+<li><p>参数 （<em>booean</em>）</p>
+<p>true   则元素将在其所在滚动区的可视区域中居中对齐。</p>
+<p>false   可视区顶部，或者底部</p>
+</li>
+<li><p>补充说明</p>
+<p>scrollIntoViewIfNeeded是比较懒散的，如果元素在可视区域，那么调用它的时候，页面是不会发生滚动的其次是scrollIntoViewIfNeeded只有Boolean型参数，没有动画。</p>
+<p>不是全部可见或者全部不可见的情况下，调用scrollIntoViewIfNeeded时，无论参数是<code>true</code> 还是<code>false</code> ，都会发生滚动而且效果是滚动到元素与可视区域顶部或底部对齐，元素离哪端更近，往那边靠。</p>
+<p><em>PS</em>：scrollIntoViewIfNeeded 完全不可见的情况下 元素距离那边近 <code>true</code>，<code>false</code> 效果都一样就近原则</p>
+<p>移动端，以及原生的使用页面滚动的时候采用jQuery动画操作，现在的原生API都这么好用。当然如果不考虑兼容问题（IE 移动端的UC浏览器不支持）这个是不错的选择</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-id">#up</span>,<span class="selector-id">#center</span>,<span class="selector-id">#down</span>&#123;<span class="attribute">width</span>: <span class="number">120px</span>;<span class="attribute">height</span>: <span class="number">30px</span>;<span class="attribute">text-align</span>: center;<span class="attribute">line-height</span>: <span class="number">30px</span>;<span class="attribute">position</span>: fixed;<span class="attribute">right</span>: <span class="number">10px</span>;<span class="attribute">top</span>: <span class="number">330px</span>;<span class="attribute">background</span>: red;<span class="attribute">color</span>: <span class="number">#fff</span>;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#center</span>&#123;<span class="attribute">top</span>: <span class="number">380px</span>&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#down</span>&#123;<span class="attribute">top</span>: <span class="number">430px</span>&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#wrap</span>&#123;<span class="attribute">height</span>: <span class="number">20vh</span>;<span class="attribute">background</span>: skyblue;<span class="attribute">margin-top</span>: <span class="number">100vh</span>;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"wrap"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"up"</span>&gt;</span>up<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"center"</span>&gt;</span>center<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"down"</span>&gt;</span>down<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wrap = <span class="built_in">document</span>.getElementById(<span class="string">"wrap"</span>);</span><br><span class="line"><span class="keyword">var</span> up = <span class="built_in">document</span>.getElementById(<span class="string">"up"</span>);</span><br><span class="line"><span class="keyword">var</span> down = <span class="built_in">document</span>.getElementById(<span class="string">"down"</span>);</span><br><span class="line">up.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    wrap.scrollIntoView(<span class="literal">true</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">center.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    wrap.scrollIntoViewIfNeeded(<span class="literal">true</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">down.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    wrap.scrollIntoViewIfNeeded(<span class="literal">false</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DOM/" rel="tag"># DOM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/01/javascript/DOM-03/" rel="next" title="DOM 节点操作">
+                <i class="fa fa-chevron-left"></i> DOM 节点操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/03/javascript/javascript-XML/" rel="prev" title="javascript XML">
+                javascript XML <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="handsomeFu" />
+            
+              <p class="site-author-name" itemprop="name">handsomeFu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-操作-cold"><span class="nav-number">1.</span> <span class="nav-text">DOM 操作 - cold</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#insert"><span class="nav-number">1.1.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scrollIntoView"><span class="nav-number">1.2.</span> <span class="nav-text">scrollIntoView</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scrollIntoViewIfNeeded"><span class="nav-number">1.3.</span> <span class="nav-text">scrollIntoViewIfNeeded</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">handsomeFu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">50.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("l8WGuspt3KwjnR8MRd9OD7cB-gzGzoHsz", "EKLio9rLppwFqQDtawi78vLN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数组是 ECMAscript 中除了object之外最常用的类型了">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Array">
+<meta property="og:url" content="http://yoursite.com/2018/02/10/javascript/Array/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="数组是 ECMAscript 中除了object之外最常用的类型了">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-10T08:21:13.109Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Array">
+<meta name="twitter:description" content="数组是 ECMAscript 中除了object之外最常用的类型了">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/10/javascript/Array/"/>
+
+
+
+
+
+  <title>Array | 付帅帅</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/10/javascript/Array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="handsomeFu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Array</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-10T14:07:59+08:00">
+                2018-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2018/02/10/javascript/Array/" class="leancloud_visitors" data-flag-title="Array">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,055 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>数组是 <em>ECMAscript</em> 中除了object之外最常用的类型了</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h1><p>数组是什么？一个盒子，一个容器，还是一个垃圾桶。</p>
+<p><em>Array</em> 类型是ECMAScript最常用的类型。而且ECMAScript中的Array类型和其他语言中的数组有着很大的区别。虽然数组都是有序排列，但ECMAScript中的数组每个元素可以保存任何类型。ECMAScript中数组的大小也是可以调整的。</p>
+<ul>
+<li>数组的定义</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用字面量写法创建数组</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]; 					<span class="comment">// 创建了一个数字并且分配了元素</span></span><br><span class="line"><span class="comment">// PS: var arr = [1,2,];			// 禁止使用IE会识别错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用new关键字创建数组</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();				<span class="comment">// 创建了一个空数组</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">7</span>);				<span class="comment">// 创建了一个包含7个元素的数组</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);         <span class="comment">// 创建了一个数组并且分配了元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接Array创建</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>(<span class="number">7</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数组的数据类型</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> arr); 		 <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.isArray(arr)); <span class="comment">// true 准确判断是不是数组</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意点</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">arr[<span class="number">5</span>] = <span class="string">'xq'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">4</span>]);	<span class="comment">// undefined 第3,4位没有元素被undefined所占位</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.length);<span class="comment">// 5 使用索引也可以增加数组的长度</span></span><br></pre></td></tr></table></figure>
+<h2 id="method"><a href="#method" class="headerlink" title="method"></a>method</h2><blockquote>
+<p>数组中的方法很多，栈方法、列队方法、重排序方法、操作方法、位置方法、迭代方法</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>push(param)</td>
+<td>往数组的末尾添加元素</td>
+</tr>
+<tr>
+<td>unshift(param)</td>
+<td>往数组的前端添加元素</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td>从数组的末尾删除元素,并返回</td>
+</tr>
+<tr>
+<td>shift()</td>
+<td>从数组的前端删除元素,并返回</td>
+</tr>
+<tr>
+<td>sort()</td>
+<td>数组排序(默认按照ASCII值排序),可以传递一个<strong>function</strong>参数</td>
+</tr>
+<tr>
+<td>slice()</td>
+<td>复制数组，并返回</td>
+</tr>
+<tr>
+<td>splice()</td>
+<td>剪切数组元素，并返回</td>
+</tr>
+<tr>
+<td>concat()</td>
+<td>拼接数组,返回一个数组</td>
+</tr>
+<tr>
+<td>join()</td>
+<td>按照param拼接数组,返回字符串</td>
+</tr>
+<tr>
+<td>reverse()</td>
+<td>数组反转 (也可以反转字符串)</td>
+</tr>
+<tr>
+<td>indexOf()</td>
+<td>返回匹配的项,并返回索引,找不到返回-1</td>
+</tr>
+<tr>
+<td>lastIndexOf()</td>
+<td>返回匹配的项,并返回索引,找不到返回-1</td>
+</tr>
+<tr>
+<td>find()</td>
+<td>找到第一个满足测试函数的元素并返回那个元素的值，如果找不到，则返回 undefined</td>
+</tr>
+<tr>
+<td>findIndex()</td>
+<td>找到第一个满足测试函数的元素并返回那个元素的索引，如果找不到，则返回 -1</td>
+</tr>
+<tr>
+<td>forEach()</td>
+<td>遍历数组</td>
+</tr>
+<tr>
+<td>filter()</td>
+<td>对数组的每一项执行指定函数，返回该函数会返回true的项组成的数组</td>
+</tr>
+<tr>
+<td>map()</td>
+<td>对数组的每一项执行指定函数，返回该函数调用结果组成的数组</td>
+</tr>
+<tr>
+<td>some()</td>
+<td>对数组的每一项执行指定函数，如果每一项都返回true则返回该数组</td>
+</tr>
+<tr>
+<td>reduce()</td>
+<td>迭代方法</td>
+</tr>
+<tr>
+<td>fill()</td>
+<td>用一个固定值填充一个数组中从起始索引到终止索引内的全部元素</td>
+</tr>
+<tr>
+<td>entries()</td>
+<td>返回一个迭代器</td>
+</tr>
+</tbody>
+</table>
+<p><em>ps</em></p>
+<p>数组中一些方法会改变原有数组的排列</p>
+<blockquote>
+<p>push、unshift、pop、shift、splice、sort、reverse、fill</p>
+</blockquote>
+<p>会返回的一个数组或者期望值的方法</p>
+<blockquote>
+<p>sort、reverse、splice、slice、concat、join、indexOf、lastIndexOf、find、findIndex</p>
+</blockquote>
+<p>会涉及到遍历数组的方法</p>
+<blockquote>
+<p>forEach、filter、find、findIndex、some、map、reduce</p>
+</blockquote>
+<h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><p><em>reverse</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello world"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.reverse());</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> start=<span class="number">0</span>,end=arr.length<span class="number">-1</span>;start&lt;end;start++,end--)&#123;</span><br><span class="line">    arr[start] ^= arr[end];</span><br><span class="line">    arr[end] ^= arr[end];</span><br><span class="line">    arr[start] ^= arr[end];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>sort</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">16</span>,<span class="number">11</span>];</span><br><span class="line">arr.sort();</span><br><span class="line"><span class="comment">// sort 默认排序使用ASCII值比较</span></span><br><span class="line"><span class="built_in">console</span>.log(arr); 	<span class="comment">// [1,11,16,3,4,5,6,8];</span></span><br><span class="line"><span class="comment">// 字符串之间的比较</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'2'</span> &gt; <span class="string">'199'</span>);	<span class="comment">// true 一个道理</span></span><br><span class="line"><span class="comment">// 怎么样完成数字大小的排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">  	<span class="comment">// a &lt; b &lt;==&gt; a-b&lt;0</span></span><br><span class="line">    <span class="keyword">return</span> a -b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 完成正常排序需要 通过回调函数完成</span></span><br><span class="line">arr.sort(compare);</span><br><span class="line">arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// return a-b; 		// 升序</span></span><br><span class="line">  	<span class="comment">// return b-a;		// 降序</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortArr</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> entries = arr.entries(),temp;</span><br><span class="line">    <span class="comment">// while(temp = entries.next().value)&#123;</span></span><br><span class="line">	<span class="comment">//     temp[1].sort((a ,b) =&gt; a - b);</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> e <span class="keyword">of</span> entries)e[<span class="number">1</span>].sort(<span class="function">(<span class="params">a ,b</span>) =&gt;</span> a - b);</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [[<span class="number">1</span>,<span class="number">34</span>],[<span class="number">456</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">44</span>,<span class="number">234</span>],[<span class="number">4567</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">34</span>,<span class="number">78</span>,<span class="number">23</span>,<span class="number">1</span>]];</span><br><span class="line">sortArr(arr);</span><br><span class="line"><span class="comment">// ### 元素重排序</span></span><br></pre></td></tr></table></figure>
+<p><em>数组升维降维</em> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chunk</span>(<span class="params">arr, len</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = [];</span><br><span class="line">    <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(arr[index])&#123;</span><br><span class="line">        temp.push(arr.slice(index, index+=len));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chunk</span>(<span class="params">array, size</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">Array</span>.isArray(array))&#123;</span><br><span class="line">        <span class="keyword">return</span> [];</span><br><span class="line">    &#125;</span><br><span class="line">    size = size || <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> index = <span class="number">0</span>,</span><br><span class="line">        resIndex = <span class="number">0</span>,</span><br><span class="line">        length = array === <span class="literal">null</span> ? <span class="number">0</span> : array.length,</span><br><span class="line">        resLen = <span class="built_in">Math</span>.ceil(length / ( size|<span class="number">0</span>));</span><br><span class="line">        result = <span class="built_in">Array</span>(resLen);</span><br><span class="line">    <span class="keyword">while</span>(index &lt; resLen)&#123;</span><br><span class="line">        result[index++] = array.slice(resIndex, resIndex+=size);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(chunk(arr,<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> flattened = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]].reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.concat(b);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(flattened); 	<span class="comment">// [0, 1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<p><em>indexOf</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">2</span>)); 	<span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 同样indexOf 也有去重的作用</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> foo = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(foo.indexOf(arr[i]) != <span class="number">-1</span>)&#123;</span><br><span class="line">        foo.push(arr[i]);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(foo); 			<span class="comment">// [1,2,3]</span></span><br></pre></td></tr></table></figure>
+<p><em>filter</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	filter(item,index,array)</span></span><br><span class="line"><span class="comment">	item 	遍历的当前元素</span></span><br><span class="line"><span class="comment">	index	遍历的当前元素索引</span></span><br><span class="line"><span class="comment">	array	当前所遍历的数组</span></span><br><span class="line"><span class="comment">	做为数组的高级方法filter的过滤作用有很多的用处</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="comment">// 返回满足条件的项 这里返回了偶数</span></span><br><span class="line"><span class="keyword">var</span> foo = arr.filter(<span class="function"><span class="params">item</span>=&gt;</span> item %<span class="number">2</span> === <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(foo); 		<span class="comment">// [2,4,6]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组去重</span></span><br><span class="line">arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,array</span>)</span>&#123;</span><br><span class="line">  	<span class="comment">//检索当前的索引是不是唯一 indexOf总返回第一个元素 后续的重复元素位置与 indexOf 返回的位置不相等</span></span><br><span class="line">  	<span class="keyword">return</span> array.indexOf(item) === index;</span><br><span class="line"></span><br><span class="line">  	<span class="comment">//反过来思考 查看是否重复 返回-1的留下</span></span><br><span class="line">  	<span class="keyword">return</span> array.indexOf(item,index+<span class="number">1</span>) == <span class="number">-1</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 保留非空的非undefined</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,,<span class="number">2</span>,<span class="number">3</span>,,<span class="number">4</span>,<span class="literal">undefined</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> foo = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> item &amp;&amp; item.toString().trim() &amp;&amp; <span class="keyword">typeof</span> item != <span class="string">'undefined'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><em>find</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	find(fn) findIndex(fn)</span></span><br><span class="line"><span class="comment">	fn(item,index,array)</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [&#123;<span class="attr">name</span>:<span class="string">'xq'</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">'vk'</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">'afei'</span>&#125;];</span><br><span class="line"><span class="keyword">var</span> obj = arr.find(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;<span class="keyword">return</span> x.name == <span class="string">'xq'</span>&#125;));</span><br><span class="line"><span class="keyword">var</span> idx = arr.findIndex(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;<span class="keyword">return</span> x.name == <span class="string">'xq'</span>&#125;));</span><br><span class="line"><span class="built_in">console</span>.log(obj); 	<span class="comment">// &#123;name: 'xq'&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(idx); 	<span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 查看是不是质数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">element, index, array</span>) </span>&#123;</span><br><span class="line">  	<span class="keyword">var</span> start = <span class="number">2</span>;</span><br><span class="line">  	<span class="keyword">while</span> (start &lt;= <span class="built_in">Math</span>.sqrt(element)) &#123;</span><br><span class="line">    	<span class="keyword">if</span> (element % start++ <span class="xml"><span class="tag">&lt; <span class="attr">1</span>) &#123;</span></span></span><br><span class="line"><span class="xml">      		return false;</span></span><br><span class="line"><span class="xml">    	&#125;</span></span><br><span class="line"><span class="xml">  	&#125;</span></span><br><span class="line"><span class="xml">  	return element &gt; 1;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml">console.log([4, 5, 8, 12].find(isPrime)); // 5</span></span><br></pre></td></tr></table></figure>
+<p><em>map</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	map 方法会给原数组中的每个元素都按顺序调用一次  callback 函数</span></span><br><span class="line"><span class="comment">	map(fn);</span></span><br><span class="line"><span class="comment">	fn(item,index,array);</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 格式化时间 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatTime</span>(<span class="params">date</span>) </span>&#123;</span><br><span class="line">  	<span class="keyword">var</span> year = date.getFullYear(),</span><br><span class="line">  		month = date.getMonth() + <span class="number">1</span>,</span><br><span class="line">        day = date.getDate(),</span><br><span class="line">		hour = date.getHours(),</span><br><span class="line">  		minute = date.getMinutes(),</span><br><span class="line">  		second = date.getSeconds();</span><br><span class="line">  	<span class="keyword">return</span> [year, month, day].map(formatNumber).join(<span class="string">'/'</span>) + <span class="string">' '</span> + [hour, minute, second].map(formatNumber).join(<span class="string">':'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatNumber</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  	n = n.toString()</span><br><span class="line">  	<span class="keyword">return</span> n[<span class="number">1</span>] ? n : <span class="string">'0'</span> + n</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取字符串的ASCII值</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'I love you'</span>;</span><br><span class="line">[].map.call(str,<span class="function"><span class="keyword">function</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n.charCodeAt();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历元素的属性</span></span><br><span class="line"><span class="keyword">var</span> inputDoms = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'input'</span>);</span><br><span class="line">[].map.call(inputDoms,<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val.value;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 反转字符串</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'hello xq'</span>;</span><br><span class="line">[].map.call(str,<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;).reverse().join(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类似的数字操作</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>,<span class="number">21</span>,<span class="number">32</span>,<span class="number">4</span>,<span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> foo = arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x % <span class="number">10</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(foo);   <span class="comment">// 0, 1, 2, 4, 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 问题</span></span><br><span class="line">[<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>].map(<span class="built_in">parseInt</span>);</span><br><span class="line"><span class="comment">// 可能觉的会是[1, 2, 3]</span></span><br><span class="line"><span class="comment">// 但实际的结果是 [1, NaN, NaN]</span></span><br><span class="line"><span class="comment">// parseInt有两个参数默认 parseInt做为回调函数传入map会给其默认传递三个参数 会把索引值当成进制使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 改进</span></span><br><span class="line">[<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>].map(<span class="built_in">Number</span>);</span><br><span class="line"><span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<p><em>reduce</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 迭代求和</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> arr)&#123;</span><br><span class="line">    sum += arr[k];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sum1 = arr.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 统计字符出现次数</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"aabbcc"</span>;</span><br><span class="line"><span class="keyword">var</span> count = str.split(<span class="string">""</span>).reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> ( a[b]++ || (a[b]=<span class="number">1</span>),a ), &#123;&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(count);</span><br><span class="line"><span class="comment">// 判断 a出现的次数</span></span><br><span class="line"><span class="keyword">var</span> count = str.split(<span class="string">"a"</span>).length - <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 判断数组中某一个元素出现次数</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="function">(<span class="params">arr, value</span>) =&gt;</span> arr.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> b === value ? a + <span class="number">1</span> : a + <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换中文数字</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">123450</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convert</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="string">"零"</span>, <span class="string">"一"</span>, <span class="string">"二"</span>, <span class="string">"三"</span>, <span class="string">"四"</span>, <span class="string">"五"</span>, <span class="string">"六"</span>, <span class="string">"七"</span>, <span class="string">"八"</span>, <span class="string">"九"</span>];</span><br><span class="line">    <span class="keyword">return</span> num.toString().split(<span class="string">""</span>).reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> ( a + arr[b] ), <span class="string">""</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(convert(num));</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/08/javascript/String-Number-Boolean/" rel="next" title="String Number Boolean">
+                <i class="fa fa-chevron-left"></i> String Number Boolean
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/10/javascript/Date/" rel="prev" title="Date">
+                Date <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="handsomeFu" />
+            
+              <p class="site-author-name" itemprop="name">handsomeFu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Array"><span class="nav-number">1.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#method"><span class="nav-number">1.1.</span> <span class="nav-text">method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example"><span class="nav-number">1.2.</span> <span class="nav-text">example</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">handsomeFu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">50.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("l8WGuspt3KwjnR8MRd9OD7cB-gzGzoHsz", "EKLio9rLppwFqQDtawi78vLN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

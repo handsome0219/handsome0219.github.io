@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js,BOM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="js中的定时器JavaScript是单线程语言，但它允许通过设置超时值，间歇时间值来调度代码在特定时刻执行。这两个分别是window 对象的 setTimeout 与 setInterval 方法，返回值是一个 intervalID 可以传递给 clearTimeout 与 clearInterval  简单的认识1234var intervalID1 = setTimeout(func, del">
+<meta name="keywords" content="js,BOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="setInterval setTimeout（一）">
+<meta property="og:url" content="http://yoursite.com/2018/03/06/javascript/setInterval setTimeout/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="js中的定时器JavaScript是单线程语言，但它允许通过设置超时值，间歇时间值来调度代码在特定时刻执行。这两个分别是window 对象的 setTimeout 与 setInterval 方法，返回值是一个 intervalID 可以传递给 clearTimeout 与 clearInterval  简单的认识1234var intervalID1 = setTimeout(func, del">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-10T08:22:29.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="setInterval setTimeout（一）">
+<meta name="twitter:description" content="js中的定时器JavaScript是单线程语言，但它允许通过设置超时值，间歇时间值来调度代码在特定时刻执行。这两个分别是window 对象的 setTimeout 与 setInterval 方法，返回值是一个 intervalID 可以传递给 clearTimeout 与 clearInterval  简单的认识1234var intervalID1 = setTimeout(func, del">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/06/javascript/setInterval setTimeout/"/>
+
+
+
+
+
+  <title>setInterval setTimeout（一） | 付帅帅</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/javascript/setInterval setTimeout/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="handsomeFu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">setInterval setTimeout（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T16:45:54+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BOM/" itemprop="url" rel="index">
+                    <span itemprop="name">BOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2018/03/06/javascript/setInterval setTimeout/" class="leancloud_visitors" data-flag-title="setInterval setTimeout（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,426 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="js中的定时器"><a href="#js中的定时器" class="headerlink" title="js中的定时器"></a>js中的定时器</h2><p>JavaScript是单线程语言，但它允许通过设置超时值，间歇时间值来调度代码在特定时刻执行。这两个分别是<em>window</em> 对象的 <code>setTimeout</code> 与 <code>setInterval</code> 方法，返回值是一个 <code>intervalID</code> 可以传递给 <code>clearTimeout</code> 与 <code>clearInterval</code> </p>
+<h3 id="简单的认识"><a href="#简单的认识" class="headerlink" title="简单的认识"></a>简单的认识</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> intervalID1 = setTimeout(func, delay);</span><br><span class="line"><span class="keyword">var</span> intervalID2 = setTimeout(func, delay, param...);</span><br><span class="line"><span class="keyword">var</span> intervalID3 = setInterval(func, delay);</span><br><span class="line"><span class="keyword">var</span> intervalID4 = setInterval(func, delay, param...);</span><br></pre></td></tr></table></figure>
+<p>先来看一下定时器的写法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; alert(<span class="number">1</span>) &#125;;</span><br><span class="line">setTimeout(fn, <span class="number">1000</span>);</span><br><span class="line">setTimeout(<span class="string">"fn()"</span>, <span class="number">1000</span>);  <span class="comment">// 不推荐写法 evel</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; fn() &#125;, <span class="number">1000</span>); <span class="comment">// 通过回调的方式调用 多了不必要的开销 但是可以去传递参数</span></span><br></pre></td></tr></table></figure>
+<p>其中要注意一点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> 	setTimeout(<span class="string">"fn()"</span>, <span class="number">1000</span>);  <span class="comment">// 报错 fn is not defined 如果fn写在全局是可以的 所以这里个人认为可能是eval去解析了 字符fn() 但是fn必须是 window作用域底下的函数 局部作用域会找不到fn 虽然有点牵强但是知道有这个坑就好了</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; alert(<span class="number">1</span>) &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当调用的函数有参数的时候</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a, b</span>)</span>&#123; <span class="built_in">console</span>.log(a, b) &#125;;</span><br><span class="line">setTimeout(<span class="string">"fn(1, 2)"</span>, <span class="number">1000</span>);  <span class="comment">// 不推荐 eval</span></span><br><span class="line">setTimeout(fn, <span class="number">1000</span>, <span class="number">1</span>, <span class="number">2</span>);    <span class="comment">// IE9-不支持第一种语法中向延迟函数传递额外参数的功能</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;<span class="built_in">console</span>.log(num)&#125;, <span class="number">1000</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>this</strong></p>
+<p>定时器中的this也是一个很容易出错的地方</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">10</span>,</span><br><span class="line">    printa()&#123;</span><br><span class="line">       alert(<span class="keyword">this</span>.a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</span><br><span class="line">obj.printa(); <span class="comment">// 10  obj</span></span><br><span class="line">setTimeout(obj.printa, <span class="number">1000</span>); <span class="comment">// 20  window</span></span><br></pre></td></tr></table></figure>
+<p><code>setInterval</code> 与 <code>setTimeout</code> 中执行的代码在一个单独的执行上下文中运行到它所调用的函数中。因此，被调用函数的this关键字将被设置为window对象，它不会与调用的函数最初的上下文环境相同</p>
+<p>有方式解决嘛? 当然</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(obj.printa.bind(obj), <span class="number">1000</span>);  <span class="comment">// 通过bind改变</span></span><br><span class="line"><span class="comment">// 因为bind不兼容 可能有人在这里想这样写 setTimeout.call(obj, obj.printa, 1000), 很遗憾报错 Uncaught TypeError: Illegal invocation</span></span><br><span class="line"><span class="comment">// 无法通过call把对象传递给回调函数</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自己动手封装一下好了</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setTime</span>(<span class="params">callBack, delay</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = <span class="keyword">this</span>,</span><br><span class="line">        args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        callBack.apply(content, args);</span><br><span class="line">    &#125;, delay)</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">// MDN上给出了一中方法是 还是重新写了一遍</span></span><br><span class="line"><span class="keyword">var</span> __nativeST__ = <span class="built_in">window</span>.setTimeout, __nativeSI__ = <span class="built_in">window</span>.setInterval;</span><br><span class="line"><span class="built_in">window</span>.setTimeout = <span class="function"><span class="keyword">function</span> (<span class="params">vCallback, nDelay </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> oThis = <span class="keyword">this</span>,</span><br><span class="line">        aArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">2</span>);</span><br><span class="line">      <span class="keyword">return</span> __nativeST__(vCallback <span class="keyword">instanceof</span> <span class="built_in">Function</span> ? <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            vCallback.apply(oThis, aArgs);</span><br><span class="line">      &#125; : vCallback, nDelay);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.setInterval = <span class="function"><span class="keyword">function</span> (<span class="params">vCallback, nDelay </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> oThis = <span class="keyword">this</span>,</span><br><span class="line">        aArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">2</span>);</span><br><span class="line">      <span class="keyword">return</span> __nativeSI__(vCallback <span class="keyword">instanceof</span> <span class="built_in">Function</span> ? <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            vCallback.apply(oThis, aArgs);</span><br><span class="line">      &#125; : vCallback, nDelay);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>简单的区别两者就是 <code>setTImeout</code> 仅会在超时值执行一次，但是这个超时值不一定是我们所设置的那个值。<code>setInterval</code> 会间歇性的调用，但是这个间歇时间可能会让程序出现问题。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">_</span>=&gt;</span>&#123; alert(<span class="number">1</span>) &#125;, <span class="number">500</span>); <span class="comment">// 有意思的事情就来了 弹窗并非很快的执行</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10e8</span>;i++)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>这个是因为window对象底下的定时器属于异步语句，js单线程的执行。当程序自上而下的去执行的时候，优先执行同步代码，浏览器会把异步的语句放入一个 <strong>异步语句列队</strong>(定时器，webAPI，DOM，ajax)，当js主线程的任务执行完毕之后在依次执行异步语句。</p>
+<p>怎么去依次执行的异步语句呢？这个就是 <code>delay</code> 参数起作用了。延迟时间实际上的意思相当于 <em>当js主线程的任务完成之后异步列队中的语句推入主线程执行的时间</em> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">_</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="number">1</span>) &#125;, <span class="number">500</span>); </span><br><span class="line">setTimeout(<span class="function"><span class="params">_</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="number">2</span>) &#125;, <span class="number">100</span>); </span><br><span class="line">setInterval(<span class="function"><span class="params">_</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="number">3</span>)&#125;, <span class="number">50</span>)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10e8</span>;i++)&#123;&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   3</span></span><br><span class="line"><span class="comment">   2</span></span><br><span class="line"><span class="comment">   1</span></span><br><span class="line"><span class="comment">   3...</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>通过 <code>setTimeout</code> 可以模拟 <code>setInterval</code> 。更多的可能会用 <em>out</em> 来模拟 <em>interval</em> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单的示例</span></span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    setTimeout(fn, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+<p><code>setTimeout</code> 会在fn执行从上而下执行完成，在调用下一次定时器。而 <code>setInterval</code> 不会等待fn执行完成而是会</p>
+<p>到达调用时间间隔就会插入事件列队去执行。所以在做某些场景的时候不要去影响业务就好了。 </p>
+<h3 id="定时器休眠"><a href="#定时器休眠" class="headerlink" title="定时器休眠"></a>定时器休眠</h3><p>浏览器是很智能的程序。当用户切换了当前显示的页面，或者最小化窗口的时候 <code>setInterval</code> 会暂时进入休眠状态，但是并不是停止，而是很缓慢，并且在这个时间段的执行语句都会放入一个列队，当用户再次进入页面的时候会一次性全部执行，在很多 <em>canvas</em> 的效果中这个现象很普遍，以及在做无缝的轮播的时候可能也会碰到这样子的问题。贴一个链接可以去查看。<a href="http://www.html5tricks.com/demo/html5-canvas-dance-time/index.html" target="_blank" rel="noopener">Canvas实现会跳舞的时间动画</a> 切换到其它页面等一会在切换回去就会发现问题了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.title = ++index;</span><br><span class="line">&#125;, <span class="number">30</span>)</span><br><span class="line"><span class="comment">// 更改title打开页面可以看到快速的变化，切换到其它的页面会发现 title的改变会变得很缓慢。就是 setInterval的休眠机制 很有趣 h5 API另外一个 window.requestAnimationFrame()</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.title = ++index;</span><br><span class="line">    <span class="built_in">window</span>.requestAnimationFrame(fn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>window.requestAnimationFrame()</code> 比起 <code>setInterval</code> 会更加的稳定因为它会随着浏览器刷新频率的变化而变化做动画会更加的平滑。上边的执行当切换到其它的页面。title会停止改变，也就是说会更加的节约浏览器的开支消耗。这个不是重点。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+            <a href="/tags/BOM/" rel="tag"># BOM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/05/javascript/BOM/" rel="next" title="BOM">
+                <i class="fa fa-chevron-left"></i> BOM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="handsomeFu" />
+            
+              <p class="site-author-name" itemprop="name">handsomeFu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js中的定时器"><span class="nav-number">1.</span> <span class="nav-text">js中的定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单的认识"><span class="nav-number">1.1.</span> <span class="nav-text">简单的认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-number">1.2.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时器休眠"><span class="nav-number">1.3.</span> <span class="nav-text">定时器休眠</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">handsomeFu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">50.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("l8WGuspt3KwjnR8MRd9OD7cB-gzGzoHsz", "EKLio9rLppwFqQDtawi78vLN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
