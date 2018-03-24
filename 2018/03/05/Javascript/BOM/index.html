@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googled1f062b2c8449c40.html" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BOM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ECMAScript 是 JavaScript 语法的核心规范，如果在 web 中使用 JavaScript，那么 BOM 则是一个很重要的核心。BOM提供了很多的对象，用于访问浏览器的功能。BOM最早没有一个统一的规范导致浏览器厂商都有自己的想法随意的去扩展。后来把浏览器共有的对象做为事实上的标准。这些对象在浏览器中得以存在。W3C为了把浏览器中基本的部分标准化，将 BOM 纳入了 H5 的规范">
+<meta name="keywords" content="BOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BOM">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/Javascript/BOM/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="ECMAScript 是 JavaScript 语法的核心规范，如果在 web 中使用 JavaScript，那么 BOM 则是一个很重要的核心。BOM提供了很多的对象，用于访问浏览器的功能。BOM最早没有一个统一的规范导致浏览器厂商都有自己的想法随意的去扩展。后来把浏览器共有的对象做为事实上的标准。这些对象在浏览器中得以存在。W3C为了把浏览器中基本的部分标准化，将 BOM 纳入了 H5 的规范">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/img/javascript/dom/bom.jpg">
+<meta property="og:updated_time" content="2018-03-24T06:35:01.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BOM">
+<meta name="twitter:description" content="ECMAScript 是 JavaScript 语法的核心规范，如果在 web 中使用 JavaScript，那么 BOM 则是一个很重要的核心。BOM提供了很多的对象，用于访问浏览器的功能。BOM最早没有一个统一的规范导致浏览器厂商都有自己的想法随意的去扩展。后来把浏览器共有的对象做为事实上的标准。这些对象在浏览器中得以存在。W3C为了把浏览器中基本的部分标准化，将 BOM 纳入了 H5 的规范">
+<meta name="twitter:image" content="http://yoursite.com/img/javascript/dom/bom.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/05/Javascript/BOM/"/>
+
+
+
+
+
+  <title>BOM | 付帅帅</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ecf701914946cceef8229d782851c7d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-关于我"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/Javascript/BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="付帅帅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">BOM</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T13:55:20+08:00">
+                2018-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/BOM/" itemprop="url" rel="index">
+                    <span itemprop="name">BOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,412 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>ECMAScript</em> 是 <em>JavaScript</em> 语法的核心规范，如果在 <em>web</em> 中使用 <em>JavaScript</em>，那么 <em>BOM</em> 则是一个很重要的核心。BOM提供了很多的对象，用于访问浏览器的功能。BOM最早没有一个统一的规范导致浏览器厂商都有自己的想法随意的去扩展。后来把浏览器共有的对象做为事实上的标准。这些对象在浏览器中得以存在。W3C为了把浏览器中基本的部分标准化，将 <em>BOM</em> 纳入了 <em>H5</em> 的规范中。</p>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><p><img src="/img/javascript/dom/bom.jpg" alt="bom"></p>
+<p>BOM（Browser Object Model），核心对象 <em>window</em> 对象，它表示浏览器的一个实例。</p>
+<p>在全局中定义的变量函数，都会被归纳在 <em>window</em> 对象名下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.loa(a);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);</span><br></pre></td></tr></table></figure>
+<p>因为全局变量是归属于 <em>window</em> 对象，但是与直接扩展在 <em>window</em> 上的属性有点区别：直接定义在window上的属性可以被 <code>delete</code> 删除，通过 <code>var</code> 定义的变量是不会被删除的.</p>
+<h3 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h3><p>说screen对象之前先说一下确定浏览器可视窗口大小的属性</p>
+<p>浏览器确定一个窗口的大小不是简单的事情。有四个属性 innerWidth，innerHeight，outerWidth，outerHeight。IE8 及更早版本没有提供取得当前浏览器窗口尺寸的属性；不过，它通过 DOM 提供了页面可见区域的相关信息</p>
+<ul>
+<li>IE9+、 Safari 和 Firefox中， outerWidth 和 outerHeight 返回浏览器窗口本身的尺寸 </li>
+<li>Chrome 中， outerWidth、 outerHeight 与innerWidth、 innerHeight 返回相同的值 </li>
+<li>document.documentElement.clientWidth 和 document.documentElement.clientHeight 中保存了页面视口的信息。在 IE6 中，在标准模式下才有效；如果是混杂模式，就必须通过document.body.clientWidth 和 document.body.clientHeight 取得相同信息。而对于Chrome，则无论通过 document.documentElement 还是 document.body 中的 clientWidth 和clientHeight 属性，都可以取得视口的大小。 </li>
+</ul>
+<p><em>ps</em> ：虽然最终无法确定浏览器窗口本身的大小，但却可以取得页面视口的大小。关于浏览器的渲染模式<a href="https://www.cnblogs.com/imxiu/p/3541932.html" target="_blank" rel="noopener">参考</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pageWidth = <span class="built_in">window</span>.innerWidth,</span><br><span class="line">	pageHeight = <span class="built_in">window</span>.innerHeight;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> pageWidth != <span class="string">"number"</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">"CSS1Compat"</span>)&#123;</span><br><span class="line">        pageWidth = <span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line">        pageHeight = <span class="built_in">document</span>.documentElement.clientHeight;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        pageWidth = <span class="built_in">document</span>.body.clientWidth;</span><br><span class="line">        pageHeight = <span class="built_in">document</span>.body.clientHeight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通常我们可能会这么写</span></span><br><span class="line"><span class="keyword">var</span> pageWidth = <span class="built_in">document</span>.documentElement.clientWidth || <span class="built_in">window</span>.innerWidth</span><br></pre></td></tr></table></figure>
+<p>screen对象其实没有很大的用处，screen对象可以表明浏览器的显示器信息。以像素表示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.screen.availWidth  <span class="comment">// 可用的屏幕宽度 减去界面特性，比如窗口任务栏</span></span><br><span class="line"><span class="built_in">window</span>.screen.availHeight <span class="comment">// 可用的屏幕高度 减去界面特性，比如窗口任务栏</span></span><br></pre></td></tr></table></figure>
+<h3 id="location"><a href="#location" class="headerlink" title="location"></a>location</h3><p>location是BOM中很重要的对象。提供了与当前窗口相关的信息。而且 <em>location</em> 对象既是 window对象也是document对象 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location === <span class="built_in">document</span>.location</span><br></pre></td></tr></table></figure>
+<p>以 <a href="https://www.baidu.com/s?wd=bom" target="_blank" rel="noopener">https://www.baidu.com/s?wd=bom</a> 举例说明</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>例子</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hash</td>
+<td>“#content”</td>
+<td>返回URL中的hash（#号后跟零或多个字符），如果URL中不包含散列，则返回空字符串</td>
+</tr>
+<tr>
+<td>host</td>
+<td>“<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a></td>
+<td>返回服务器名称和端口号（如果有）</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>“<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a></td>
+<td>返回不带端口号的服务器名称</td>
+</tr>
+<tr>
+<td>href</td>
+<td><a href="https://www.baidu.com/s?wd=bom" target="_blank" rel="noopener">https://www.baidu.com/s?wd=bom</a></td>
+<td>返回当前加载页面的完整URL。而location对象的toString()方法也返回这个值</td>
+</tr>
+<tr>
+<td>pathname</td>
+<td>“/s”</td>
+<td>返回URL中的目录和（或）文件名</td>
+</tr>
+<tr>
+<td>port</td>
+<td>“”</td>
+<td>返回URL中指定的端口号。如果URL中不包含端口号，则这个属性返回空字符串</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>“https”</td>
+<td>返回页面使用的协议。通常是http:或https:</td>
+</tr>
+<tr>
+<td>search</td>
+<td>“?wd=bom”</td>
+<td>返回URL的查询字符串。这个字符串以问号开头</td>
+</tr>
+</tbody>
+</table>
+<p>查询参数，通过location对象可以审查到URL中的参数返回一个对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> qs = location.search;</span><br><span class="line">    <span class="keyword">var</span> str = qs.length &gt; <span class="number">0</span> ? qs.substring(<span class="number">1</span>) : <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> param = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> items = str.split(<span class="string">"&amp;"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,len = items.length;i&lt;len;i++)&#123;</span><br><span class="line">        item = items[i].split(<span class="string">"="</span>);</span><br><span class="line">        param[<span class="built_in">decodeURIComponent</span>(item[<span class="number">0</span>])] = <span class="built_in">decodeURIComponent</span>(item[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> param;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> qs = location.search;</span><br><span class="line">    <span class="keyword">var</span> str = qs.length &gt; <span class="number">0</span> ? qs.substring(<span class="number">1</span>) : <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> items = qs.match(<span class="regexp">/(\w+)=(\w+)/g</span>);</span><br><span class="line">    <span class="keyword">return</span> items.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> index = b.indexOf(<span class="string">"="</span>);</span><br><span class="line">        <span class="keyword">return</span> a[<span class="built_in">decodeURIComponent</span>(b.slice(<span class="number">0</span>,index))] = <span class="built_in">decodeURIComponent</span>(b.slice(index+<span class="number">1</span>)),a;</span><br><span class="line">    &#125;,&#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外location对象中除了hash属性修改不会重新加载其它的属性修改之后都会重新加载，而且会在 <em>history</em> 产生一条记录，因此可以通过回退返回。可以禁止这个行为  <code>location.replace(url);</code> 用户不能点击返回，并且不会在  <em>history</em> 产生记录。</p>
+<p>还有一个相关的方法 <code>reload()</code> 。重新加载当前的页面。无参数的时候会议最有效的方式加载。也就是会从浏览器缓存中加载。如果需要强制从服务器加载添加参数 <code>true</code> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">location.reload();      <span class="comment">// 可能从缓存加载</span></span><br><span class="line">location.reload(<span class="literal">true</span>);  <span class="comment">// 从服务器加载</span></span><br></pre></td></tr></table></figure>
+<p>由于是重新载入页面所以位于 <code>reload</code> 之后的代码可能不在执行。所以请记得写在最后一行。</p>
+<h3 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h3><p>Navigator 对象包含有关浏览器的信息，每个浏览器都有自己的一套属性。</p>
+<table>
+<thead>
+<tr>
+<th>属性或方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appCodeName</td>
+<td>浏览器的名称。通常都是Mozilla，即使在非Mozilla浏览器中也是如此</td>
+</tr>
+<tr>
+<td>appName</td>
+<td>完整的浏览器名称</td>
+</tr>
+<tr>
+<td>appVersion</td>
+<td>浏览器的版本。一般不与实际的浏览器版本对应</td>
+</tr>
+<tr>
+<td>cookieEnabled</td>
+<td>表示cookie是否启用</td>
+</tr>
+<tr>
+<td>language</td>
+<td>浏览器的主语言</td>
+</tr>
+<tr>
+<td>onLine</td>
+<td>表示浏览器是否连接到了因特网</td>
+</tr>
+<tr>
+<td>oscpu</td>
+<td>客户端计算机的操作系统或使用的CPU</td>
+</tr>
+<tr>
+<td>platform</td>
+<td>浏览器所在的系统平台</td>
+</tr>
+<tr>
+<td>plugins</td>
+<td>浏览器中安装的插件信息的数组</td>
+</tr>
+<tr>
+<td>systemLanguage</td>
+<td>操作系统的语言</td>
+</tr>
+<tr>
+<td>userAgent</td>
+<td>浏览器的用户代理字符串</td>
+</tr>
+<tr>
+<td>userLanguage</td>
+<td>操作系统的默认语言</td>
+</tr>
+<tr>
+<td>userProfile</td>
+<td>借以访问用户个人信息的对象</td>
+</tr>
+<tr>
+<td>vendor</td>
+<td>浏览器的品牌</td>
+</tr>
+<tr>
+<td>javaEnabled()</td>
+<td>表示当前浏览器中是否启用了Java</td>
+</tr>
+</tbody>
+</table>
+<p>这里给出一个书上的检测用于代理字符串，包括呈现引擎、平台、操作系统、移动设备和游戏系统的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> client = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//呈现引擎</span></span><br><span class="line">    <span class="keyword">var</span> engine = &#123;</span><br><span class="line">        ie: <span class="number">0</span>,</span><br><span class="line">        gecko: <span class="number">0</span>,</span><br><span class="line">        webkit: <span class="number">0</span>,</span><br><span class="line">        khtml: <span class="number">0</span>,</span><br><span class="line">        opera: <span class="number">0</span>,</span><br><span class="line">        <span class="comment">//完整的版本号</span></span><br><span class="line">        ver: <span class="literal">null</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//浏览器</span></span><br><span class="line">    <span class="keyword">var</span> browser = &#123;</span><br><span class="line">        <span class="comment">//主要浏览器</span></span><br><span class="line">        ie: <span class="number">0</span>,</span><br><span class="line">        firefox: <span class="number">0</span>,</span><br><span class="line">        safari: <span class="number">0</span>,</span><br><span class="line">        konq: <span class="number">0</span>,</span><br><span class="line">        opera: <span class="number">0</span>,</span><br><span class="line">        chrome: <span class="number">0</span>,</span><br><span class="line">        <span class="comment">//具体的版本号</span></span><br><span class="line">        ver: <span class="literal">null</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//平台、设备和操作系统</span></span><br><span class="line">    <span class="keyword">var</span> system = &#123;</span><br><span class="line">        win: <span class="literal">false</span>,</span><br><span class="line">        mac: <span class="literal">false</span>,</span><br><span class="line">        x11: <span class="literal">false</span>,</span><br><span class="line">        <span class="comment">//移动设备</span></span><br><span class="line">        iphone: <span class="literal">false</span>,</span><br><span class="line">        ipod: <span class="literal">false</span>,</span><br><span class="line">        ipad: <span class="literal">false</span>,</span><br><span class="line">        ios: <span class="literal">false</span>,</span><br><span class="line">        android: <span class="literal">false</span>,</span><br><span class="line">        nokiaN: <span class="literal">false</span>,</span><br><span class="line">        winMobile: <span class="literal">false</span>,</span><br><span class="line">        <span class="comment">//游戏系统</span></span><br><span class="line">        wii: <span class="literal">false</span>,</span><br><span class="line">        ps: <span class="literal">false</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//检测呈现引擎和浏览器</span></span><br><span class="line">    <span class="keyword">var</span> ua = navigator.userAgent;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.opera) &#123;</span><br><span class="line">        engine.ver = browser.ver = <span class="built_in">window</span>.opera.version();</span><br><span class="line">        engine.opera = browser.opera = <span class="built_in">parseFloat</span>(engine.ver);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/AppleWebKit\/(\S+)/</span>.test(ua)) &#123;</span><br><span class="line">        engine.ver = <span class="built_in">RegExp</span>[<span class="string">"$1"</span>];</span><br><span class="line">        engine.webkit = <span class="built_in">parseFloat</span>(engine.ver);</span><br><span class="line">        <span class="comment">//确定是 Chrome 还是 Safari</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/Chrome\/(\S+)/</span>.test(ua)) &#123;</span><br><span class="line">            browser.ver = <span class="built_in">RegExp</span>[<span class="string">"$1"</span>];</span><br><span class="line">            browser.chrome = <span class="built_in">parseFloat</span>(browser.ver);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/Version\/(\S+)/</span>.test(ua)) &#123;</span><br><span class="line">            browser.ver = <span class="built_in">RegExp</span>[<span class="string">"$1"</span>];</span><br><span class="line">            browser.safari = <span class="built_in">parseFloat</span>(browser.ver);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//近似地确定版本号</span></span><br><span class="line">            <span class="keyword">var</span> safariVersion = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (engine.webkit &lt; <span class="number">100</span>) &#123;</span><br><span class="line">                safariVersion = <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (engine.webkit &lt; <span class="number">312</span>) &#123;</span><br><span class="line">                safariVersion = <span class="number">1.2</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (engine.webkit &lt; <span class="number">412</span>) &#123;</span><br><span class="line">                safariVersion = <span class="number">1.3</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                safariVersion = <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            browser.safari = browser.ver = safariVersion;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/KHTML\/(\S+)/</span>.test(ua) || <span class="regexp">/Konqueror\/([^;]+)/</span>.test(ua)) &#123;</span><br><span class="line">        engine.ver = browser.ver = <span class="built_in">RegExp</span>[<span class="string">"$1"</span>];</span><br><span class="line">        engine.khtml = browser.konq = <span class="built_in">parseFloat</span>(engine.ver);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/rv:([^\)]+)\) Gecko\/\d&#123;8&#125;/</span>.test(ua)) &#123;</span><br><span class="line">        engine.ver = <span class="built_in">RegExp</span>[<span class="string">"$1"</span>];</span><br><span class="line">        engine.gecko = <span class="built_in">parseFloat</span>(engine.ver);</span><br><span class="line">        <span class="comment">//确定是不是 Firefox</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/Firefox\/(\S+)/</span>.test(ua)) &#123;</span><br><span class="line">            browser.ver = <span class="built_in">RegExp</span>[<span class="string">"$1"</span>];</span><br><span class="line">            browser.firefox = <span class="built_in">parseFloat</span>(browser.ver);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/MSIE ([^;]+)/</span>.test(ua)) &#123;</span><br><span class="line">        engine.ver = browser.ver = <span class="built_in">RegExp</span>[<span class="string">"$1"</span>];</span><br><span class="line">        engine.ie = browser.ie = <span class="built_in">parseFloat</span>(engine.ver);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//检测浏览器</span></span><br><span class="line">    browser.ie = engine.ie;</span><br><span class="line">    browser.opera = engine.opera;</span><br><span class="line">    <span class="comment">//检测平台</span></span><br><span class="line">    <span class="keyword">var</span> p = navigator.platform;</span><br><span class="line">    system.win = p.indexOf(<span class="string">"Win"</span>) == <span class="number">0</span>;</span><br><span class="line">    system.mac = p.indexOf(<span class="string">"Mac"</span>) == <span class="number">0</span>;</span><br><span class="line">    system.x11 = (p == <span class="string">"X11"</span>) || (p.indexOf(<span class="string">"Linux"</span>) == <span class="number">0</span>);</span><br><span class="line">    <span class="comment">//检测 Windows 操作系统</span></span><br><span class="line">    <span class="keyword">if</span> (system.win) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/Win(?:dows )?([^do]&#123;2&#125;)\s?(\d+\.\d+)?/</span>.test(ua)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">RegExp</span>[<span class="string">"$1"</span>] == <span class="string">"NT"</span>) &#123;</span><br><span class="line">                <span class="keyword">switch</span> (<span class="built_in">RegExp</span>[<span class="string">"$2"</span>]) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"5.0"</span>:</span><br><span class="line">                        system.win = <span class="string">"2000"</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"5.1"</span>:</span><br><span class="line">                        system.win = <span class="string">"XP"</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"6.0"</span>:</span><br><span class="line">                        system.win = <span class="string">"Vista"</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"6.1"</span>:</span><br><span class="line">                        system.win = <span class="string">"7"</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">default</span>:</span><br><span class="line">                        system.win = <span class="string">"NT"</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">RegExp</span>[<span class="string">"$1"</span>] == <span class="string">"9x"</span>) &#123;</span><br><span class="line">                system.win = <span class="string">"ME"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                system.win = <span class="built_in">RegExp</span>[<span class="string">"$1"</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//移动设备</span></span><br><span class="line">    system.iphone = ua.indexOf(<span class="string">"iPhone"</span>) &gt; <span class="number">-1</span>;</span><br><span class="line">    system.ipod = ua.indexOf(<span class="string">"iPod"</span>) &gt; <span class="number">-1</span>;</span><br><span class="line">    system.ipad = ua.indexOf(<span class="string">"iPad"</span>) &gt; <span class="number">-1</span>;</span><br><span class="line">    system.nokiaN = ua.indexOf(<span class="string">"NokiaN"</span>) &gt; <span class="number">-1</span>;</span><br><span class="line">    <span class="comment">//windows mobile</span></span><br><span class="line">    <span class="keyword">if</span> (system.win == <span class="string">"CE"</span>) &#123;</span><br><span class="line">        system.winMobile = system.win;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (system.win == <span class="string">"Ph"</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/Windows Phone OS (\d+.\d+)/</span>.test(ua)) &#123;</span><br><span class="line">            system.win = <span class="string">"Phone"</span>;</span><br><span class="line">            system.winMobile = <span class="built_in">parseFloat</span>(<span class="built_in">RegExp</span>[<span class="string">"$1"</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//检测 iOS 版本</span></span><br><span class="line">    <span class="keyword">if</span> (system.mac &amp;&amp; ua.indexOf(<span class="string">"Mobile"</span>) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/CPU (?:iPhone )?OS (\d+_\d+)/</span>.test(ua)) &#123;</span><br><span class="line">            system.ios = <span class="built_in">parseFloat</span>(<span class="built_in">RegExp</span>.$<span class="number">1.</span>replace(<span class="string">"_"</span>, <span class="string">"."</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            system.ios = <span class="number">2</span>; <span class="comment">//不能真正检测出来，所以只能猜测</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//检测 Android 版本</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/Android (\d+\.\d+)/</span>.test(ua)) &#123;</span><br><span class="line">        system.android = <span class="built_in">parseFloat</span>(<span class="built_in">RegExp</span>.$<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//游戏系统</span></span><br><span class="line">    system.wii = ua.indexOf(<span class="string">"Wii"</span>) &gt; <span class="number">-1</span>;</span><br><span class="line">    system.ps = <span class="regexp">/playstation/i</span>.test(ua);</span><br><span class="line">    <span class="comment">//返回这些对象</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        engine: engine,</span><br><span class="line">        browser: browser,</span><br><span class="line">        system: system</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="built_in">console</span>.log(client);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	&#123;engine: &#123;…&#125;, browser: &#123;…&#125;, system: &#123;…&#125;&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><p><em>history</em> 对象保存着用户上网的历史记录。<em>history</em> 存在一个 <code>go()</code> 方法，用于前进或后退</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">history.go(<span class="number">-1</span>);  <span class="comment">// 后退一页</span></span><br><span class="line">history.go(<span class="number">1</span>)；  <span class="comment">// 前进一页</span></span><br></pre></td></tr></table></figure>
+<p>此外还有另外两个方法 <code>forward()</code> <code>back()</code> 与 <code>go()</code> 方法的前进后退一致。这里可以利用JavaScript的阻塞原理做一些小的功能。alert、confirm、prompt都可以让页面阻塞执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 现在有一个小的功能点击某个链接 但是需要验证一些信息</span></span><br><span class="line"><span class="keyword">var</span> submit = <span class="built_in">document</span>.getElementById(<span class="string">"submit"</span>);</span><br><span class="line">submit.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> flag = confirm(<span class="string">"你是不是我的小可爱,请回答是或者不是"</span>);</span><br><span class="line">    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">        <span class="built_in">window</span>.location.href = <span class="string">"https://www.baidu.com"</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// window.history.go(-1);</span></span><br><span class="line">        <span class="built_in">window</span>.history.back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="付帅帅 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="付帅帅 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BOM/" rel="tag"># BOM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/03/Javascript/javascript-XML/" rel="next" title="JavaScript XML">
+                <i class="fa fa-chevron-left"></i> JavaScript XML
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/06/Javascript/setInterval setTimeout/" rel="prev" title="setInterval setTimeout（一）">
+                setInterval setTimeout（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="付帅帅" />
+            
+              <p class="site-author-name" itemprop="name">付帅帅</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-GitHub"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/handsome0219" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-Twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/handsome0219" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-Facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.weibo.com/u/5311080871" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-Weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ssdcc.github.io/" title="深水丶虫" target="_blank">深水丶虫</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM"><span class="nav-number">1.</span> <span class="nav-text">BOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#screen"><span class="nav-number">1.1.</span> <span class="nav-text">screen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#location"><span class="nav-number">1.2.</span> <span class="nav-text">location</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#navigator"><span class="nav-number">1.3.</span> <span class="nav-text">navigator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history"><span class="nav-number">1.4.</span> <span class="nav-text">history</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">付帅帅</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">52.0k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
