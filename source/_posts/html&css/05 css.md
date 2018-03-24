@@ -1,5 +1,5 @@
 ---
-title: 认识css
+title: 初识css
 tags: CSS
 categories: html&css
 abbrlink: 35262

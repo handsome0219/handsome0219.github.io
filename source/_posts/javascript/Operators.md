@@ -1,7 +1,7 @@
 ---
 title: 操作符
-tags: js
-categories: Javascript
+tags: JS
+categories: JavaScript
 abbrlink: 63470
 date: 2018-01-04 20:09:44
 comments: false

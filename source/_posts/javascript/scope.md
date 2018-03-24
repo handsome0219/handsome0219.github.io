@@ -1,10 +1,11 @@
 ---
 title: scope
-tags: js
-categories: Javascript
+tags: JS
+categories: JavaScript
 abbrlink: 31182
 date: 2018-02-07 14:40:35
 thumbnail: /img/javascript/scope.jpg
+comments: false
 ---
 
 <!-- more -->

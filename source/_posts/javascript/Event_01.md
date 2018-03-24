@@ -1,11 +1,14 @@
 ---
 title: event target
 tags:
-  - js
+  - JS
   - event
-categories: Javascript
+categories: 
+    - JavaScript
+    - Event
 abbrlink: 45278
 date: 2018-03-09 18:40:18
+comments: false
 ---
 
 ## 事件

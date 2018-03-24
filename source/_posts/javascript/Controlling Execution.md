@@ -1,10 +1,11 @@
 ---
 title: 控制语句
-tags: js
-categories: Javascript
+tags: JS
+categories: JavaScript
 abbrlink: 15838
 date: 2018-02-05 15:56:01
 thumbnail: /img/javascript/Control.jpg
+comments: false
 ---
 
 <!-- more -->

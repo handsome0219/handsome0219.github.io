@@ -1,10 +1,11 @@
 ---
 title: Object
-tags: js
-categories: Javascript
+tags: JS
+categories: JavaScript
 thumbnail: /img/javascript/Object.jpg
 abbrlink: 59346
 date: 2018-02-11 15:22:55
+comments: false
 ---
 
 > 多多少少听到过一句话，javascript中一切皆对象。其中有哪些东西是我们需要了解的呢

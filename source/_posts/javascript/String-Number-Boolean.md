@@ -1,10 +1,11 @@
 ---
 title: String Number Boolean
-tags: js
-categories: Javascript
+tags: JS
+categories: JavaScript
 abbrlink: 45359
 date: 2018-02-08 14:27:55
 thumbnail: /img/javascript/package-class.jpg
+comments: false
 ---
 
 <!-- more -->

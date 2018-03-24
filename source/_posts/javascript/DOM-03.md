@@ -1,9 +1,14 @@
 ---
-title: DOM 节点操作
-tags: DOM
-categories: DOM
+title: DOM的操作
+tags:
+  - JS
+  - DOM
+categories: 
+    - JavaScript
+    - DOM
 abbrlink: 52357
 date: 2018-03-01 21:26:47
+comments: false
 ---
 
 DOM的操作，包括节点的获取、创建节点属性、添加节点、设置节点标签属性、类名操作

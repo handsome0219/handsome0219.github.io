@@ -1,11 +1,15 @@
 ---
-title: javascript XML
+title: JavaScript XML
 tags:
+  - JS
   - XML
   - DOM
-categories: XML
+categories: 
+    - JavaScript
+    - XML
 abbrlink: 24945
 date: 2018-03-03 23:26:29
+comments: false
 ---
 
 XML曾经做为存储和通过网络传输结构化数据的标准。微型的结构化的数据库，保存一些小型数据。从这里边可以看到 *web* 的发展 *DOM* 的发展。DOM的出现使得浏览器都内置了对 *XML* 的支持。

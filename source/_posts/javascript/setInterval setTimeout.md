@@ -1,11 +1,10 @@
 ---
 title: setInterval setTimeout（一）
-tags:
-  - BOM
-  - js
+tags: JS
 categories: JavaScript
 abbrlink: 28450
 date: 2018-03-06 16:45:54
+comments: false
 ---
 
 ## js中的定时器

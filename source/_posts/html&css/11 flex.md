@@ -1,7 +1,7 @@
 ---
-title: flex
+title: flex 弹性盒模型
 tags: CSS3
-categories: html&css
+categories: html5&css3
 abbrlink: 59381
 date: 2017-11-30 17:36:36
 comments: false

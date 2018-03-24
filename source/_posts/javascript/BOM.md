@@ -1,9 +1,12 @@
 ---
 title: BOM
 tags: BOM
-categories: BOM
+categories: 
+    - JavaScript
+    - BOM
 abbrlink: 4436
 date: 2018-03-05 13:55:20
+comments: false
 ---
 
 *ECMAScript* 是 *JavaScript* 语法的核心规范，如果在 *web* 中使用 *JavaScript*，那么 *BOM* 则是一个很重要的核心。BOM提供了很多的对象，用于访问浏览器的功能。BOM最早没有一个统一的规范导致浏览器厂商都有自己的想法随意的去扩展。后来把浏览器共有的对象做为事实上的标准。这些对象在浏览器中得以存在。W3C为了把浏览器中基本的部分标准化，将 *BOM* 纳入了 *H5* 的规范中。

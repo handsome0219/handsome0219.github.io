@@ -1,10 +1,11 @@
 ---
 title: Date
-tags: js
-categories: Javascript
+tags: JS
+categories: JavaScript
 thumbnail: /img/javascript/Date.jpg
 abbrlink: 1442
 date: 2018-02-10 16:47:49
+comments: false
 ---
 
 > Date类型使用自UTC（Coordinated Universal Time，国际协调时间）。从1970.1.1 00:00:00开始

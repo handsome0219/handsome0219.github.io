@@ -1,12 +1,15 @@
 ---
 title: RegExp
 tags:
-  - js
+  - JS
   - RegExp
-categories: Javascript
+categories: 
+	- JavaScript
+	- RegExp
 thumbnail: /img/javascript/RegExp.jpg
 abbrlink: 65388
 date: 2018-02-12 15:22:34
+comments: false
 ---
 
 Regular Expression 正则表达式，又称正规表示式。使用单个字符串来描述，匹配一系列符合某个句法规则的字符串。正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。正则表达式是是一种匹配模式要么匹配字符，要么匹配位置

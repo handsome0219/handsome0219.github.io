@@ -1,10 +1,13 @@
 ---
 title: Event
-date: 2018-03-12 13:45:54
 tags:
-  - js
+  - JS
   - event
-categories: Javascript
+categories: 
+    - JavaScript
+    - Event
+date: 2018-03-12 13:45:54
+comments: false
 ---
 
 ## delegate 事件委托

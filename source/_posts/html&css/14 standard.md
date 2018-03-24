@@ -1,6 +1,6 @@
 ---
 title: 规范说明
-tags: 规范
+tags: HTML+CSS
 categories: html&css
 abbrlink: 21179
 date: 2017-12-05 23:36:07

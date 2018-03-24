@@ -1,12 +1,13 @@
 ---
 title: callBack
 tags:
-  - js
+  - JS
   - function
-categories: Javascript
+categories: JavaScript
 abbrlink: 10115
 date: 2018-02-07 16:36:52
 thumbnail: /img/javascript/callBack.jpg
+comments: false
 ---
 
 <!-- more -->

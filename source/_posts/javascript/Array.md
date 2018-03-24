@@ -1,10 +1,11 @@
 ---
 title: Array
-tags: js
-categories: Javascript
+tags: JS
+categories: JavaScript
 thumbnail: /img/javascript/array.jpg
 abbrlink: 7791
 date: 2018-02-10 14:07:59
+comments: false
 ---
 
 > 数组是 *ECMAscript* 中除了object之外最常用的类型了

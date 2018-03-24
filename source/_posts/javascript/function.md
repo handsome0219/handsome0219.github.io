@@ -1,7 +1,9 @@
 ---
-title: function
-tags: js
-categories: Javascript
+title: function 函数
+tags:
+  - JS
+  - function
+categories: JavaScript
 abbrlink: 45833
 date: 2018-02-06 16:29:26
 thumbnail: /img/javascript/function.jpg

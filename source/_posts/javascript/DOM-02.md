@@ -1,9 +1,14 @@
 ---
 title: DOM 属性和方法
-tags: DOM
-categories: DOM
+tags:
+  - JS
+  - DOM
+categories: 
+    - JavaScript
+    - DOM
 abbrlink: 60597
 date: 2018-02-28 14:00:40
+comments: false
 ---
 
 > DOM （ Document Object Model ）是针对HTML和XML文档的一个API.DOM是一个具有丰富层次的节点树,我们可以对其进行添加、删除、修改. 所以来认识一下DOM中的属性和API以及兼容问题.

@@ -1,9 +1,14 @@
 ---
 title: DOM 发展
+tags:
+  - JS
+  - DOM
+categories: 
+    - JavaScript
+    - DOM
 abbrlink: 4276
 date: 2018-02-28 13:46:29
-tags: [DOM, domReady]
-categories: DOM
+comments: false
 ---
 
 ### 网页生成过程、DOM发展

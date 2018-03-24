@@ -1,9 +1,14 @@
 ---
 title: DOM 节点操作
-tags: DOM
-categories: DOM
+tags:
+  - JS
+  - DOM
+categories: 
+    - JavaScript
+    - DOM
 abbrlink: 52358
 date: 2018-03-03 22:27:55
+comments: false
 ---
 
 ### DOM 操作 - cold
