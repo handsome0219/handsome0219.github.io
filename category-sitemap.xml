@@ -78,14 +78,14 @@
 
     <url>
         <loc>http://yoursite.com/categories/Python/</loc>
-        <lastmod>2018-03-25T12:27:03.483Z</lastmod>
+        <lastmod>2018-03-25T12:40:16.600Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Python/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-        <lastmod>2018-03-25T12:27:03.483Z</lastmod>
+        <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2018-03-25T12:40:16.600Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

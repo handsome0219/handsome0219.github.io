@@ -7,23 +7,47 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/20/Python/Concurrency/ProcessesAndThreads/%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</loc>
-        <lastmod>2018-03-25T12:27:03.483Z</lastmod>
+        <loc>http://yoursite.com/2018/03/15/Python/Concurrency/ProcessesAndThreads/Socket/</loc>
+        <lastmod>2018-03-25T12:40:44.786Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/25/Python/Concurrency/ProcessesAndThreads/%E5%88%9D%E8%AF%86%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</loc>
-        <lastmod>2018-03-25T10:12:43.467Z</lastmod>
+        <loc>http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2018-03-25T12:40:16.600Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/01/01/Python3-6%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/</loc>
+        <loc>http://yoursite.com/2018/03/25/Python/Concurrency/ProcessesAndThreads/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%B1%A0/</loc>
+        <lastmod>2018-03-25T12:39:59.942Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/03/25/Python/Concurrency/ProcessesAndThreads/%E9%98%9F%E5%88%97/</loc>
+        <lastmod>2018-03-25T12:39:30.867Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/03/25/Python/Concurrency/ProcessesAndThreads/IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/</loc>
+        <lastmod>2018-03-25T12:37:11.660Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/01/01/Python/Python3-6%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/</loc>
         <lastmod>2018-03-25T09:05:12.589Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
