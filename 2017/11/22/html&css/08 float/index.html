@@ -414,7 +414,7 @@
 <p>float的最初目的</p>
 </blockquote>
 <p><em>example</em></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  .example1 span&#123;float: left;background: red;color: #fff;&#125;</span></span><br><span class="line"><span class="undefined">  .example2 span&#123;float: left;backgorund: red;color: #fff;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 通过理解行内元素换行产生空字符来理解 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 1. 去空格化 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 2. 会让元素block化 添加高度宽度有效果 自行测试 忘记说了 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"example1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>3<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- html解析的回车是一个空字符 本质是&amp;nbsp; span浮动之后，空字符去哪里了。最后面 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 那么其实就是文字环绕的效果 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"example2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;<span class="name">span</span>&gt;</span>3<span class="tag">&lt;/<span class="name">span</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.example1</span> <span class="selector-tag">span</span>&#123;<span class="attribute">float</span>: left;<span class="attribute">background</span>: red;<span class="attribute">color</span>: <span class="number">#fff</span>;&#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.example2</span> <span class="selector-tag">span</span>&#123;<span class="attribute">float</span>: left;<span class="attribute">backgorund</span>: red;<span class="attribute">color</span>: <span class="number">#fff</span>;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 通过理解行内元素换行产生空字符来理解 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 1. 去空格化 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 2. 会让元素block化 添加高度宽度有效果 自行测试 忘记说了 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"example1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>3<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- html解析的回车是一个空字符 本质是&amp;nbsp; span浮动之后，空字符去哪里了。最后面 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 那么其实就是文字环绕的效果 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"example2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;<span class="name">span</span>&gt;</span>3<span class="tag">&lt;/<span class="name">span</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><code>tip</code>：实在不行，请脑补皇帝后宫的故事，香艳的乾清宫，姿色万分的嫔妃，皇帝也是辛苦为了做到雨露均沾，从原来的厮守交欢独宠一人，到现在的百花齐放。不得以使用了邪恶的浮动。。。此处省略1w字。但是要注意一个点浮动非图片的时候一样的效果千万不要以为只有图片可以，若不是非图片元素记得给宽高，因为图片是有宽高的。</p>
 <h2 id="float现代意义"><a href="#float现代意义" class="headerlink" title="float现代意义"></a>float现代意义</h2><ul>
 <li>分列布局</li>
@@ -488,6 +488,28 @@
     
 
     
+    
+    <div>
+      
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文作者：</strong>
+            <a href="/" title="欢迎访问 付帅帅 的个人博客">付帅帅</a>
+          </li>
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="http://yoursite.com/2017/11/22/html&css/08 float/" title="float浮动">http://yoursite.com/2017/11/22/html&css/08 float/</a>
+          </li>
+          <li class="post-copyright-date">
+              <strong>发布时间：</strong>2017年11月22日 -- 23时11分
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本文由 付帅帅 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank">保留署名-非商业性使用-禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
+          </li>
+        </ul>
+      
+    </div>
 
     <footer class="post-footer">
       
@@ -595,7 +617,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -606,7 +628,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -733,7 +755,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">55.0k</span>
+    <span title="Site words total count">56.8k</span>
   
 </div>
 

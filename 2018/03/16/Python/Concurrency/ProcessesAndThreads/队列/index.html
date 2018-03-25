@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="付帅帅, WebBlog, 博客, 日常爱乌拉" />
 
 
 
@@ -88,18 +88,17 @@
 
 
 
-<meta name="description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 进程（Process） 对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，就是主线程，然后由这个主线程去创建其它子线程  线程 (Thread) 线程被包含在进程中，是进程实际的运作单位，被称">
-<meta name="keywords" content="Python">
+<meta name="description" content="付帅帅的个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初识进程和线程">
-<meta property="og:url" content="http://yoursite.com/2018/03/24/Python/Concurrency/ProcessesAndThreads/初识进程和线程/index.html">
+<meta property="og:title" content="队列">
+<meta property="og:url" content="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/index.html">
 <meta property="og:site_name" content="付帅帅">
-<meta property="og:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 进程（Process） 对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，就是主线程，然后由这个主线程去创建其它子线程  线程 (Thread) 线程被包含在进程中，是进程实际的运作单位，被称">
+<meta property="og:description" content="付帅帅的个人博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-25T08:54:28.838Z">
+<meta property="og:updated_time" content="2018-03-25T13:53:21.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识进程和线程">
-<meta name="twitter:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 进程（Process） 对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，就是主线程，然后由这个主线程去创建其它子线程  线程 (Thread) 线程被包含在进程中，是进程实际的运作单位，被称">
+<meta name="twitter:title" content="队列">
+<meta name="twitter:description" content="付帅帅的个人博客">
 
 
 
@@ -129,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/24/Python/Concurrency/ProcessesAndThreads/初识进程和线程/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/"/>
 
 
 
 
 
-  <title>初识进程和线程 | 付帅帅</title>
+  <title>队列 | 付帅帅</title>
   
 
 
@@ -282,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/Python/Concurrency/ProcessesAndThreads/初识进程和线程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="付帅帅">
@@ -299,7 +298,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">初识进程和线程</h2>
+          <h2 class="post-title" itemprop="name headline">队列</h2>
         
 
         <div class="post-meta">
@@ -311,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T12:44:34+08:00">
-                2018-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T20:36:03+08:00">
+                2018-03-16
               </time>
             
 
@@ -321,39 +320,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/Concurrency/" itemprop="url" rel="index">
-                    <span itemprop="name">Concurrency</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -376,7 +342,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  718 字
+                  0 字
                 </span>
               
 
@@ -392,7 +358,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  1 分钟
                 </span>
               
             </div>
@@ -413,26 +379,7 @@
       
 
       
-        <p>在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？</p>
-<h3 id="进程（Process）"><a href="#进程（Process）" class="headerlink" title="进程（Process）"></a>进程（<code>Process</code>）</h3><blockquote>
-<p>对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，就是主线程，然后由这个主线程去创建其它子线程</p>
-</blockquote>
-<h3 id="线程-Thread"><a href="#线程-Thread" class="headerlink" title="线程 (Thread)"></a>线程 (<code>Thread</code>)</h3><blockquote>
-<p>线程被包含在进程中，是进程实际的运作单位，被称为微进程，一个进程中可以有多个线程，一个进程可以同时并发多个线程，每条线程并行执行不同的任务</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h3><ul>
-<li>进程之间是相互独立的，多进程中的，进程之间的变量是不会相互影响的，但是一个进程内的多个线程是内存共享的，所以线程间的变量是共享的</li>
-<li>因为进程之间是相互独立的，所以进程间的崩溃不会影响到其它进程，但是由于线程是包含在进程内部的，所以线程的崩溃会引发进程的崩溃，继而造成同一进程中的其它线程也崩溃</li>
-<li>进程的启动速度慢，线程的启动速度快，但是两者运行速度没有可比性</li>
-</ul>
-<h4 id="并行和比并发的理解"><a href="#并行和比并发的理解" class="headerlink" title="并行和比并发的理解"></a>并行和比并发的理解</h4><p>并行是并发，但是并发不一定是并行，并行需要满足的要求是:CPU的核心数大于进程的数量，这才是并行，如果 CPU 的核心数小于进程的数量，那么就是并发了，不能称为并行，所以说，<strong>并行是并发，但是并发不是并行</strong></p>
-<h3 id="创建一个进程"><a href="#创建一个进程" class="headerlink" title="创建一个进程"></a>创建一个进程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下方式适用于 linux/unix/mac</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># os的fork模块可以在创建进程</span></span><br><span class="line">pid = os.fork()</span><br><span class="line"><span class="comment"># 子进程永远都是返回 0</span></span><br><span class="line"><span class="keyword">if</span> pid == <span class="number">0</span>:</span><br><span class="line">    print(<span class="string">'子进程'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'父进程'</span>)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">getpid  可以获取当前进程的 pid</span></span><br><span class="line"><span class="string">getppid 可以获取父级进程的 pid</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 在 Windows 创建进程</span></span><br><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">p = multiprocessing.Process(target=func)</span><br><span class="line">p.start()</span><br></pre></td></tr></table></figure>
-<h4 id="耗时任务和阻塞任务"><a href="#耗时任务和阻塞任务" class="headerlink" title="耗时任务和阻塞任务"></a>耗时任务和阻塞任务</h4><blockquote>
-<p>耗时用进程，阻塞用线程，因为线程遇到阻塞会自动切换，耗时和阻塞的区别在于，耗时就是会一直占用 CPU 进行做运算， 阻塞则是指的是 让 CPU 休眠</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 阻塞 time.sleep 表示阻塞任务</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">	time.sleep(<span class="number">5</span>)</span><br><span class="line">func()</span><br><span class="line"><span class="comment"># 耗时任务  fib 表示耗时任务</span></span><br><span class="line">print(<span class="string">'fib  start...'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span>  <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span>  fib(n<span class="number">-1</span>) + fib(n<span class="number">-2</span>)</span><br><span class="line"></span><br><span class="line">print(fib(<span class="number">35</span>))</span><br><span class="line">print(<span class="string">'fib  end...'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br></pre></td></tr></table></figure>
-
+        
       
     </div>
     
@@ -473,14 +420,30 @@
     
 
     
+    
+    <div>
+      
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文作者：</strong>
+            <a href="/" title="欢迎访问 付帅帅 的个人博客">付帅帅</a>
+          </li>
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/" title="队列">http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/</a>
+          </li>
+          <li class="post-copyright-date">
+              <strong>发布时间：</strong>2018年3月16日 -- 20时03分
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本文由 付帅帅 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank">保留署名-非商业性使用-禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
+          </li>
+        </ul>
+      
+    </div>
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-        </div>
       
 
       
@@ -491,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/12/Javascript/Event_02/" rel="next" title="Event">
-                <i class="fa fa-chevron-left"></i> Event
+              <a href="/2018/03/16/Python/Concurrency/ProcessesAndThreads/多进程和多线程/" rel="next" title="多进程和多线程">
+                <i class="fa fa-chevron-left"></i> 多进程和多线程
               </a>
             
           </div>
@@ -500,6 +463,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/25/Python/Concurrency/ProcessesAndThreads/线程池和进程池/" rel="prev" title="线程池和进程池">
+                线程池和进程池 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -547,17 +514,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -576,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -587,7 +545,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -598,7 +556,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -664,22 +622,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程（Process）"><span class="nav-number">1.</span> <span class="nav-text">进程（Process）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程-Thread"><span class="nav-number">2.</span> <span class="nav-text">线程 (Thread)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和线程的区别"><span class="nav-number">3.</span> <span class="nav-text">进程和线程的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并行和比并发的理解"><span class="nav-number">3.1.</span> <span class="nav-text">并行和比并发的理解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个进程"><span class="nav-number">4.</span> <span class="nav-text">创建一个进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#耗时任务和阻塞任务"><span class="nav-number">4.1.</span> <span class="nav-text">耗时任务和阻塞任务</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
         <div class="back-to-top">
@@ -714,7 +656,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">54.0k</span>
+    <span title="Site words total count">56.8k</span>
   
 </div>
 
