@@ -7,16 +7,24 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/01/01/Python3-6%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/</loc>
-        <lastmod>2018-03-25T08:58:34.482Z</lastmod>
+        <loc>http://yoursite.com/2018/03/20/Python/Concurrency/ProcessesAndThreads/%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2018-03-25T12:27:03.483Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/24/Python/Concurrency/ProcessesAndThreads/%E5%88%9D%E8%AF%86%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</loc>
-        <lastmod>2018-03-25T08:54:28.838Z</lastmod>
+        <loc>http://yoursite.com/2018/03/25/Python/Concurrency/ProcessesAndThreads/%E5%88%9D%E8%AF%86%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2018-03-25T10:12:43.467Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/01/01/Python3-6%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/</loc>
+        <lastmod>2018-03-25T09:05:12.589Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
