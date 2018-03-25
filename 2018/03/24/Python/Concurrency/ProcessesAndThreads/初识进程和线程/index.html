@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="付帅帅">
 <meta property="og:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 进程（Process） 对于操作系统来说，一个任务就是一个进程，比如打开 Pycharm 就是启动了 Pycharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，就是主线程，然后由这个主线程去创建其它子线程  线程 (Thread) 线程被包含在进程中，是进程实际的运作单位，被称">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-24T13:53:17.163Z">
+<meta property="og:updated_time" content="2018-03-25T07:56:05.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识进程和线程">
 <meta name="twitter:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 进程（Process） 对于操作系统来说，一个任务就是一个进程，比如打开 Pycharm 就是启动了 Pycharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，就是主线程，然后由这个主线程去创建其它子线程  线程 (Thread) 线程被包含在进程中，是进程实际的运作单位，被称">
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  581 字
+                  718 字
                 </span>
               
 
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -426,11 +426,11 @@
 <li>进程的启动速度慢，线程的启动速度快，但是两者运行速度没有可比性</li>
 </ul>
 <h4 id="并行和比并发的理解"><a href="#并行和比并发的理解" class="headerlink" title="并行和比并发的理解"></a>并行和比并发的理解</h4><p>并行是并发，但是并发不一定是并行，并行需要满足的要求是:CPU的核心数大于进程的数量，这才是并行，如果 CPU 的核心数小于进程的数量，那么就是并发了，不能称为并行，所以说，并行是并发，但是并发不是并行</p>
-<h3 id="创建一个进程"><a href="#创建一个进程" class="headerlink" title="创建一个进程"></a>创建一个进程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下方式适用于 linux/unix/mac</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">pid = os.fork()</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个进程"><a href="#创建一个进程" class="headerlink" title="创建一个进程"></a>创建一个进程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下方式适用于 linux/unix/mac</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># os的fork模块可以在创建进程</span></span><br><span class="line">pid = os.fork()</span><br><span class="line"><span class="comment"># 子进程永远都是返回 0</span></span><br><span class="line"><span class="keyword">if</span> pid == <span class="number">0</span>:</span><br><span class="line">    print(<span class="string">'子进程'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'父进程'</span>)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">getpid  可以获取当前进程的 pid</span></span><br><span class="line"><span class="string">getppid 可以获取父级进程的 pid</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 在 Windows 创建进程</span></span><br><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">p = multiprocessing.Process(target=func)</span><br><span class="line">p.start()</span><br></pre></td></tr></table></figure>
 <h4 id="耗时任务和阻塞任务"><a href="#耗时任务和阻塞任务" class="headerlink" title="耗时任务和阻塞任务"></a>耗时任务和阻塞任务</h4><blockquote>
-<p>耗时用进程，阻塞用线程，因为线程遇到阻塞会自动切换</p>
+<p>耗时用进程，阻塞用线程，因为线程遇到阻塞会自动切换，耗时和阻塞的区别在于，耗时就是会一直占用 CPU 进行做运算， 阻塞则是指的是 让 CPU 休眠</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 阻塞</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">	time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 耗时任务</span></span><br><span class="line">print(<span class="string">'fib  start...'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span>  <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span>  fib(n<span class="number">-1</span>) + fib(n<span class="number">-2</span>)</span><br><span class="line"></span><br><span class="line">print(fib(<span class="number">35</span>))</span><br><span class="line">print(<span class="string">'fib  end...'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 阻塞 time.sleep 表示阻塞任务</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">	time.sleep(<span class="number">5</span>)</span><br><span class="line">func()</span><br><span class="line"><span class="comment"># 耗时任务  fib 表示耗时任务</span></span><br><span class="line">print(<span class="string">'fib  start...'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span>  <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span>  fib(n<span class="number">-1</span>) + fib(n<span class="number">-2</span>)</span><br><span class="line"></span><br><span class="line">print(fib(<span class="number">35</span>))</span><br><span class="line">print(<span class="string">'fib  end...'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -713,7 +713,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">52.0k</span>
+    <span title="Site words total count">52.1k</span>
   
 </div>
 
