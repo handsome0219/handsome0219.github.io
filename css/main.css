@@ -3307,6 +3307,9 @@ body {
 .site-overview {
   max-height: 800px !important;
 }
+.aplayer {
+  margin-top: 6vh;
+}
 .post {
   margin-top: 60px;
   margin-bottom: 60px;
