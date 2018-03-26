@@ -433,8 +433,50 @@
             </div>
           
 
-          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=5247527&auto=0&height=32"></iframe>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=27890306&auto=1&height=32"></iframe>
+          <!-- 这是第一个文件 必须-->
+<script src="https://cdn.bootcss.com/aplayer/1.6.0/APlayer.min.js"></script>
+<!-- 下面是第二个文件的原文件 可以直接使用
+<script src="https://api.i-meto.com/music/player.js"></script>
+-->
+<!-- 下面是我修改后的文件 可删除-->
+<script type="text/javascript" src="/js/src/player.js"></script>
+<!-- aplayer 使用-->
+<div class="aplayer"
+	data-id="491241167"
+	data-server="netease"
+	data-type="playlist"
+	data-mode="random"
+	data-autoplay="true"
+	data-volume="0.66"
+	data-lrc="true"
+	dataset="height:250px">
+</div>
+
+<!--
+
+
+
+data-id : 歌曲/专辑/歌单 ID 。此参数必填。 890805124
+data-server : 音乐平台，此参数必填。支持如下参数:
+	netease
+	tencent
+	xiami
+	kugou
+	baidu
+data-type : 请求类型，此参数必填。支持如下参数:
+	song （单曲）
+	album （专辑）
+	playlist （歌单）
+	search （搜索）
+data-mode : 播放模式，支持如下参数:
+	random （随机）
+	single （单曲）
+	circulation （列表循环）
+	order （列表）
+data-autoplay : 自动播放，支持如下参数:
+	false
+	true
+-->
 
         </div>
       </section>
@@ -461,9 +503,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">
-
   
-  &copy;
+    &copy;
   2017
     &mdash;
   
@@ -473,7 +514,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">付帅帅
   </span>
-
   
 </div>
 
