@@ -3308,7 +3308,7 @@ body {
   max-height: 800px !important;
 }
 .aplayer {
-  margin-top: 6vh;
+  margin-top: 6vh !important;
 }
 .post {
   margin-top: 60px;
