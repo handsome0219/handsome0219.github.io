@@ -71,28 +71,28 @@
 
     <url>
         <loc>http://yoursite.com/categories/Python/</loc>
-        <lastmod>2018-03-26T05:22:46.126Z</lastmod>
+        <lastmod>2018-03-26T10:40:45.641Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-        <lastmod>2018-03-26T05:22:46.126Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Linux/Vim/</loc>
-        <lastmod>2018-03-26T10:10:00.057Z</lastmod>
+        <lastmod>2018-03-26T10:40:45.641Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Linux/</loc>
-        <lastmod>2018-03-26T10:38:17.706Z</lastmod>
+        <lastmod>2018-03-26T10:45:04.234Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Linux/Vim/</loc>
+        <lastmod>2018-03-26T10:45:04.234Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

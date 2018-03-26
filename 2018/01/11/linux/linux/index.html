@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="付帅帅">
 <meta property="og:description" content="本文介绍了一些常用的 Linux 的命令及参数，比如 cd, ls之类的，当然除了这些常用的之外，还有一些不常用的命令，比如挂载之类的，所以看了本文，一定会有收获">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-26T10:38:17.706Z">
+<meta property="og:updated_time" content="2018-03-26T10:42:39.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux的命令">
 <meta name="twitter:description" content="本文介绍了一些常用的 Linux 的命令及参数，比如 cd, ls之类的，当然除了这些常用的之外，还有一些不常用的命令，比如挂载之类的，所以看了本文，一定会有收获">
@@ -547,7 +547,9 @@
 <li><code>zip -r file1.zip file1 file2 dir1</code> 将几个文件和目录同时压缩成一个zip格式的压缩包</li>
 <li><code>unzip file1.zip</code> 解压一个zip格式压缩包</li>
 </ul>
-<h2 id="文件的权限-使用-“-”-设置权限，使用-“-“-用于取消"><a href="#文件的权限-使用-“-”-设置权限，使用-“-“-用于取消" class="headerlink" title="文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消"></a>文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消</h2><ul>
+<h2 id="文件的权限"><a href="#文件的权限" class="headerlink" title="文件的权限"></a>文件的权限</h2><blockquote>
+<ul>
+<li>使用 “+” 设置权限，使用 “-“ 用于取消</li>
 <li><code>ls -lh</code> 显示权限</li>
 <li><code>ls /tmp | pr -T5 -W$COLUMNS</code> 将终端划分成5栏显示</li>
 <li><code>chmod ugo+rwx directory1</code> 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限</li>
@@ -564,6 +566,7 @@
 <li><code>chmod o+t /home/public</code> 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件</li>
 <li><code>chmod o-t /home/public</code> 禁用一个目录的 STIKY 位</li>
 </ul>
+</blockquote>
 <h2 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a>用户和群组</h2><ul>
 <li><code>groupadd group_name</code> 创建一个新用户组</li>
 <li><code>groupdel group_name</code> 删除一个用户组</li>
@@ -957,7 +960,7 @@ data-autoplay : 自动播放，支持如下参数:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件和目录"><span class="nav-number">1.</span> <span class="nav-text">文件和目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关机-系统的关机、重启以及登出"><span class="nav-number">2.</span> <span class="nav-text">关机 (系统的关机、重启以及登出 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的特殊属性"><span class="nav-number">3.</span> <span class="nav-text">文件的特殊属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络-（以太网和WIFI无线）"><span class="nav-number">4.</span> <span class="nav-text">网络 -（以太网和WIFI无线）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APT-软件工具-Debian-Ubuntu-以及类似系统"><span class="nav-number">5.</span> <span class="nav-text">APT 软件工具 (Debian, Ubuntu 以及类似系统)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DEB-包-Debian-Ubuntu-以及类似系统"><span class="nav-number">6.</span> <span class="nav-text">DEB 包 (Debian, Ubuntu 以及类似系统)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPM包-（Fedora-Redhat及类似系统）"><span class="nav-number">7.</span> <span class="nav-text">RPM包 - （Fedora, Redhat及类似系统）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包和压缩文件"><span class="nav-number">8.</span> <span class="nav-text">打包和压缩文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的权限-使用-“-”-设置权限，使用-“-“-用于取消"><span class="nav-number">9.</span> <span class="nav-text">文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户和群组"><span class="nav-number">10.</span> <span class="nav-text">用户和群组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘空间"><span class="nav-number">11.</span> <span class="nav-text">磁盘空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载一个文件系统"><span class="nav-number">12.</span> <span class="nav-text">挂载一个文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件搜索"><span class="nav-number">13.</span> <span class="nav-text">文件搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统信息"><span class="nav-number">14.</span> <span class="nav-text">系统信息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件和目录"><span class="nav-number">1.</span> <span class="nav-text">文件和目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关机-系统的关机、重启以及登出"><span class="nav-number">2.</span> <span class="nav-text">关机 (系统的关机、重启以及登出 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的特殊属性"><span class="nav-number">3.</span> <span class="nav-text">文件的特殊属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络-（以太网和WIFI无线）"><span class="nav-number">4.</span> <span class="nav-text">网络 -（以太网和WIFI无线）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APT-软件工具-Debian-Ubuntu-以及类似系统"><span class="nav-number">5.</span> <span class="nav-text">APT 软件工具 (Debian, Ubuntu 以及类似系统)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DEB-包-Debian-Ubuntu-以及类似系统"><span class="nav-number">6.</span> <span class="nav-text">DEB 包 (Debian, Ubuntu 以及类似系统)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPM包-（Fedora-Redhat及类似系统）"><span class="nav-number">7.</span> <span class="nav-text">RPM包 - （Fedora, Redhat及类似系统）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包和压缩文件"><span class="nav-number">8.</span> <span class="nav-text">打包和压缩文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的权限"><span class="nav-number">9.</span> <span class="nav-text">文件的权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户和群组"><span class="nav-number">10.</span> <span class="nav-text">用户和群组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘空间"><span class="nav-number">11.</span> <span class="nav-text">磁盘空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载一个文件系统"><span class="nav-number">12.</span> <span class="nav-text">挂载一个文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件搜索"><span class="nav-number">13.</span> <span class="nav-text">文件搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统信息"><span class="nav-number">14.</span> <span class="nav-text">系统信息</span></a></li></ol></div>
             
 
           </div>
