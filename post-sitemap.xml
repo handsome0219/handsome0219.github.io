@@ -7,8 +7,16 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/26/linux/linux/</loc>
-        <lastmod>2018-03-26T10:01:53.261Z</lastmod>
+        <loc>http://yoursite.com/2018/01/11/linux/linux/</loc>
+        <lastmod>2018-03-26T10:38:17.706Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/11/linux/vim/Vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
+        <lastmod>2018-03-26T10:10:00.057Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -57,14 +65,6 @@
     <url>
         <loc>http://yoursite.com/2018/01/01/Python/Python3-6%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/</loc>
         <lastmod>2018-03-25T09:05:12.589Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/11/linux/vim/Vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
-        <lastmod>2018-03-24T07:21:49.031Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

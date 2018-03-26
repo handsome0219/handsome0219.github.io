@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googled1f062b2c8449c40.html" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文介绍了一些常用的 Linux 的命令及参数，比如 cd, ls之类的，当然除了这些常用的之外，还有一些不常用的命令，比如挂载之类的，所以看了本文，一定会有收获">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux的命令">
+<meta property="og:url" content="http://yoursite.com/2018/01/11/linux/linux/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="本文介绍了一些常用的 Linux 的命令及参数，比如 cd, ls之类的，当然除了这些常用的之外，还有一些不常用的命令，比如挂载之类的，所以看了本文，一定会有收获">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-26T10:38:17.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux的命令">
+<meta name="twitter:description" content="本文介绍了一些常用的 Linux 的命令及参数，比如 cd, ls之类的，当然除了这些常用的之外，还有一些不常用的命令，比如挂载之类的，所以看了本文，一定会有收获">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/11/linux/linux/"/>
+
+
+
+
+
+  <title>Linux的命令 | 付帅帅</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ecf701914946cceef8229d782851c7d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-关于我"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/linux/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="付帅帅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Linux的命令</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:36:03+08:00">
+                2018-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          <!-- 热度 -->
+          <!-- 在下面的位置加上如下代码 -->
+          <span id="busuanzi_container_page_pv">
+            &nbsp; | &nbsp; 热度&nbsp; <span id="busuanzi_value_page_pv"></span>°C
+          </span>
+          <!-- 在上面的位置加上如上代码 -->
+
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,232 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文介绍了一些常用的 Linux 的命令及参数，比如 <code>cd</code>, <code>ls</code>之类的，当然除了这些常用的之外，还有一些不常用的命令，比如挂载之类的，所以看了本文，一定会有收获</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h2><ul>
+<li><code>cd /home</code> 进入 ‘/ home’ 目录</li>
+<li><code>cd ..</code> 返回上一级目录</li>
+<li><code>cd ../..</code> 返回上两级目录</li>
+<li><code>cd</code> 进入个人的主目录</li>
+<li><code>cd ~user1</code> 进入个人的主目录</li>
+<li><code>cd -</code>返回上次所在的目录</li>
+<li><code>pwd</code> 显示工作路径</li>
+<li><code>ls</code> 查看目录中的文件</li>
+<li><code>ls -F</code> 查看目录中的文件</li>
+<li><code>ls -l</code> 显示文件和目录的详细资料</li>
+<li><code>ls -a</code> 显示隐藏文件</li>
+<li><code>ls [0-9]</code> 显示包含数字的文件名和目录名</li>
+<li><code>tree</code> 显示文件和目录由根目录开始的树形结构(1)</li>
+<li><code>lstree</code> 显示文件和目录由根目录开始的树形结构(2)</li>
+<li><code>mkdir dir1</code> 创建一个叫做 ‘dir1’ 的目录’</li>
+<li><code>mkdir dir1 dir2</code> 同时创建两个目录</li>
+<li><code>mkdir -p /tmp/dir1/dir2</code> 创建一个目录树</li>
+<li><code>rm -f file1</code> 删除一个叫做 ‘file1’ 的文件’</li>
+<li><code>rmdir dir1</code> 删除一个叫做 ‘dir1’ 的目录’</li>
+<li><code>rm -rf dir1</code> 删除一个叫做 ‘dir1’ 的目录并同时删除其内容</li>
+<li><code>rm -rf dir1 dir2</code> 同时删除两个目录及它们的内容</li>
+<li><code>mv dir1 new_dir</code> 重命名/移动 一个目录</li>
+<li><code>cp file1 file2</code> 复制一个文件</li>
+<li><code>cp dir/* .</code>复制一个目录下的所有文件到当前工作目录</li>
+<li><code>cp -a /tmp/dir1 .</code> 复制一个目录到当前工作目录</li>
+<li><code>cp -a dir1 dir2</code> 复制一个目录</li>
+<li><code>ln -s file1 lnk1</code> 创建一个指向文件或目录的软链接</li>
+<li><code>ln file1 lnk1</code> 创建一个指向文件或目录的物理链接</li>
+<li><code>touch -t 0712250000 file1</code> 修改一个文件或目录的时间戳 - (YYMMDDhhmm)</li>
+<li><code>file file1 outputs the mime type of the file as text</code></li>
+<li><code>iconv -l</code> 列出已知的编码、</li>
+</ul>
+<h2 id="关机-系统的关机、重启以及登出"><a href="#关机-系统的关机、重启以及登出" class="headerlink" title="关机 (系统的关机、重启以及登出 )"></a>关机 (系统的关机、重启以及登出 )</h2><ul>
+<li><code>shutdown -h now</code> 关闭系统(1)</li>
+<li><code>init 0</code>关闭系统(2)</li>
+<li><code>telinit 0</code> 关闭系统(3)</li>
+<li><code>shutdown -h hours:minutes &amp;</code> 按预定时间关闭系统</li>
+<li><code>shutdown -c</code> 取消按预定时间关闭系统</li>
+<li><code>shutdown -r now</code> 重启(1)</li>
+<li><code>reboot</code> 重启(2)</li>
+<li><code>logout</code>注销</li>
+</ul>
+<h2 id="文件的特殊属性"><a href="#文件的特殊属性" class="headerlink" title="文件的特殊属性"></a>文件的特殊属性</h2><ul>
+<li><code>chattr +a file1</code> 只允许以追加方式读写文件</li>
+<li><code>chattr +c file1</code> 允许这个文件能被内核自动压缩/解压</li>
+<li><code>chattr +c file1</code> 允许这个文件能被内核自动压缩/解压</li>
+<li><code>chattr +i file1</code> 设置成不可变的文件，不能被删除、修改、重命名或者链接</li>
+<li><code>chattr +s file1</code> 允许一个文件被安全地删除</li>
+<li><code>chattr +S file1</code> 一旦应用程序对这个文件执行了写操作，使系统立刻把修改的结果写到磁盘</li>
+<li><code>chattr +u file1</code> 若文件被删除，系统会允许你在以后恢复这个被删除的文件</li>
+<li><code>lsattr</code> 显示特殊的属性</li>
+</ul>
+<h2 id="网络-（以太网和WIFI无线）"><a href="#网络-（以太网和WIFI无线）" class="headerlink" title="网络 -（以太网和WIFI无线）"></a>网络 -（以太网和WIFI无线）</h2><ul>
+<li><code>ifconfig eth0</code> 显示一个以太网卡的配置</li>
+<li><code>ifup eth0</code> 启用一个 ‘eth0’ 网络设备</li>
+<li><code>ifdown eth0</code>禁用一个 ‘eth0’ 网络设备</li>
+<li><code>ifconfig eth0 192.168.1.1 netmask 255.255.255.0</code> 控制IP地址</li>
+<li><code>ifconfig eth0 promisc</code> 设置 ‘eth0 成混杂模式以嗅探数据包 (sniffing)</li>
+<li><code>dhclient eth0</code> 以dhcp模式启用 ‘eth0’</li>
+</ul>
+<h2 id="APT-软件工具-Debian-Ubuntu-以及类似系统"><a href="#APT-软件工具-Debian-Ubuntu-以及类似系统" class="headerlink" title="APT 软件工具 (Debian, Ubuntu 以及类似系统)"></a>APT 软件工具 (Debian, Ubuntu 以及类似系统)</h2><ul>
+<li><code>apt-get install package_name</code> 安装/更新一个 deb 包</li>
+<li><code>apt-cdrom install package_name</code> 从光盘安装/更新一个 deb 包</li>
+<li><code>apt-get update</code> 升级列表中的软件包</li>
+<li><code>apt-get upgrade</code> 升级所有已安装的软件</li>
+<li><code>apt-get remove package_name</code> 从系统删除一个deb包</li>
+<li><code>apt-get check</code>确认依赖的软件仓库正确</li>
+<li><code>apt-get clean</code> 从下载的软件包中清理缓存</li>
+<li><code>apt-cache search searched-package</code> 返回包含所要搜索字符串的软件包名称</li>
+</ul>
+<h2 id="DEB-包-Debian-Ubuntu-以及类似系统"><a href="#DEB-包-Debian-Ubuntu-以及类似系统" class="headerlink" title="DEB 包 (Debian, Ubuntu 以及类似系统)"></a>DEB 包 (Debian, Ubuntu 以及类似系统)</h2><ul>
+<li><code>yum install package_name</code> 下载并安装一个rpm包</li>
+<li><code>yum localinstall package_name.rpm</code> 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系</li>
+<li><code>yum update package_name.rpm</code> 更新当前系统中所有安装的rpm包</li>
+<li><code>yum update package_name</code> 更新一个rpm包</li>
+<li><code>yum remove package_name</code> 删除一个rpm包</li>
+<li><code>yum list</code> 列出当前系统中安装的所有包</li>
+<li><code>yum search package_name</code> 在rpm仓库中搜寻软件包</li>
+<li><code>yum clean packages</code> 清理rpm缓存删除下载的包</li>
+<li><code>yum clean headers</code> 删除所有头文件</li>
+<li><code>yum clean all</code> 删除所有缓存的包和头文件</li>
+</ul>
+<h2 id="RPM包-（Fedora-Redhat及类似系统）"><a href="#RPM包-（Fedora-Redhat及类似系统）" class="headerlink" title="RPM包 - （Fedora, Redhat及类似系统）"></a>RPM包 - （Fedora, Redhat及类似系统）</h2><ul>
+<li><code>rpm -ivh package.rpm</code> 安装一个rpm包</li>
+<li><code>rpm -ivh –nodeeps package.rpm</code> 安装一个rpm包而忽略依赖关系警告</li>
+<li><code>rpm -U package.rpm</code> 更新一个rpm包但不改变其配置文件</li>
+<li><code>rpm -F package.rpm</code> 更新一个确定已经安装的rpm包</li>
+<li><code>rpm -e package_name.rpm</code> 删除一个rpm包</li>
+<li><code>rpm -qa</code> 显示系统中所有已经安装的rpm包</li>
+<li><code>rpm -qa | grep httpd</code> 显示所有名称中包含 “httpd” 字样的rpm包</li>
+<li><code>rpm -qi package_name</code> 获取一个已安装包的特殊信息</li>
+<li><code>rpm -qg &quot;System Environment/Daemons&quot;</code> 显示一个组件的rpm包</li>
+<li><code>rpm -ql package_name</code> 显示一个已经安装的rpm包提供的文件列表</li>
+<li><code>rpm -qc package_name</code> 显示一个已经安装的rpm包提供的配置文件列表</li>
+<li><code>rpm -q package_name –whatrequires</code> 显示与一个rpm包存在依赖关系的列表</li>
+<li><code>rpm -q package_name –whatprovides</code> 显示一个rpm包所占的体积</li>
+<li><code>rpm -q package_name –scripts</code> 显示在安装/删除期间所执行的脚本l</li>
+<li><code>rpm -q package_name –changelog</code> 显示一个rpm包的修改历史</li>
+<li><code>rpm -qf /etc/httpd/conf/httpd.conf</code> 确认所给的文件由哪个rpm包所提供</li>
+<li><code>rpm -qp package.rpm -l</code> 显示由一个尚未安装的rpm包提供的文件列表</li>
+<li><code>rpm –import /media/cdrom/RPM-GPG-KEY</code> 导入公钥数字证书</li>
+<li><code>rpm –checksig package.rpm</code> 确认一个rpm包的完整性</li>
+<li><code>rpm -qa gpg-pubkey</code> 确认已安装的所有rpm包的完整性</li>
+<li><code>rpm -V package_name</code> 检查文件尺寸、 许可、类型、所有者、群组、MD5检查以及最后修改时间</li>
+<li><code>rpm -Va</code> 检查系统中所有已安装的rpm包- 小心使用</li>
+<li><code>rpm -Vp package.rpm</code> 确认一个rpm包还未安装</li>
+<li><code>rpm2cpio package.rpm | cpio –extract –make-directories bin</code> 从一个rpm包运行可执行文件</li>
+<li><code>rpm -ivh /usr/src/redhat/RPMS/arch/package.rpm</code> 从一个rpm源码安装一个构建好的包</li>
+<li><code>rpmbuild –rebuild package_name.src.rpm</code> 从一个rpm源码构建一个 rpm 包</li>
+</ul>
+<h2 id="打包和压缩文件"><a href="#打包和压缩文件" class="headerlink" title="打包和压缩文件"></a>打包和压缩文件</h2><ul>
+<li><code>bunzip2 file1.bz2</code> 解压一个叫做 ‘file1.bz2’的文件</li>
+<li><code>bzip2 file1</code> 压缩一个叫做 ‘file1’ 的文件</li>
+<li><code>gunzip file1.gz</code> 解压一个叫做 ‘file1.gz’的文件</li>
+<li><code>gzip file1</code> 压缩一个叫做 ‘file1’的文件</li>
+<li><code>gzip -9 file1</code> 最大程度压缩</li>
+<li><code>rar a file1.rar test_file</code> 创建一个叫做 ‘file1.rar’ 的包</li>
+<li><code>rar a file1.rar file1 file2 dir1</code> 同时压缩 ‘file1’, ‘file2’ 以及目录 ‘dir1’</li>
+<li><code>rar x file1.rar</code> 解压rar包</li>
+<li><code>unrar x file1.rar</code> 解压rar包</li>
+<li><code>tar -cvf archive.tar file1</code> 创建一个非压缩的 tarball</li>
+<li><code>tar -cvf archive.tar file1 file2 dir1</code> 创建一个包含了 ‘file1’, ‘file2’ 以及 ‘dir1’的档案文件</li>
+<li><code>tar -tf archive.tar</code> 显示一个包中的内容</li>
+<li><code>tar -xvf archive.tar</code> 释放一个包</li>
+<li><code>tar -xvf archive.tar -C /tmp</code> 将压缩包释放到 /tmp目录下</li>
+<li><code>tar -cvfj archive.tar.bz2 dir1</code> 创建一个bzip2格式的压缩包</li>
+<li><code>tar -xvfj archive.tar.bz2</code> 解压一个bzip2格式的压缩包</li>
+<li><code>tar -cvfz archive.tar.gz dir1</code> 创建一个gzip格式的压缩包</li>
+<li><code>tar -xvfz archive.tar.gz</code> 解压一个gzip格式的压缩包</li>
+<li><code>zip file1.zip file1</code> 创建一个zip格式的压缩包</li>
+<li><code>zip -r file1.zip file1 file2 dir1</code> 将几个文件和目录同时压缩成一个zip格式的压缩包</li>
+<li><code>unzip file1.zip</code> 解压一个zip格式压缩包</li>
+</ul>
+<h2 id="文件的权限-使用-“-”-设置权限，使用-“-“-用于取消"><a href="#文件的权限-使用-“-”-设置权限，使用-“-“-用于取消" class="headerlink" title="文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消"></a>文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消</h2><ul>
+<li><code>ls -lh</code> 显示权限</li>
+<li><code>ls /tmp | pr -T5 -W$COLUMNS</code> 将终端划分成5栏显示</li>
+<li><code>chmod ugo+rwx directory1</code> 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限</li>
+<li><code>chmod go-rwx directory1</code> 删除群组(g)与其他人(o)对目录的读写执行权限</li>
+<li><code>chown user1 file1</code> 改变一个文件的所有人属性</li>
+<li><code>chown -R user1 directory1</code> 改变一个目录的所有人属性并同时改变改目录下所有文件的属性</li>
+<li><code>chgrp group1 file1</code> 改变文件的群组</li>
+<li><code>chown user1:group1</code> file1 改变一个文件的所有人和群组属性</li>
+<li><code>find / -perm -u+s</code> 罗列一个系统中所有使用了SUID控制的文件</li>
+<li><code>chmod u+s /bin/file1</code> 设置一个二进制文件的 SUID 位 - 运行该文件的用户也被赋予和所有者同样的权限</li>
+<li><code>chmod u-s /bin/file1</code> 禁用一个二进制文件的 SUID位</li>
+<li><code>chmod g+s /home/public</code> 设置一个目录的SGID 位 类似SUID ，不过这是针对目录的</li>
+<li><code>chmod g-s /home/public</code> 禁用一个目录的 SGID 位</li>
+<li><code>chmod o+t /home/public</code> 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件</li>
+<li><code>chmod o-t /home/public</code> 禁用一个目录的 STIKY 位</li>
+</ul>
+<h2 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a>用户和群组</h2><ul>
+<li><code>groupadd group_name</code> 创建一个新用户组</li>
+<li><code>groupdel group_name</code> 删除一个用户组</li>
+<li><code>groupmod -n new_group_name old_group_name</code> 重命名一个用户组</li>
+<li><code>useradd -c “Name Surname “ -g admin -d /home/user1 -s /bin/bash user1</code> 创建一个属于 “admin” 用户组的用户</li>
+<li><code>useradd user1</code> 创建一个新用户</li>
+<li><code>userdel -r user1</code> 删除一个用户 ( ‘-r’ 排除主目录)</li>
+<li><code>usermod -c “User FTP” -g system -d /ftp/user1 -s /bin/nologin user1</code> 修改用户属性</li>
+<li><code>passwd</code> 修改口令</li>
+<li><code>passwd user1</code> 修改一个用户的口令 (只允许root执行)</li>
+<li><code>chage -E 2005-12-31 user1</code> 设置用户口令的失效期限</li>
+<li><code>pwck 检查 &#39;/etc/passwd&#39;</code> 的文件格式和语法修正以及存在的用户</li>
+<li><code>grpck 检查 &#39;/etc/passwd&#39;</code> 的文件格式和语法修正以及存在的群组</li>
+<li><code>newgrp group_name</code> 登陆进一个新的群组以改变新创建文件的预设群组</li>
+</ul>
+<h2 id="磁盘空间"><a href="#磁盘空间" class="headerlink" title="磁盘空间"></a>磁盘空间</h2><ul>
+<li><code>df -h</code> 显示已经挂载的分区列表</li>
+<li><code>ls -lSr |more</code> 以尺寸大小排列文件和目录</li>
+<li><code>du -sh dir1</code> 估算目录 ‘dir1’ 已经使用的磁盘空间</li>
+<li><code>du -sk * | sort -rn</code> 以容量大小为依据依次显示文件和目录的大小</li>
+<li><code>rpm -q -a –qf &#39;%10{SIZE}t%{NAME}n&#39; | sort -k1,1n</code> 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统)</li>
+<li><code>dpkg-query -W -f=&#39;${Installed-Size;10}t${Package}n&#39; | sort -k1,1n</code> 以大小为依据显示已安装的deb包所使用的空间 (ubuntu, debian类系统)</li>
+</ul>
+<h2 id="挂载一个文件系统"><a href="#挂载一个文件系统" class="headerlink" title="挂载一个文件系统"></a>挂载一个文件系统</h2><ul>
+<li><code>mount /dev/hda2 /mnt/hda2</code> 挂载一个叫做hda2的盘 - 确定目录 ‘/ mnt/hda2’ 已经存在</li>
+<li><code>umount /dev/hda2</code> 卸载一个叫做hda2的盘 - 先从挂载点 ‘/ mnt/hda2’ 退出</li>
+<li><code>fuser -km /mnt/hda2</code> 当设备繁忙时强制卸载</li>
+<li><code>umount -n /mnt/hda2</code> 运行卸载操作而不写入 /etc/mtab 文件- 当文件为只读或当磁盘写满时非常有用</li>
+<li><code>mount /dev/fd0 /mnt/floppy</code> 挂载一个软盘</li>
+<li><code>mount /dev/cdrom /mnt/cdrom</code> 挂载一个 cdrom 或 dvdrom</li>
+<li><code>mount /dev/hdc /mnt/cdrecorder</code> 挂载一个 cdrw 或 dvdrom</li>
+<li><code>mount /dev/hdb /mnt/cdrecorder</code> 挂载一个 cdrw 或d vdrom</li>
+<li><code>mount -o loop file.iso /mnt/cdrom</code> 挂载一个文件或 ISO 镜像文件</li>
+<li><code>mount -t vfat /dev/hda5 /mnt/hda5</code> 挂载一个 Windows FAT32 文件系统</li>
+<li><code>mount /dev/sda1 /mnt/usbdisk</code> 挂载一个 Usb 捷盘或闪存设备</li>
+<li><code>mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share</code> 挂载一个 Windows网络共享</li>
+</ul>
+<h2 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h2><ul>
+<li><code>find / -name file1</code> 从 ‘/‘开始进入根文件系统搜索文件和目录</li>
+<li><code>find / -user user1</code> 搜索属于用户 ‘user1’ 的文件和目录</li>
+<li><code>find /home/user1 -name  *.bin</code> 在目录 ‘/ home/user1’ 中搜索带有’.bin’ 结尾的文件</li>
+<li><code>find /usr/bin -type f -atime +100</code> 搜索在过去100天内未被使用过的执行文件</li>
+<li><code>find /usr/bin -type f -mtime -10</code> 搜索在10天内被创建或者修改过的文件</li>
+<li><code>find / -name *.rpm -exec chmod 755 &#39;{}&#39;</code>; 搜索以 ‘.rpm’ 结尾的文件并定义其权限</li>
+<li><code>find / -xdev -name *.rpm</code>搜索以 ‘.rpm’ 结尾的文件，忽略光驱、捷盘等可移动设备</li>
+<li><code>locate *.ps</code> 寻找以 ‘.ps’ 结尾的文件 - 先运行 ‘updatedb’ 命令</li>
+<li><code>whereis halt</code> 显示一个二进制文件、源码或man的位置</li>
+<li><code>which halt</code> 显示一个二进制文件或可执行文件的完整路径</li>
+</ul>
+<h2 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h2><ul>
+<li><code>arch</code> 显示机器的处理器架构(1)</li>
+<li><code>uname -m</code> 显示机器的处理器架构(2)</li>
+<li><code>uname -r</code> 显示正在使用的内核版本</li>
+<li><code>dmidecode -q</code> 显示硬件系统部件 - (SMBIOS / DMI)</li>
+<li><code>hdparm -i /dev/hda</code> 罗列一个磁盘的架构特性</li>
+<li><code>hdparm -tT /dev/sda</code> 在磁盘上执行测试性读取操作</li>
+<li><code>cat /proc/cpuinfo</code> 显示 CPU info 的信息</li>
+<li><code>cat /proc/interrupts</code> 显示中断</li>
+<li><code>cat /proc/meminfo</code> 校验内存使用</li>
+<li><code>cat /proc/swaps</code> 显示哪些swap被使用</li>
+<li><code>cat /proc/version</code> 显示内核的版本</li>
+<li><code>cat /proc/net/dev</code> 显示网络适配器及统计</li>
+<li><code>cat /proc/mounts</code> 显示已加载的文件系统</li>
+<li><code>lspci -tv</code> 罗列 PCI 设备</li>
+<li><code>lsusb -tv</code> 显示 USB 设备</li>
+<li><code>date</code> 显示系统日期</li>
+<li><code>cal 2017</code> 显示2017年的日历表</li>
+<li><code>date 011115002018.00</code> 设置日期和时间 - 月日时分年.秒</li>
+<li><code>clock -w</code> 将时间修改保存到 BIOS</li>
+</ul>
+
+      
+    </div>
+
+    <!-- 添加文章结束标记 -->
+    <div style="text-align:center;color: #ccc;font-size:14px;">
+        ----------------&emsp;The&emsp;&emsp;&emsp;End&emsp;----------------
+    </div>
+
+
+
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="付帅帅 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="付帅帅 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+    
+    <div>
+      
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文作者：</strong>
+            <a href="/" title="欢迎访问 付帅帅 的个人博客">
+              付帅帅
+            </a>
+          </li>
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="/2018/01/11/linux/linux/" title="2018/01/11/linux/linux/">
+              2018/01/11/linux/linux/
+            </a>
+          </li>
+          <li class="post-copyright-date">
+              <strong>发布时间：</strong>2018年1月11日 -- 20时01分
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本文由 付帅帅 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank"> 保留署名-非商业性使用-禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
+          </li>
+        </ul>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/04/Javascript/Operators/" rel="next" title="操作符">
+                <i class="fa fa-chevron-left"></i> 操作符
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/05/Javascript/Controlling Execution/" rel="prev" title="控制语句">
+                控制语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="付帅帅" />
+            
+              <p class="site-author-name" itemprop="name">付帅帅</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-GitHub"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/handsome0219" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-Twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/handsome0219" target="_blank" title="FaceBook">
+                      
+                        <i class="fa fa-fw fa-FaceBook"></i>FaceBook</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.weibo.com/u/5311080871" target="_blank" title="WeiBo">
+                      
+                        <i class="fa fa-fw fa-WeiBo"></i>WeiBo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ssdcc.github.io/" title="深水丶虫" target="_blank">深水丶虫</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- 这是第一个文件 必须-->
+<script src="https://cdn.bootcss.com/aplayer/1.6.0/APlayer.min.js"></script>
+<!-- 下面是第二个文件的原文件 可以直接使用
+<script src="https://api.i-meto.com/music/player.js"></script>
+-->
+<!-- 下面是我修改后的文件 可删除-->
+<script type="text/javascript" src="/js/src/player.js"></script>
+<!-- aplayer 使用-->
+<div class="aplayer"
+	data-id="491241167"
+	data-server="netease"
+	data-type="playlist"
+	data-mode="random"
+	data-autoplay="true"
+	data-volume="0.66"
+	data-lrc="true"
+	dataset="height:250px">
+</div>
+
+<!--
+
+
+
+data-id : 歌曲/专辑/歌单 ID 。此参数必填。 890805124
+data-server : 音乐平台，此参数必填。支持如下参数:
+	netease
+	tencent
+	xiami
+	kugou
+	baidu
+data-type : 请求类型，此参数必填。支持如下参数:
+	song （单曲）
+	album （专辑）
+	playlist （歌单）
+	search （搜索）
+data-mode : 播放模式，支持如下参数:
+	random （随机）
+	single （单曲）
+	circulation （列表循环）
+	order （列表）
+data-autoplay : 自动播放，支持如下参数:
+	false
+	true
+-->
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件和目录"><span class="nav-number">1.</span> <span class="nav-text">文件和目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关机-系统的关机、重启以及登出"><span class="nav-number">2.</span> <span class="nav-text">关机 (系统的关机、重启以及登出 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的特殊属性"><span class="nav-number">3.</span> <span class="nav-text">文件的特殊属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络-（以太网和WIFI无线）"><span class="nav-number">4.</span> <span class="nav-text">网络 -（以太网和WIFI无线）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APT-软件工具-Debian-Ubuntu-以及类似系统"><span class="nav-number">5.</span> <span class="nav-text">APT 软件工具 (Debian, Ubuntu 以及类似系统)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DEB-包-Debian-Ubuntu-以及类似系统"><span class="nav-number">6.</span> <span class="nav-text">DEB 包 (Debian, Ubuntu 以及类似系统)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPM包-（Fedora-Redhat及类似系统）"><span class="nav-number">7.</span> <span class="nav-text">RPM包 - （Fedora, Redhat及类似系统）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包和压缩文件"><span class="nav-number">8.</span> <span class="nav-text">打包和压缩文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的权限-使用-“-”-设置权限，使用-“-“-用于取消"><span class="nav-number">9.</span> <span class="nav-text">文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户和群组"><span class="nav-number">10.</span> <span class="nav-text">用户和群组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘空间"><span class="nav-number">11.</span> <span class="nav-text">磁盘空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载一个文件系统"><span class="nav-number">12.</span> <span class="nav-text">挂载一个文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件搜索"><span class="nav-number">13.</span> <span class="nav-text">文件搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统信息"><span class="nav-number">14.</span> <span class="nav-text">系统信息</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+    &copy;
+  2017
+    &mdash;
+  
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">付帅帅
+  </span>
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="javascript:void(0)"></a> 个人专属 
+  </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    博客 - handsomeFu
+  </div>
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- github -->
+  <!--   <a href="https://github.com/handsome0219/handsome0219.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a> -->
+</body>
+</html>
