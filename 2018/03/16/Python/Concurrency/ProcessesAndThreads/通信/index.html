@@ -88,18 +88,21 @@
 
 
 
-<meta name="description" content="付帅帅的个人博客">
+<meta name="description" content="本文主要介绍进程间的通信，如何解决进程间的通信，线程共享同一片内存空间，那么这样有什么危害，以及最后的队列">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="队列">
-<meta property="og:url" content="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/index.html">
+<meta property="og:title" content="通信">
+<meta property="og:url" content="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/通信/index.html">
 <meta property="og:site_name" content="付帅帅">
-<meta property="og:description" content="付帅帅的个人博客">
+<meta property="og:description" content="本文主要介绍进程间的通信，如何解决进程间的通信，线程共享同一片内存空间，那么这样有什么危害，以及最后的队列">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-26T05:21:52.348Z">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/5A0DC96C7070430A8E6444B9D7CE91F8?method=download&shareKey=147c58507ab4d85a8b3c8709b059aa3e">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/59404E78ABE54C2C80A6B9F346F5E09B?method=download&shareKey=dd0237aa192dde1e73af01625a88a12b">
+<meta property="og:updated_time" content="2018-03-28T03:40:50.145Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="队列">
-<meta name="twitter:description" content="付帅帅的个人博客">
+<meta name="twitter:title" content="通信">
+<meta name="twitter:description" content="本文主要介绍进程间的通信，如何解决进程间的通信，线程共享同一片内存空间，那么这样有什么危害，以及最后的队列">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/5A0DC96C7070430A8E6444B9D7CE91F8?method=download&shareKey=147c58507ab4d85a8b3c8709b059aa3e">
 
 
 
@@ -129,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/通信/"/>
 
 
 
 
 
-  <title>队列 | 付帅帅</title>
+  <title>通信 | 付帅帅</title>
   
 
 
@@ -282,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/通信/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="付帅帅">
@@ -299,7 +302,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">队列</h2>
+          <h2 class="post-title" itemprop="name headline">通信</h2>
         
 
         <div class="post-meta">
@@ -383,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  1,110 字
                 </span>
               
 
@@ -399,7 +402,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -420,7 +423,31 @@
       
 
       
-        
+        <p>本文主要介绍进程间的通信，如何解决进程间的通信，线程共享同一片内存空间，那么这样有什么危害，以及最后的队列</p>
+<a id="more"></a>
+<p>先看代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line">age = <span class="number">10</span> <span class="comment"># 全局变量</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> age</span><br><span class="line">    age = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># func()</span></span><br><span class="line">p = Process(target=func)</span><br><span class="line">p.start()</span><br><span class="line">p.join()</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure></p>
+<p>打印输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure></p>
+<p>通过上面的代码的运行结果，我们可以看出，进程和进程之间的内存地址是相互独立的，如下图<br><img src="https://note.youdao.com/yws/api/personal/file/5A0DC96C7070430A8E6444B9D7CE91F8?method=download&amp;shareKey=147c58507ab4d85a8b3c8709b059aa3e" alt="进程间独立的内存空间"><br>那么既然进程间内存地址是独立的，那么线程之间内存地址是不是独立的呢？ 这个还有想吗，肯定不是独立的嘛，<strong>注意</strong> 线程是通过进程创建的，所有的线程位于同一进程，所以线程共享一块内存地址，看代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span>  Thread</span><br><span class="line"></span><br><span class="line">age = <span class="number">10</span>  <span class="comment"># 全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> age</span><br><span class="line">    age = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># func()</span></span><br><span class="line">t = Thread(target=func)</span><br><span class="line">t.start()</span><br><span class="line">t.join( )</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure></p>
+<p>打印输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20</span><br></pre></td></tr></table></figure></p>
+<p>上面的例子可以说明，进程间的内存地址是相互独立的，而线程间的则是共享同一个内存地址,那么我们首先解决进程间通信的这么一个障碍，先看图：<br><img src="https://note.youdao.com/yws/api/personal/file/59404E78ABE54C2C80A6B9F346F5E09B?method=download&amp;shareKey=dd0237aa192dde1e73af01625a88a12b" alt="进程解决方案"><br>然后看代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 先生成一个管理器  生成管理器的同时 也生成了一个公共的进程</span><br><span class="line">mgr = Manager()</span><br><span class="line"></span><br><span class="line">tmp_list = mgr.list()  # 从公共空间中开辟一个 list　空间</span><br><span class="line"></span><br><span class="line">def func():</span><br><span class="line">    tmp_list.append(1)</span><br><span class="line">    tmp_list.append(2)</span><br><span class="line"></span><br><span class="line">p = Process(target=func)</span><br><span class="line">p.start()</span><br><span class="line">p.join()</span><br><span class="line">print(tmp_list)</span><br></pre></td></tr></table></figure></p>
+<p>输出结果<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>] <span class="comment"># 是一个列表</span></span><br></pre></td></tr></table></figure></p>
+<p>上述代码说明了，通过这个 Manager 我们可以在进程间通信，当然，不仅仅只有 list 还有 dict 以及 queue<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Manager</span><br><span class="line"></span><br><span class="line">mgr = Manager() <span class="comment"># 生成一个服务器进程，并返回与其通信的管理器</span></span><br><span class="line"></span><br><span class="line">tmp_list = mgr.list()</span><br><span class="line">tmp_dict = mgr.dict()</span><br><span class="line">tmp_queue = mgr.Queue()</span><br><span class="line"></span><br><span class="line">print(tmp_list)</span><br><span class="line">print(type(tmp_list))</span><br><span class="line">print(type(tmp_dict))</span><br><span class="line">print(type(tmp_queue))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">()</span>:</span></span><br><span class="line">    tmp_list.append(<span class="string">'a'</span>)</span><br><span class="line">    tmp_dict.update(&#123;<span class="string">"a"</span>: <span class="number">1</span>&#125;)</span><br><span class="line">    tmp_queue.put(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t = Process(target=b)</span><br><span class="line">t.start()</span><br><span class="line">t.join()</span><br><span class="line">print(tmp_list)</span><br><span class="line">print(tmp_dict)</span><br><span class="line">print(tmp_queue.get())</span><br></pre></td></tr></table></figure></p>
+<p>讲完了，进程间的通信，接下来我们来看看，线程间的问题应该怎么解决呢， 什么？ 线程间还需要解决通信吗，不是说线程共用一块内存地址，那还需要解决说什么问题呢？线程其实需要解决，共用同一片内存地址的问题，就是因为线程共有同一片内存空间，所以，有时候会造成当两个线程同时对一个变量进行修改的同时就会出现问题，那么应该怎么解决呢？别急，请往下看</p>
+<h3 id="线程锁"><a href="#线程锁" class="headerlink" title="线程锁"></a>线程锁</h3><blockquote>
+<p>因为线程共享一块内存地址，所以当多个线程修改共享资源的时候，就会出现各种各样的问题</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  threading  <span class="keyword">import</span> Thread</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line">n = <span class="number">10000000</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">t = Thread(target=calc, args=(n, ))</span><br><span class="line">t1 = Thread(target=calc, args=(n, ))</span><br><span class="line">t.start()</span><br><span class="line">t1.start()</span><br><span class="line">t.join()</span><br><span class="line">t1.join()</span><br><span class="line">print(count)</span><br></pre></td></tr></table></figure>
+<p>输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一次--&gt; 13417734</span><br><span class="line">第二次--&gt; 13641278</span><br><span class="line">第三次--&gt; 23328333</span><br></pre></td></tr></table></figure></p>
+<p>为什么每次的结果会不一样呢，如果你给的值较小的话，是不会出现这种问题的，只有你的值给的比较大的话，那么就会出现这种问题了，首先我们分析一下，当 Python 解释器遇到 <code>count += 1</code>的时候，其实的分了这么几个步骤的</p>
+<ul>
+<li>先将 <code>count += 1</code> 变成 <code>count = count + 1</code></li>
+<li>然后先计算 <code>count + 1</code></li>
+<li>将 <code>count + 1</code> 得到的值重新赋值给 <code>count</code><br>那么应该怎么解决这个问题呢， Python 给我们提供了一个 锁 的东西，那么这个锁应该怎么用，其实也很简单<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  threading  <span class="keyword">import</span> Thread, Lock</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line">n = <span class="number">10000000</span></span><br><span class="line">lock = Lock() <span class="comment"># 生成锁</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        lock.acquire() <span class="comment"># 加锁</span></span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        lock.release() <span class="comment">#  解锁</span></span><br><span class="line"></span><br><span class="line">t = Thread(target=calc, args=(n, ))</span><br><span class="line">t1 = Thread(target=calc, args=(n, ))</span><br><span class="line">t.start()</span><br><span class="line">t1.start()</span><br><span class="line">t.join()</span><br><span class="line">t1.join()</span><br><span class="line">print(count)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一个运行结果--&gt; 20000000</span><br><span class="line">第二个运行结果--&gt; 19999999</span><br><span class="line">第三个运行结果--&gt; 20000000</span><br></pre></td></tr></table></figure></p>
+<p>这样就算是解决了线程之间的资源竞争问题，</p>
+
       
     </div>
 
@@ -482,8 +509,8 @@
           </li>
           <li class="post-copyright-link">
             <strong>本文链接：</strong>
-            <a href="/2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/" title="2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/">
-              2018/03/16/Python/Concurrency/ProcessesAndThreads/队列/
+            <a href="/2018/03/16/Python/Concurrency/ProcessesAndThreads/通信/" title="2018/03/16/Python/Concurrency/ProcessesAndThreads/通信/">
+              2018/03/16/Python/Concurrency/ProcessesAndThreads/通信/
             </a>
           </li>
           <li class="post-copyright-date">
@@ -524,7 +551,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/25/Python/Concurrency/ProcessesAndThreads/线程池和进程池/" rel="prev" title="线程池和进程池">
+              <a href="/2018/03/18/Python/Concurrency/ProcessesAndThreads/线程池和进程池/" rel="prev" title="线程池和进程池">
                 线程池和进程池 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -574,8 +601,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -724,6 +760,22 @@ data-autoplay : 自动播放，支持如下参数:
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程锁"><span class="nav-number">1.</span> <span class="nav-text">线程锁</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
