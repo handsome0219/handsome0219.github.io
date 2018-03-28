@@ -7,16 +7,104 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/11/10/html&css/03%20tag/</loc>
-        <lastmod>2018-03-28T15:19:41.407Z</lastmod>
+        <loc>http://yoursite.com/2017/11/10/html&css/02%20tag/</loc>
+        <lastmod>2018-03-28T15:22:16.997Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/11/10/html&css/02%20tag/</loc>
-        <lastmod>2018-03-28T15:19:22.654Z</lastmod>
+        <loc>http://yoursite.com/2017/11/15/html&css/05%20css/</loc>
+        <lastmod>2018-03-28T15:22:10.296Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/15/html&css/04%20form/</loc>
+        <lastmod>2018-03-28T15:22:07.734Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/20/html&css/07%20background/</loc>
+        <lastmod>2018-03-28T15:21:48.535Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/22/html&css/08%20float/</loc>
+        <lastmod>2018-03-28T15:21:38.822Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/30/html&css/10%20iconfont/</loc>
+        <lastmod>2018-03-28T15:21:29.950Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/30/html&css/11%20flex/</loc>
+        <lastmod>2018-03-28T15:21:23.454Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/12/01/html&css/12%20animation/</loc>
+        <lastmod>2018-03-28T15:21:11.752Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/12/05/html&css/14%20standard/</loc>
+        <lastmod>2018-03-28T15:20:52.896Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/12/02/html&css/13%20layout/</loc>
+        <lastmod>2018-03-28T15:20:47.790Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/28/html&css/09%20position/</loc>
+        <lastmod>2018-03-28T15:20:27.662Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/18/html&css/06%20font/</loc>
+        <lastmod>2018-03-28T15:20:14.775Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/10/html&css/03%20tag/</loc>
+        <lastmod>2018-03-28T15:19:41.407Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -223,14 +311,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/11/30/html&css/11%20flex/</loc>
-        <lastmod>2018-03-24T06:33:26.359Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2018/02/05/Javascript/Controlling%20Execution/</loc>
         <lastmod>2018-03-24T06:28:15.026Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -249,86 +329,6 @@
     <url>
         <loc>http://yoursite.com/2018/03/06/Javascript/setInterval%20setTimeout/</loc>
         <lastmod>2018-03-24T06:27:50.097Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/12/01/html&css/12%20animation/</loc>
-        <lastmod>2018-03-24T06:08:57.486Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/12/05/html&css/14%20standard/</loc>
-        <lastmod>2018-03-24T06:07:20.839Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/12/02/html&css/13%20layout/</loc>
-        <lastmod>2018-03-24T06:06:56.953Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/28/html&css/09%20position/</loc>
-        <lastmod>2018-03-24T06:05:44.856Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/22/html&css/08%20float/</loc>
-        <lastmod>2018-03-24T06:05:38.879Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/18/html&css/06%20font/</loc>
-        <lastmod>2018-03-24T06:05:34.247Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/15/html&css/05%20css/</loc>
-        <lastmod>2018-03-24T06:05:29.170Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/15/html&css/04%20form/</loc>
-        <lastmod>2018-03-24T06:05:24.671Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/30/html&css/10%20iconfont/</loc>
-        <lastmod>2018-03-10T08:29:09.410Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/20/html&css/07%20background/</loc>
-        <lastmod>2018-03-10T08:27:14.588Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -2,34 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://yoursite.com/tags/CSS/</loc>
-        <lastmod>2018-03-24T06:05:44.856Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/layout/</loc>
-        <lastmod>2018-03-24T06:06:56.953Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/HTML-CSS/</loc>
-        <lastmod>2018-03-24T06:07:20.839Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/CSS3/</loc>
-        <lastmod>2018-03-24T06:33:26.359Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/BOM/</loc>
         <lastmod>2018-03-24T06:35:01.471Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -107,8 +79,36 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/tags/layout/</loc>
+        <lastmod>2018-03-28T15:20:47.790Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/CSS3/</loc>
+        <lastmod>2018-03-28T15:21:23.454Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/HTML-CSS/</loc>
+        <lastmod>2018-03-28T15:21:29.950Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/CSS/</loc>
+        <lastmod>2018-03-28T15:22:10.296Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/HTML/</loc>
-        <lastmod>2018-03-28T15:19:41.407Z</lastmod>
+        <lastmod>2018-03-28T15:22:16.997Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

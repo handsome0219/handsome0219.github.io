@@ -94,11 +94,9 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/05/html&css/14 standard/index.html">
 <meta property="og:site_name" content="付帅帅">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img-cdn2.luoo.net/pics/vol/52c14db094079.jpg!/fwfh/640x452">
-<meta property="og:updated_time" content="2018-03-24T06:07:20.839Z">
+<meta property="og:updated_time" content="2018-03-28T15:20:52.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="规范说明">
-<meta name="twitter:image" content="http://img-cdn2.luoo.net/pics/vol/52c14db094079.jpg!/fwfh/640x452">
 
 
 
@@ -408,7 +406,7 @@
       
 
       
-        <p><img src="http://img-cdn2.luoo.net/pics/vol/52c14db094079.jpg!/fwfh/640x452" alt="layout"></p>
+        <!-- ![layout](http://img-cdn2.luoo.net/pics/vol/52c14db094079.jpg!/fwfh/640x452) -->
 <a id="more"></a>
 <h1 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h1><blockquote>
 <p>上一篇内容相信大家应该掌握了，了解css中的属性值及其特性，分析问题与需求选择合适的解决方案。这一节讨论一下规范。</p>
@@ -429,7 +427,7 @@
 <li><p>内容性质的图片必须加上alt属性，修饰性的图片可以不加，width与height值为原始大小</p>
 </li>
 <li><p>注释的写法 IE条件注释</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- [if IE]&gt;</span></span><br><span class="line"><span class="comment">这里只有ie浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">&lt;!-- [if !IE]&gt;</span></span><br><span class="line"><span class="comment">这里只有非ie浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;! &lt;![endif]--&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">&lt;!--[if IE 6]&gt;</span></span><br><span class="line"><span class="comment">这里只有ie6浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">这里只有ie9以下浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">&lt;!--[if lte IE 8]&gt;</span></span><br><span class="line"><span class="comment">这里只有ie8以及ie8以下浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- [if IE]&gt;</span></span><br><span class="line"><span class="comment">这里只有ie浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- [if !IE]&gt;</span></span><br><span class="line"><span class="comment">这里只有非ie浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;! &lt;![endif]--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--[if IE 6]&gt;</span></span><br><span class="line"><span class="comment">这里只有ie6浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">这里只有ie9以下浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--[if lte IE 8]&gt;</span></span><br><span class="line"><span class="comment">这里只有ie8以及ie8以下浏览器才可以显示</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
 <p>对注释中的空白区域用等号替换</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- header======header --&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
