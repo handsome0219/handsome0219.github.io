@@ -7,13 +7,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/html-css/</loc>
-        <lastmod>2018-03-24T06:07:20.839Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/html5-css3/</loc>
         <lastmod>2018-03-24T06:33:26.359Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -37,20 +30,6 @@
     <url>
         <loc>http://yoursite.com/categories/JavaScript/XML/</loc>
         <lastmod>2018-03-24T06:37:39.711Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/JavaScript/RegExp/</loc>
-        <lastmod>2018-03-24T06:37:54.649Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/JavaScript/</loc>
-        <lastmod>2018-03-24T06:38:02.726Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -100,6 +79,27 @@
     <url>
         <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
         <lastmod>2018-03-28T15:06:00.766Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/JavaScript/RegExp/</loc>
+        <lastmod>2018-03-28T15:18:13.742Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/JavaScript/</loc>
+        <lastmod>2018-03-28T15:18:23.080Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/html-css/</loc>
+        <lastmod>2018-03-28T15:19:41.407Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

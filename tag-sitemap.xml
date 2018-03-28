@@ -2,13 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://yoursite.com/tags/HTML/</loc>
-        <lastmod>2018-03-24T06:05:24.671Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/CSS/</loc>
         <lastmod>2018-03-24T06:05:44.856Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,13 +18,6 @@
     <url>
         <loc>http://yoursite.com/tags/HTML-CSS/</loc>
         <lastmod>2018-03-24T06:07:20.839Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/function/</loc>
-        <lastmod>2018-03-24T06:31:05.159Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -60,20 +46,6 @@
     <url>
         <loc>http://yoursite.com/tags/XML/</loc>
         <lastmod>2018-03-24T06:37:39.711Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/RegExp/</loc>
-        <lastmod>2018-03-24T06:37:54.649Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/JS/</loc>
-        <lastmod>2018-03-24T06:38:02.726Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -109,6 +81,34 @@
     <url>
         <loc>http://yoursite.com/tags/Python/</loc>
         <lastmod>2018-03-28T15:06:00.766Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/function/</loc>
+        <lastmod>2018-03-28T15:18:06.835Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/RegExp/</loc>
+        <lastmod>2018-03-28T15:18:13.742Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/JS/</loc>
+        <lastmod>2018-03-28T15:18:23.080Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/HTML/</loc>
+        <lastmod>2018-03-28T15:19:41.407Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

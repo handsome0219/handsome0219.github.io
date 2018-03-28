@@ -7,6 +7,102 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2017/11/10/html&css/03%20tag/</loc>
+        <lastmod>2018-03-28T15:19:41.407Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/10/html&css/02%20tag/</loc>
+        <lastmod>2018-03-28T15:19:22.654Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/11/10/html&css/01%20HTML/</loc>
+        <lastmod>2018-03-28T15:18:58.601Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/02/08/Javascript/String-Number-Boolean/</loc>
+        <lastmod>2018-03-28T15:18:23.080Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/02/07/Javascript/scope/</loc>
+        <lastmod>2018-03-28T15:18:16.061Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/02/12/Javascript/RegExp/</loc>
+        <lastmod>2018-03-28T15:18:13.742Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/02/11/Javascript/Object/</loc>
+        <lastmod>2018-03-28T15:18:09.949Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/02/06/Javascript/function/</loc>
+        <lastmod>2018-03-28T15:18:06.835Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/02/10/Javascript/Date/</loc>
+        <lastmod>2018-03-28T15:17:57.320Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/12/28/Javascript/dataType/</loc>
+        <lastmod>2018-03-28T15:17:54.005Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/02/07/Javascript/callBack/</loc>
+        <lastmod>2018-03-28T15:17:47.257Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/02/10/Javascript/Array/</loc>
+        <lastmod>2018-03-28T15:17:38.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2018/03/24/Python/Concurrency/ProcessesAndThreads/%E9%80%9A%E4%BF%A1/</loc>
         <lastmod>2018-03-28T15:06:00.766Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -65,30 +161,6 @@
     <url>
         <loc>http://yoursite.com/2018/03/12/Javascript/Event_02/</loc>
         <lastmod>2018-03-24T06:38:02.726Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/02/08/Javascript/String-Number-Boolean/</loc>
-        <lastmod>2018-03-24T06:38:01.366Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/02/07/Javascript/scope/</loc>
-        <lastmod>2018-03-24T06:37:58.367Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/02/12/Javascript/RegExp/</loc>
-        <lastmod>2018-03-24T06:37:54.649Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -159,40 +231,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/02/07/Javascript/callBack/</loc>
-        <lastmod>2018-03-24T06:31:05.159Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/02/10/Javascript/Array/</loc>
-        <lastmod>2018-03-24T06:31:01.528Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2018/02/05/Javascript/Controlling%20Execution/</loc>
         <lastmod>2018-03-24T06:28:15.026Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/12/28/Javascript/dataType/</loc>
-        <lastmod>2018-03-24T06:28:11.678Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/02/11/Javascript/Object/</loc>
-        <lastmod>2018-03-24T06:28:07.167Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -209,22 +249,6 @@
     <url>
         <loc>http://yoursite.com/2018/03/06/Javascript/setInterval%20setTimeout/</loc>
         <lastmod>2018-03-24T06:27:50.097Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/02/06/Javascript/function/</loc>
-        <lastmod>2018-03-24T06:27:27.839Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/02/10/Javascript/Date/</loc>
-        <lastmod>2018-03-24T06:25:15.851Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -295,32 +319,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/11/10/html&css/03%20tag/</loc>
-        <lastmod>2018-03-10T08:34:31.876Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2017/11/30/html&css/10%20iconfont/</loc>
         <lastmod>2018-03-10T08:29:09.410Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/10/html&css/01%20HTML/</loc>
-        <lastmod>2018-03-10T08:28:27.537Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/10/html&css/02%20tag/</loc>
-        <lastmod>2018-03-10T08:28:23.726Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
