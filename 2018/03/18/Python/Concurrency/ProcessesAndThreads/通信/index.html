@@ -88,21 +88,22 @@
 
 
 
-<meta name="description" content="这边文章主要介绍进程间的通信，如何解决进程间的通信，线程共享同一片内存空间，那么这样有什么危害，以及最后的队列">
+<meta name="description" content="什么是进程间的通信，以及如何解决进程间的通信，线程共享同一片内存空间，那么这样又有什么危害，线程锁是什么，它能干嘛，队列又应该怎么用，以及生产者和消费者模式">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通信">
 <meta property="og:url" content="http://yoursite.com/2018/03/18/Python/Concurrency/ProcessesAndThreads/通信/index.html">
 <meta property="og:site_name" content="付帅帅">
-<meta property="og:description" content="这边文章主要介绍进程间的通信，如何解决进程间的通信，线程共享同一片内存空间，那么这样有什么危害，以及最后的队列">
+<meta property="og:description" content="什么是进程间的通信，以及如何解决进程间的通信，线程共享同一片内存空间，那么这样又有什么危害，线程锁是什么，它能干嘛，队列又应该怎么用，以及生产者和消费者模式">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/5A0DC96C7070430A8E6444B9D7CE91F8?method=download&shareKey=147c58507ab4d85a8b3c8709b059aa3e">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/59404E78ABE54C2C80A6B9F346F5E09B?method=download&shareKey=dd0237aa192dde1e73af01625a88a12b">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/FEBA40128AB040AD99257AA113DC6E0D?method=download&shareKey=3041113233330dbe1367a93e8a3649e7">
-<meta property="og:updated_time" content="2018-03-28T06:40:43.216Z">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/48D8D5909D4F42E18269609046042960?method=download&shareKey=1d0adb3b5d56b8baeb78c01645494fea">
+<meta property="og:updated_time" content="2018-03-28T08:21:32.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通信">
-<meta name="twitter:description" content="这边文章主要介绍进程间的通信，如何解决进程间的通信，线程共享同一片内存空间，那么这样有什么危害，以及最后的队列">
+<meta name="twitter:description" content="什么是进程间的通信，以及如何解决进程间的通信，线程共享同一片内存空间，那么这样又有什么危害，线程锁是什么，它能干嘛，队列又应该怎么用，以及生产者和消费者模式">
 <meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/5A0DC96C7070430A8E6444B9D7CE91F8?method=download&shareKey=147c58507ab4d85a8b3c8709b059aa3e">
 
 
@@ -387,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,472 字
+                  2,133 字
                 </span>
               
 
@@ -403,7 +404,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -424,7 +425,7 @@
       
 
       
-        <p>这边文章主要介绍进程间的通信，如何解决进程间的通信，线程共享同一片内存空间，那么这样有什么危害，以及最后的队列</p>
+        <p>什么是进程间的通信，以及如何解决进程间的通信，线程共享同一片内存空间，那么这样又有什么危害，线程锁是什么，它能干嘛，队列又应该怎么用，以及生产者和消费者模式</p>
 <a id="more"></a>
 <p>先看代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">age = <span class="number">10</span> <span class="comment"># 全局变量</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> age</span><br><span class="line">    age = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># func()</span></span><br><span class="line">p = Process(target=func)</span><br><span class="line">p.start()</span><br><span class="line">p.join()</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure></p>
 <p>打印输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure></p>
@@ -455,6 +456,12 @@
 </blockquote>
 <p>我们在学习队列之前，先看看队列的原理<br><img src="https://note.youdao.com/yws/api/personal/file/FEBA40128AB040AD99257AA113DC6E0D?method=download&amp;shareKey=3041113233330dbe1367a93e8a3649e7" alt="队列的原理"></p>
 <p>队列只有一个入口，一个出口，遵循先出先出（FIFO:<code>First in First Out</code>）</p>
+<p>先看代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span>  Queue</span><br><span class="line"></span><br><span class="line">q = Queue() <span class="comment"># 实例一个队列对象　里面有一个　maxsize 参数，如果不传，那么则是无穷大，传了则表示 队列的一个最大值</span></span><br><span class="line"></span><br><span class="line">q.put(<span class="string">'a'</span>) <span class="comment"># 向队列里面塞东西  入队</span></span><br><span class="line"></span><br><span class="line">print(q.get()) <span class="comment"># 向队列里面取东西  出队</span></span><br></pre></td></tr></table></figure></p>
+<p>上面就是一个最简单的队列，那么队列当然不止只有这么两个方法，还有比如说 <code>full()</code>、<code>empty()</code>、<code>qsize()</code>、<code>task_done()</code>和<code>join()</code>，当然需要注意的是，<code>full()</code>和<code>empty()</code>是近似值，就是说，不是很正确，然后<code>join()</code>和<code>task_done()</code>这两个方法在下面会讲到，我们回过头来看看，<code>get()</code>和<code>put()</code>这么两个方法，一个就是塞，一个取，但是要注意，这玩意也会阻塞，比如当你 <code>put</code>  超过了，当初定义队列的最大值，那么就会阻塞，另外　<code>get()</code> 如果取出超过队列长度，它也会阻塞，接下来操作一下队列的其它一些方法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span>  Queue</span><br><span class="line"></span><br><span class="line">q = Queue(<span class="number">3</span>) <span class="comment"># 这个队列最大长度为3</span></span><br><span class="line"></span><br><span class="line">q.put(<span class="string">'a'</span>) <span class="comment"># 向队列里面塞东西</span></span><br><span class="line">q.put(<span class="string">'b'</span>)</span><br><span class="line">q.put(<span class="string">'a'</span>)</span><br><span class="line">print(q.empty()) <span class="comment"># False</span></span><br><span class="line">print(q.full()) <span class="comment"># True</span></span><br><span class="line">print(q.qsize()) <span class="comment"># 3</span></span><br><span class="line">print(q.get()) <span class="comment"># 向队列里面取东西</span></span><br></pre></td></tr></table></figure></p>
+<p>接下来我们看下<code>task_done</code>和<code>join</code>这两个方法，先看代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span>  Queue</span><br><span class="line"></span><br><span class="line">q = Queue(<span class="number">3</span>) <span class="comment"># 这个队列最大长度为3</span></span><br><span class="line"></span><br><span class="line">q.put(<span class="number">1</span>) <span class="comment"># 往队列添加数据  计数器 +1</span></span><br><span class="line">print(q.get()) <span class="comment"># 仅仅取数据，不做任何操作</span></span><br><span class="line">q.task_done() <span class="comment"># 告诉队列 当前任务结束  计数器 -1</span></span><br><span class="line">q.join() <span class="comment"># 阻塞，一直到计数器为 0 才会停止阻塞</span></span><br></pre></td></tr></table></figure></p>
+<p>首先，我们要了解一个概念，在队列里面，存在着一个计数器的东西，当对队列进行 <code>put</code>的时候，这个计数器就会 +1 ，但是，当对队列进行 <code>get</code> 的时候，计数器，并不会做任何操作，只有使用了 <code>task_done</code>，这个计算器才会 -1 ，而 <code>join</code>表示，只有当计算器为 0的时候，才不阻塞，否则就阻塞</p>
+<p>除了 Python 自带的 queue 这么一个队列，还记得前面说过的 manager 本身带的一个 queue 吗，用法和使用本身自带的是一模一样的，只不过一个是针对线程，一个是进程，自带的是针对线程，manager 是针对进程<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Manager</span><br><span class="line"></span><br><span class="line">mgr = Manager()</span><br><span class="line">q = mgr.Queue()</span><br><span class="line"></span><br><span class="line">q.put(<span class="string">'1'</span>)</span><br><span class="line">print(q.get())</span><br></pre></td></tr></table></figure></p>
+<h4 id="生产者和消费者模式"><a href="#生产者和消费者模式" class="headerlink" title="生产者和消费者模式"></a>生产者和消费者模式</h4><p><img src="https://note.youdao.com/yws/api/personal/file/48D8D5909D4F42E18269609046042960?method=download&amp;shareKey=1d0adb3b5d56b8baeb78c01645494fea" alt="生产者和消费者传输模式"></p>
 
       
     </div>
@@ -778,7 +785,7 @@ data-autoplay : 自动播放，支持如下参数:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程锁"><span class="nav-number">1.</span> <span class="nav-text">线程锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列"><span class="nav-number">2.</span> <span class="nav-text">队列</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程锁"><span class="nav-number">1.</span> <span class="nav-text">线程锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列"><span class="nav-number">2.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生产者和消费者模式"><span class="nav-number">2.1.</span> <span class="nav-text">生产者和消费者模式</span></a></li></ol></li></ol></div>
             
 
           </div>
