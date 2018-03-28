@@ -84,15 +84,22 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Python/</loc>
-        <lastmod>2018-03-28T09:02:11.046Z</lastmod>
+        <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
+        <lastmod>2018-03-28T15:01:38.487Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-        <lastmod>2018-03-28T09:02:11.046Z</lastmod>
+        <loc>http://yoursite.com/categories/Python/</loc>
+        <lastmod>2018-03-28T15:03:10.438Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
+        <lastmod>2018-03-28T15:03:10.438Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
