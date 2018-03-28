@@ -7,8 +7,16 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/%E9%80%9A%E4%BF%A1/</loc>
-        <lastmod>2018-03-28T03:40:50.145Z</lastmod>
+        <loc>http://yoursite.com/2018/03/18/Python/Concurrency/ProcessesAndThreads/%E9%80%9A%E4%BF%A1/</loc>
+        <lastmod>2018-03-28T06:40:43.216Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
+        <lastmod>2018-03-28T06:39:00.625Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -49,14 +57,6 @@
     <url>
         <loc>http://yoursite.com/2017/11/11/linux/vim/Vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
         <lastmod>2018-03-26T10:50:00.900Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-        <lastmod>2018-03-26T10:40:45.641Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
