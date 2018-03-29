@@ -37,78 +37,78 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Vim/</loc>
-        <lastmod>2018-03-26T10:50:00.900Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/Linux/</loc>
-        <lastmod>2018-03-26T11:03:48.738Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/Python/</loc>
-        <lastmod>2018-03-28T15:06:00.766Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/function/</loc>
-        <lastmod>2018-03-28T15:18:06.835Z</lastmod>
+        <lastmod>2018-03-29T05:37:58.349Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/RegExp/</loc>
-        <lastmod>2018-03-28T15:18:13.742Z</lastmod>
+        <lastmod>2018-03-29T05:38:52.730Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/JS/</loc>
-        <lastmod>2018-03-28T15:18:23.080Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/layout/</loc>
-        <lastmod>2018-03-28T15:20:47.790Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/CSS3/</loc>
-        <lastmod>2018-03-28T15:21:23.454Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/HTML-CSS/</loc>
-        <lastmod>2018-03-28T15:21:29.950Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/CSS/</loc>
-        <lastmod>2018-03-28T15:22:10.296Z</lastmod>
+        <lastmod>2018-03-29T05:41:37.940Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/HTML/</loc>
-        <lastmod>2018-03-28T15:22:16.997Z</lastmod>
+        <lastmod>2018-03-29T05:44:24.780Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/CSS/</loc>
+        <lastmod>2018-03-29T05:45:38.329Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/CSS3/</loc>
+        <lastmod>2018-03-29T05:46:13.957Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/layout/</loc>
+        <lastmod>2018-03-29T05:46:16.712Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/HTML-CSS/</loc>
+        <lastmod>2018-03-29T05:46:21.264Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Vim/</loc>
+        <lastmod>2018-03-29T05:48:03.159Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Python/</loc>
+        <lastmod>2018-03-29T11:06:05.453Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Linux/</loc>
+        <lastmod>2018-03-29T11:36:43.092Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

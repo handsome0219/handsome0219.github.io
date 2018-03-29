@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://yoursite.com/img/javascript/Binary03.png">
 <meta property="og:image" content="http://yoursite.com/img/javascript/Binary04.png">
 <meta property="og:image" content="http://yoursite.com/img/javascript/Binary05.png">
-<meta property="og:updated_time" content="2018-03-24T06:28:06.260Z">
+<meta property="og:updated_time" content="2018-03-29T05:38:39.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作符">
 <meta name="twitter:image" content="http://yoursite.com/img/javascript/Operators.jpg">
@@ -420,7 +420,7 @@
 <p>javascript中的操作符 算术运算符 赋值运算符 关系运算符 逻辑运算符 位运算符 逗号运算符</p>
 </blockquote>
 <p>这里我们着重看一下关系运算符 逻辑运算符 位运算符 逗号运算符</p>
-<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p>js的关系操作符需要 <strong>注意</strong> 几个点 </p>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p>js的关系操作符需要 <strong>注意</strong> 几个点</p>
 <p>如果比较的是数值, 则执行数值比较</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"10"</span>;</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">11</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str &lt; num); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"100"</span>;</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str &gt; num); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <p>如果比较的是两个字符, 则比较两个字符对应的编码ASCII值</p>
@@ -432,7 +432,7 @@
 <p>“x”字符不能被合理的转化成数字即Number(“x”) = NaN, 然而NaN和任何操作数比较都返回false, 毕竟NaN == NaN都返回false, 我连我自己都不认识</p>
 <p>undefined与null, 两个都表示<strong>无</strong>, 转成数值undefined为NaN, null为0 当进行两个等号判断返回true, 三个等号返回false, 但是在某些特定情况下, 例如定义变量未初始化, 对象扩展属性未赋值, 函数默认返回undefined在这些情况下null是无法替代的, 因为null会被转换成0可能造成运算错误.这个特性记住就好了.</p>
 <p>null与0直接判断==操作时返回false, 惊不惊喜意不意外, null的数据类型是object, <strong>如果比较的是对象, 则调用valueOf()方法或者toLocaleString()方法返回的结果去比较</strong>, 但是null很特殊没有这些方法, null做为原型链的尽头,所以null == 0不会做特殊处理 返回false. null &gt;= 0比较时这个问题在ECMA规定中&gt;,=存在运算优先级的问题被分为了两部分,需要注意的是并不是&gt;和=判断的结合,这里只是当 null &gt;= 0判断是会转换成Number(null) &gt;= 0, 记住就好.</p>
-<p>在关系判断中会存在很多的数据类型的转化, 抓住本质才好哟. </p>
+<p>在关系判断中会存在很多的数据类型的转化, 抓住本质才好哟.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + <span class="number">1</span> + <span class="string">"1"</span>); 	<span class="comment">// 111</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + + <span class="string">"1"</span> + <span class="number">1</span>); <span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 相当于</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + (+<span class="string">"1"</span>) + <span class="number">1</span>); <span class="comment">// 会被隐式转换成number</span></span><br></pre></td></tr></table></figure>
 <h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p><code>&amp;&amp;</code> and <code>||</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">if</span>( <span class="number">10</span>&lt; num &lt; <span class="number">19</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1  因为 10 &lt; 20 &lt; 19 是依次从左向右执行 true &lt; 19 true被转换成1 &lt; 19 返回true 打印1 这也就是为什么必须要有 &amp;&amp; 操作符 应当改写成 num &gt; 10 &amp;&amp; num &lt; 19</span></span><br></pre></td></tr></table></figure>
@@ -442,7 +442,7 @@
 <h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><blockquote>
 <p>一个字节的大小 8个二进制位, 有符号的整数占4个字节 32个二进制位, 其中31位用于表示整数的值, 最高位为符号位</p>
 </blockquote>
-<p>在学习位运算符首先我们需要清楚计算机存储数字的是怎么样的表现形式. </p>
+<p>在学习位运算符首先我们需要清楚计算机存储数字的是怎么样的表现形式.</p>
 <p>位运算符包括 右移(&gt;&gt;)、 左移(&lt;&lt;)、 无符号右移(&gt;&gt;&gt;)、 按位或(|)、 按位与(&amp;)、 按位异或(^)、按位非(~)</p>
 <ul>
 <li><p>右移、左移</p>
@@ -657,7 +657,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -668,7 +668,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

@@ -88,18 +88,17 @@
 
 
 
-<meta name="description" content="Controlling Execution 所有生物都会去控制自己的行为。程序也必须在执行的过程中控制它的过程。程序在执行的时候要么在顺序执行要么跳转。因此选择合适的控制语句来帮助程序做出正确的判断。控制语句包含了 判断 、循环遍历 一系列简单的命令。  流程控制if 在逻辑运算中已经使用到了 if 语句 1234567891011121314151617/*  if( boolean ) st">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="控制语句">
 <meta property="og:url" content="http://yoursite.com/2018/02/05/Javascript/Controlling Execution/index.html">
 <meta property="og:site_name" content="付帅帅">
-<meta property="og:description" content="Controlling Execution 所有生物都会去控制自己的行为。程序也必须在执行的过程中控制它的过程。程序在执行的时候要么在顺序执行要么跳转。因此选择合适的控制语句来帮助程序做出正确的判断。控制语句包含了 判断 、循环遍历 一系列简单的命令。  流程控制if 在逻辑运算中已经使用到了 if 语句 1234567891011121314151617/*  if( boolean ) st">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-24T06:28:15.026Z">
+<meta property="og:image" content="http://yoursite.com/img/javascript/Control.jpg">
+<meta property="og:updated_time" content="2018-03-29T05:37:00.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="控制语句">
-<meta name="twitter:description" content="Controlling Execution 所有生物都会去控制自己的行为。程序也必须在执行的过程中控制它的过程。程序在执行的时候要么在顺序执行要么跳转。因此选择合适的控制语句来帮助程序做出正确的判断。控制语句包含了 判断 、循环遍历 一系列简单的命令。  流程控制if 在逻辑运算中已经使用到了 if 语句 1234567891011121314151617/*  if( boolean ) st">
+<meta name="twitter:image" content="http://yoursite.com/img/javascript/Control.jpg">
 
 
 
@@ -409,14 +408,14 @@
       
 
       
-        <a id="more"></a>
+        <p><img src="/img/javascript/Control.jpg" alt="控制语句"><br><a id="more"></a></p>
 <h1 id="Controlling-Execution"><a href="#Controlling-Execution" class="headerlink" title="Controlling Execution"></a>Controlling Execution</h1><blockquote>
 <p>所有生物都会去控制自己的行为。程序也必须在执行的过程中控制它的过程。程序在执行的时候要么在顺序执行要么跳转。因此选择合适的控制语句来帮助程序做出正确的判断。控制语句包含了 <strong>判断</strong> 、<strong>循环遍历</strong> 一系列简单的命令。</p>
 </blockquote>
 <h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><p> 在逻辑运算中已经使用到了 <em>if</em> 语句</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  if( boolean ) statement1 else statement2</span></span><br><span class="line"><span class="comment">  大括号可以省略不写 看情况</span></span><br><span class="line"><span class="comment">  boolean的含义不仅仅是简单的true or false </span></span><br><span class="line"><span class="comment">  false 0 NaN undefined null 空字符"" 在判断中都代表假</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="number">10</span> &gt; <span class="number">5</span>)</span><br><span class="line">  alert(<span class="string">"max:"</span> + <span class="number">10</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  alert(<span class="string">"min:"</span> + <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(condition1)</span><br><span class="line">  <span class="comment">// statement1</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(condition2)</span><br><span class="line">  <span class="comment">// statement2</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="comment">// statement3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  if( boolean ) statement1 else statement2</span></span><br><span class="line"><span class="comment">  大括号可以省略不写 看情况</span></span><br><span class="line"><span class="comment">  boolean的含义不仅仅是简单的true or false</span></span><br><span class="line"><span class="comment">  false 0 NaN undefined null 空字符"" 在判断中都代表假</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="number">10</span> &gt; <span class="number">5</span>)</span><br><span class="line">  alert(<span class="string">"max:"</span> + <span class="number">10</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  alert(<span class="string">"min:"</span> + <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(condition1)</span><br><span class="line">  <span class="comment">// statement1</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(condition2)</span><br><span class="line">  <span class="comment">// statement2</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="comment">// statement3</span></span><br></pre></td></tr></table></figure>
 <h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p><em>switch</em> 与 <em>if</em> 有点相似</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	注意点：</span></span><br><span class="line"><span class="comment">		1. 每一条case加break，除非是要合并结果可以不加</span></span><br><span class="line"><span class="comment">		2. value不会发生隐式转换</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line">  <span class="keyword">case</span> value1:</span><br><span class="line">   	statement1</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> value2:</span><br><span class="line">   	statement2</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> value3:</span><br><span class="line">   	statement3</span><br><span class="line">  <span class="keyword">break</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	注意点：</span></span><br><span class="line"><span class="comment">		1. 每一条case加break，除非是要合并结果可以不加</span></span><br><span class="line"><span class="comment">		2. value不会发生隐式转换</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line">  <span class="keyword">case</span> value1:</span><br><span class="line">   	statement1</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> value2:</span><br><span class="line">   	statement2</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> value3:</span><br><span class="line">   	statement3</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><blockquote>
 <p>所谓循环就是多次重复执行某些类似的操作。这个操作一般不是完全一样的操作，而是类似的操作。</p>
 </blockquote>
@@ -625,7 +624,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -636,7 +635,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

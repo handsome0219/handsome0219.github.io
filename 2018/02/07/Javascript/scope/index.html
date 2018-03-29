@@ -88,21 +88,19 @@
 
 
 
-<meta name="description" content="Javascript的执行环境（ execution context 执行上下文）依赖于浏览器，每一个变量，函数都会有自己的执行环境，在web浏览器中执行环境 window 对象。即全局创建的变量函数都做为 window 对象的属性和方法。需要强调的是 function 也是一个独立的执行环境。程序执行依次进入 call stack 进栈执行，执行到函数进入函数内部执行上下文，也就是进入执行环">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scope">
 <meta property="og:url" content="http://yoursite.com/2018/02/07/Javascript/scope/index.html">
 <meta property="og:site_name" content="付帅帅">
-<meta property="og:description" content="Javascript的执行环境（ execution context 执行上下文）依赖于浏览器，每一个变量，函数都会有自己的执行环境，在web浏览器中执行环境 window 对象。即全局创建的变量函数都做为 window 对象的属性和方法。需要强调的是 function 也是一个独立的执行环境。程序执行依次进入 call stack 进栈执行，执行到函数进入函数内部执行上下文，也就是进入执行环">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/img/javascript/scope.jpg">
 <meta property="og:image" content="http://yoursite.com/img/javascript/scope1.png">
 <meta property="og:image" content="http://yoursite.com/img/javascript/scope2.png">
-<meta property="og:updated_time" content="2018-03-28T15:18:16.061Z">
+<meta property="og:updated_time" content="2018-03-29T05:39:17.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scope">
-<meta name="twitter:description" content="Javascript的执行环境（ execution context 执行上下文）依赖于浏览器，每一个变量，函数都会有自己的执行环境，在web浏览器中执行环境 window 对象。即全局创建的变量函数都做为 window 对象的属性和方法。需要强调的是 function 也是一个独立的执行环境。程序执行依次进入 call stack 进栈执行，执行到函数进入函数内部执行上下文，也就是进入执行环">
-<meta name="twitter:image" content="http://yoursite.com/img/javascript/scope1.png">
+<meta name="twitter:image" content="http://yoursite.com/img/javascript/scope.jpg">
 
 
 
@@ -412,7 +410,8 @@
       
 
       
-        <a id="more"></a>
+        <p><img src="/img/javascript/scope.jpg" alt="scope"></p>
+<a id="more"></a>
 <blockquote>
 <p>Javascript的执行环境（ <em>execution context</em> 执行上下文）依赖于浏览器，每一个变量，函数都会有自己的执行环境，在web浏览器中执行环境 <em>window</em> 对象。即全局创建的变量函数都做为 <em>window</em> 对象的属性和方法。需要强调的是 <em>function</em> 也是一个独立的执行环境。程序执行依次进入 <em>call stack</em> 进栈执行，执行到函数进入函数内部执行上下文，也就是进入执行环境会创建变量对象的作用域链（ <em>scope chain</em> ）按这种机制有序的访问所有的变量与函数。所以学习 <em>Javascript</em> 执行机制是非常必要的。</p>
 </blockquote>
@@ -629,7 +628,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -640,7 +639,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

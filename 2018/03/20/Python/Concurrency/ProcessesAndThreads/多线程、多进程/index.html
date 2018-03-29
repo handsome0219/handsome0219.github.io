@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="付帅帅">
 <meta property="og:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 什么是进程(Process) 对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，即主线程，然后由这个主线程去创建其它子线程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-28T15:01:38.487Z">
+<meta property="og:updated_time" content="2018-03-29T11:06:05.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程、多进程">
 <meta name="twitter:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 什么是进程(Process) 对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，即主线程，然后由这个主线程去创建其它子线程">
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,731 字
+                  2,070 字
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -457,7 +457,17 @@
 <h2 id="使用多线程避免阻塞"><a href="#使用多线程避免阻塞" class="headerlink" title="使用多线程避免阻塞"></a>使用多线程避免阻塞</h2><p>多线程避免阻塞，使用 socket 本身的阻塞做为例子</p>
 <p>服务端：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</span><br><span class="line"></span><br><span class="line">server = socket.socket()</span><br><span class="line">server.bind((<span class="string">''</span>, <span class="number">8888</span>))</span><br><span class="line">server.listen(<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接收数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(conn, raddr)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        data = conn.recv(<span class="number">1000</span>)</span><br><span class="line">        <span class="keyword">if</span> data:</span><br><span class="line">            print(data.decode(<span class="string">'utf-8'</span>))</span><br><span class="line">            conn.send(data)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            conn.close()</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    connection, remote_address = server.accept()</span><br><span class="line">    <span class="comment"># 使用多线程防止阻塞</span></span><br><span class="line">    t = Thread(target=read, args=(connection, remote_address))</span><br><span class="line">    t.start()</span><br></pre></td></tr></table></figure></p>
 <p>客户端：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">client = socket.socket()</span><br><span class="line">client.connect((<span class="string">'localhost'</span>, <span class="number">8888</span>))</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    msg = input(<span class="string">'&gt;&gt;'</span>)</span><br><span class="line">    client.send(msg.encode(<span class="string">'utf8'</span>))</span><br><span class="line">    data = client.recv(<span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">if</span> data:</span><br><span class="line">        print(data.decode(<span class="string">'utf-8'</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        client.close()</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure></p>
-<p>这个就是使用多线程实现非阻塞的套接字的一个典型例子，每接收到一个客户端的连接，就分配一个线程去接收，这里要注意，不要使用 join()，因为一旦使用了，就表示只有当前线程结束后，才会开始下一次线程，当然，这是多线程实现非阻塞的套接字，使用多进程同样也是可以的，但是，使用多进程，比较损耗 CPU ，所以当遇到阻塞，要使用线程，因为线程遇到阻塞会自动切换</p>
+<p>这个就是使用多线程实现并发服务器的一个典型例子，每接收到一个客户端的连接，就分配一个线程去接收，这里要注意，不要使用 join()，因为一旦使用了，就表示只有当前线程结束后，才会开始下一次线程，当然，这是多线程实现非阻塞的套接字，使用多进程同样也是可以的，但是，使用多进程，比较损耗 CPU ，所以当遇到阻塞，要使用线程，因为线程遇到阻塞会自动切换</p>
+<h4 id="操作补充"><a href="#操作补充" class="headerlink" title="操作补充"></a>操作补充</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">'outer start'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'func start'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br><span class="line">    time.sleep(<span class="number">4</span>)</span><br><span class="line">    print(<span class="string">'func end'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br><span class="line"></span><br><span class="line">p = multiprocessing.Process(target=func) <span class="comment"># 只是定义进程 没有生成进程</span></span><br><span class="line">p.start() <span class="comment"># 生产进程 调用 run 方法，间接调用 target 对象</span></span><br><span class="line">p.join() <span class="comment"># 由调用进程 阻塞等待对应子进程结束在 （主进程调用）</span></span><br><span class="line">time.sleep(<span class="number">4</span>)</span><br><span class="line">print(<span class="string">'outer end'</span>, time.strftime(<span class="string">'%H:%M:%S'</span>, time.localtime()))</span><br></pre></td></tr></table></figure>
+<p>join 方法就是，由调用线程等待对应子进程结束<br>打印当前进程<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(multiprocessing.current_process())</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'func start'</span>)</span><br><span class="line">    print(multiprocessing.current_process())</span><br><span class="line">    print(<span class="string">'func end'</span>)</span><br><span class="line"></span><br><span class="line">p = multiprocessing.Process(target=func)</span><br><span class="line">p.start() <span class="comment"># 没有先后顺序</span></span><br><span class="line">print(<span class="string">'main end'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>current_process() 是打印出当前进程，可以用于调试  <strong>注意</strong>父进程会等待子进程结束在退出</p>
+<p>进程可以中途停止，但是线程是不可以中途停止，进程使用<code>terminate()</code>就可以中止<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import multiprocessing</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">print(multiprocessing.current_process())</span><br><span class="line">def func():</span><br><span class="line">    print(&apos;func start&apos;)</span><br><span class="line">    time.sleep(4)</span><br><span class="line">    print(&apos;func end&apos;)</span><br><span class="line"></span><br><span class="line">p = multiprocessing.Process(target=func)</span><br><span class="line">p.start()</span><br><span class="line">time.sleep(2)</span><br><span class="line">p.terminate() # 中止</span><br></pre></td></tr></table></figure></p>
+<h2 id="进程和进程的标识"><a href="#进程和进程的标识" class="headerlink" title="进程和进程的标识"></a>进程和进程的标识</h2><blockquote>
+<p>进程的标识是 pid 号，线程的标识是 ident</p>
+</blockquote>
+<h2 id="守护模式"><a href="#守护模式" class="headerlink" title="守护模式"></a>守护模式</h2><blockquote>
+<p>守护进程和守护线程</p>
+</blockquote>
 
       
     </div>
@@ -562,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/24/Python/Concurrency/ProcessesAndThreads/通信/" rel="prev" title="通信">
-                通信 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/20/contos7安装Python36/" rel="prev" title="contos7安装Python36">
+                contos7安装Python36 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -641,7 +651,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -652,7 +662,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -781,7 +791,7 @@ data-autoplay : 自动播放，支持如下参数:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是进程-Process"><span class="nav-number">1.</span> <span class="nav-text">什么是进程(Process)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是线程-Thread"><span class="nav-number">2.</span> <span class="nav-text">什么是线程(Thread)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程和线程之间的区别"><span class="nav-number">3.</span> <span class="nav-text">进程和线程之间的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并行和并发的理解"><span class="nav-number">3.1.</span> <span class="nav-text">并行和并发的理解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建进程-Process"><span class="nav-number">4.</span> <span class="nav-text">创建进程(Process)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建线程-Thread"><span class="nav-number">5.</span> <span class="nav-text">创建线程(Thread)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算密集型任务和-IO密集任务"><span class="nav-number">6.</span> <span class="nav-text">计算密集型任务和 IO密集任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用多进程实现并行"><span class="nav-number">7.</span> <span class="nav-text">使用多进程实现并行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用多线程避免阻塞"><span class="nav-number">8.</span> <span class="nav-text">使用多线程避免阻塞</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是进程-Process"><span class="nav-number">1.</span> <span class="nav-text">什么是进程(Process)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是线程-Thread"><span class="nav-number">2.</span> <span class="nav-text">什么是线程(Thread)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程和线程之间的区别"><span class="nav-number">3.</span> <span class="nav-text">进程和线程之间的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并行和并发的理解"><span class="nav-number">3.1.</span> <span class="nav-text">并行和并发的理解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建进程-Process"><span class="nav-number">4.</span> <span class="nav-text">创建进程(Process)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建线程-Thread"><span class="nav-number">5.</span> <span class="nav-text">创建线程(Thread)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算密集型任务和-IO密集任务"><span class="nav-number">6.</span> <span class="nav-text">计算密集型任务和 IO密集任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用多进程实现并行"><span class="nav-number">7.</span> <span class="nav-text">使用多进程实现并行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用多线程避免阻塞"><span class="nav-number">8.</span> <span class="nav-text">使用多线程避免阻塞</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#操作补充"><span class="nav-number">8.0.1.</span> <span class="nav-text">操作补充</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程和进程的标识"><span class="nav-number">9.</span> <span class="nav-text">进程和进程的标识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#守护模式"><span class="nav-number">10.</span> <span class="nav-text">守护模式</span></a></li></ol></div>
             
 
           </div>
