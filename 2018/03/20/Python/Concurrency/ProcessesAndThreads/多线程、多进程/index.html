@@ -97,7 +97,7 @@
 <meta property="og:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 什么是进程(Process) 对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，即主线程，然后由这个主线程去创建其它子线程">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/F7AB69B1773948FAB4A867147C9DB947?method=download&shareKey=5299b38634740383100895be5588061c">
-<meta property="og:updated_time" content="2018-03-29T11:55:20.099Z">
+<meta property="og:updated_time" content="2018-03-29T15:20:36.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程、多进程">
 <meta name="twitter:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 什么是进程(Process) 对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，即主线程，然后由这个主线程去创建其它子线程">
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,141 字
+                  2,249 字
                 </span>
               
 
@@ -468,8 +468,11 @@
 <p>进程的标识是 pid 号，线程的标识是 ident</p>
 </blockquote>
 <p>先看下面这段代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">print(multiprocessing.current_process().pid)</span><br><span class="line">time.sleep(<span class="number">10</span>)</span><br></pre></td></tr></table></figure></p>
-<p>以上代码运行之后，我们使用 <code>ps aux|grep python3</code> 来查看进程<br><img src="https://note.youdao.com/yws/api/personal/file/F7AB69B1773948FAB4A867147C9DB947?method=download&amp;shareKey=5299b38634740383100895be5588061c" alt=""></p>
-<p>如果是使用是 Pycharm 连接 Linux 运行以上代码，则会多出一个  Pycharm 的进程</p>
+<p>以上代码运行之后，在控制台输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">31819</span><br></pre></td></tr></table></figure></p>
+<p>我们使用 <code>ps aux|grep python3</code> 来查看进程<br><img src="https://note.youdao.com/yws/api/personal/file/F7AB69B1773948FAB4A867147C9DB947?method=download&amp;shareKey=5299b38634740383100895be5588061c" alt=""><br>如果是使用是 Pycharm 连接 Linux 运行以上代码，则会多出一个  Pycharm 的进程，然后加上 grep 的进程，所以有 3个进程</p>
+<p>接下来继续看子进程的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">print(multiprocessing.current_process().pid)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'func start'</span>)</span><br><span class="line">    print(multiprocessing.current_process().pid)</span><br><span class="line">    print(<span class="string">'func end'</span>)</span><br><span class="line"></span><br><span class="line">p = multiprocessing.Process(target=func) <span class="comment"># 只是定义了一个 进程对象 并没有生产进程</span></span><br><span class="line">print(p.pid) <span class="comment"># None</span></span><br><span class="line">p.start() <span class="comment">#  这才是生成进程的</span></span><br></pre></td></tr></table></figure></p>
+<p>然后我们来看看 线程的 <code>ident</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="守护模式"><a href="#守护模式" class="headerlink" title="守护模式"></a>守护模式</h2><blockquote>
 <p>守护进程和守护线程</p>
 </blockquote>
@@ -577,7 +580,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/20/contos7安装Python36/" rel="prev" title="contos7安装Python36">
+              <a href="/2018/03/20/Linux/contos7安装Python36/" rel="prev" title="contos7安装Python36">
                 contos7安装Python36 <i class="fa fa-chevron-right"></i>
               </a>
             

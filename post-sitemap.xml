@@ -7,16 +7,16 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/20/contos7%E5%AE%89%E8%A3%85Python36/</loc>
-        <lastmod>2018-03-29T11:58:56.230Z</lastmod>
+        <loc>http://yoursite.com/2018/03/20/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
+        <lastmod>2018-03-29T15:20:36.112Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/20/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-        <lastmod>2018-03-29T11:55:20.099Z</lastmod>
+        <loc>http://yoursite.com/2018/03/20/Linux/contos7%E5%AE%89%E8%A3%85Python36/</loc>
+        <lastmod>2018-03-29T12:00:16.611Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -31,7 +31,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/11/11/linux/vim/Vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
+        <loc>http://yoursite.com/2017/11/11/Linux/vim/Vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
         <lastmod>2018-03-29T05:48:03.159Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -263,7 +263,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/02/26/linux/linux/</loc>
+        <loc>http://yoursite.com/2018/02/26/Linux/linux/</loc>
         <lastmod>2018-03-26T11:03:48.738Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
