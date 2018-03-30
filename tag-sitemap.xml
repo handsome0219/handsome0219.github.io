@@ -100,15 +100,15 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Python/</loc>
-        <lastmod>2018-03-29T15:20:36.112Z</lastmod>
+        <loc>http://yoursite.com/tags/Linux/</loc>
+        <lastmod>2018-03-30T06:14:44.543Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Linux/</loc>
-        <lastmod>2018-03-30T03:25:39.276Z</lastmod>
+        <loc>http://yoursite.com/tags/Python/</loc>
+        <lastmod>2018-03-30T06:18:13.940Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

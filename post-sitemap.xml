@@ -7,16 +7,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/20/Linux/contos7%E5%AE%89%E8%A3%85Python36/</loc>
-        <lastmod>2018-03-30T03:25:39.276Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/03/20/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-        <lastmod>2018-03-29T15:20:36.112Z</lastmod>
+        <loc>http://yoursite.com/2018/03/20/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2018-03-30T07:10:45.281Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,7 +16,15 @@
 
     <url>
         <loc>http://yoursite.com/2018/03/28/Python/Concurrency/ProcessesAndThreads/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%B1%A0/</loc>
-        <lastmod>2018-03-29T06:03:23.620Z</lastmod>
+        <lastmod>2018-03-30T06:18:13.940Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/03/20/Linux/contos7%E5%AE%89%E8%A3%85Python36/</loc>
+        <lastmod>2018-03-30T06:14:44.543Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
