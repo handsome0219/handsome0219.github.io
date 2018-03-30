@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="CentOS7自带的 Python 是 Python2.7，那么要使用 Python3.6 的话 ，则需要我们自己安装了，那么如何在  CentOS7 下安装  Python36 呢？ CentOS7安装 Python3.6 有两种方式：">
+<meta name="description" content="CentOS7 自带的 Python 的版本是 Python2.7，那么要使用 Python3.6 的版本，则需要我们自己安装了，如何在  CentOS7 下安装  Python36 CentOS7安装 Python3.6 有两种方式：">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="contos7安装Python36">
 <meta property="og:url" content="http://yoursite.com/2018/03/20/Linux/contos7安装Python36/index.html">
 <meta property="og:site_name" content="付帅帅">
-<meta property="og:description" content="CentOS7自带的 Python 是 Python2.7，那么要使用 Python3.6 的话 ，则需要我们自己安装了，那么如何在  CentOS7 下安装  Python36 呢？ CentOS7安装 Python3.6 有两种方式：">
+<meta property="og:description" content="CentOS7 自带的 Python 的版本是 Python2.7，那么要使用 Python3.6 的版本，则需要我们自己安装了，如何在  CentOS7 下安装  Python36 CentOS7安装 Python3.6 有两种方式：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-29T12:00:16.611Z">
+<meta property="og:updated_time" content="2018-03-30T03:25:39.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="contos7安装Python36">
-<meta name="twitter:description" content="CentOS7自带的 Python 是 Python2.7，那么要使用 Python3.6 的话 ，则需要我们自己安装了，那么如何在  CentOS7 下安装  Python36 呢？ CentOS7安装 Python3.6 有两种方式：">
+<meta name="twitter:description" content="CentOS7 自带的 Python 的版本是 Python2.7，那么要使用 Python3.6 的版本，则需要我们自己安装了，如何在  CentOS7 下安装  Python36 CentOS7安装 Python3.6 有两种方式：">
 
 
 
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  375 字
+                  377 字
                 </span>
               
 
@@ -420,7 +420,7 @@
       
 
       
-        <p>CentOS7自带的 Python 是 Python2.7，那么要使用 Python3.6 的话 ，则需要我们自己安装了，那么如何在  CentOS7 下安装  Python36 呢？</p>
+        <p>CentOS7 自带的 Python 的版本是 Python2.7，那么要使用 Python3.6 的版本，则需要我们自己安装了，如何在  CentOS7 下安装  Python36</p>
 <p>CentOS7安装 Python3.6 有两种方式：</p>
 <a id="more"></a>
 <ul>
@@ -430,18 +430,17 @@
 <h2 id="CentOS7-的-yum-源安装-Python3-6"><a href="#CentOS7-的-yum-源安装-Python3-6" class="headerlink" title="CentOS7 的 yum 源安装 Python3.6"></a>CentOS7 的 yum 源安装 Python3.6</h2><blockquote>
 <p>IUS 软件源包含了 Python3.6，那么我们可以使用 IUS 软件源安装 Python3.6</p>
 </blockquote>
-<p>###1. 安装 IUS 的软件源<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装 EPEL 依赖</span><br><span class="line">sudo yum install epel-release</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 安装 IUS 的软件源</span><br><span class="line">sudo yum install https://centos7.iuscommunity.org/ius-release.rpm</span><br></pre></td></tr></table></figure></p>
-<p>###2. 安装 Python3.6<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install python36u</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-安装-IUS-的软件源"><a href="#1-安装-IUS-的软件源" class="headerlink" title="1. 安装 IUS 的软件源"></a>1. 安装 IUS 的软件源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装 EPEL 依赖</span><br><span class="line">sudo yum install epel-release</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 安装 IUS 的软件源</span><br><span class="line">sudo yum install https://centos7.iuscommunity.org/ius-release.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装-Python3-6"><a href="#2-安装-Python3-6" class="headerlink" title="2. 安装 Python3.6"></a>2. 安装 Python3.6</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install python36u</span><br></pre></td></tr></table></figure>
 <p>安装 Python3 完成后的命令为 Python3.6，为了使用方便，创建一个 Python3 的软链接<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /bin/python3.6 /bin/python3</span><br></pre></td></tr></table></figure></p>
-<p>###3. 安装 pip3</p>
-<blockquote>
+<h3 id="3-安装-pip3"><a href="#3-安装-pip3" class="headerlink" title="3. 安装 pip3"></a>3. 安装 pip3</h3><blockquote>
 <p>仅仅安装了 Python36u 并没有安装 pip ，所以要安装 pip</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install python36u-pip</span><br></pre></td></tr></table></figure>
 <p>安装 pip 后的命令也是为 pip3.6，为了方便，我们还有设置软链接<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /bin/pip3.6 /bin/pip3</span><br></pre></td></tr></table></figure></p>
 <h2 id="CentOS7-的源码安装-Python3-6"><a href="#CentOS7-的源码安装-Python3-6" class="headerlink" title="CentOS7 的源码安装 Python3.6"></a>CentOS7 的源码安装 Python3.6</h2><h3 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1.安装依赖"></a>1.安装依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y groupinstall development zlib-devel</span><br></pre></td></tr></table></figure>
-<h3 id="2-安装-Python3-6"><a href="#2-安装-Python3-6" class="headerlink" title="2. 安装 Python3.6"></a>2. 安装 Python3.6</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 从官网下载压缩包</span><br><span class="line">wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 解压压缩包</span><br><span class="line">tar xJf Python-3.6.0.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 进入 Python36 的文件目录</span><br><span class="line">cd Python-3.6.0</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 运行 configure 文件</span><br><span class="line">sudo ./configure</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 运行 make 以及 make install</span><br><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p>安装完成后的Python，是位于 <code>/usr/local</code> 文件目录中</p>
+<h3 id="2-安装-Python3-6-1"><a href="#2-安装-Python3-6-1" class="headerlink" title="2. 安装 Python3.6"></a>2. 安装 Python3.6</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 从官网下载压缩包</span><br><span class="line">wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 解压压缩包</span><br><span class="line">tar xJf Python-3.6.0.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 进入 Python36 的文件目录</span><br><span class="line">cd Python-3.6.0</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 运行 configure 文件</span><br><span class="line">sudo ./configure</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 运行 make 以及 make install</span><br><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>安装完成后的 Python3.6 ，是位于 <code>/usr/local</code> 文件目录中</p>
 
       
     </div>
@@ -765,7 +764,7 @@ data-autoplay : 自动播放，支持如下参数:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7-的-yum-源安装-Python3-6"><span class="nav-number">1.</span> <span class="nav-text">CentOS7 的 yum 源安装 Python3.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7-的源码安装-Python3-6"><span class="nav-number">2.</span> <span class="nav-text">CentOS7 的源码安装 Python3.6</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装依赖"><span class="nav-number">2.1.</span> <span class="nav-text">1.安装依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装-Python3-6"><span class="nav-number">2.2.</span> <span class="nav-text">2. 安装 Python3.6</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7-的-yum-源安装-Python3-6"><span class="nav-number">1.</span> <span class="nav-text">CentOS7 的 yum 源安装 Python3.6</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装-IUS-的软件源"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装 IUS 的软件源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装-Python3-6"><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装 Python3.6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安装-pip3"><span class="nav-number">1.3.</span> <span class="nav-text">3. 安装 pip3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7-的源码安装-Python3-6"><span class="nav-number">2.</span> <span class="nav-text">CentOS7 的源码安装 Python3.6</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装依赖"><span class="nav-number">2.1.</span> <span class="nav-text">1.安装依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装-Python3-6-1"><span class="nav-number">2.2.</span> <span class="nav-text">2. 安装 Python3.6</span></a></li></ol></li></ol></div>
             
 
           </div>
