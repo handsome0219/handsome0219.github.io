@@ -96,7 +96,7 @@
 <meta property="og:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 什么是进程(Process) 对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，即主线程，然后由这个主线程去创建其它子线程">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/F7AB69B1773948FAB4A867147C9DB947?method=download&shareKey=5299b38634740383100895be5588061c">
-<meta property="og:updated_time" content="2018-03-30T07:10:45.281Z">
+<meta property="og:updated_time" content="2018-03-30T08:54:46.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多进程、多线程">
 <meta name="twitter:description" content="在学习 Python 的中多进程和多线程之前，要弄清楚什么是进程？ 而什么又是线程？ 什么是进程(Process) 对于操作系统来说，一个任务就是一个进程，比如打开 PyCharm 就是启动了 PyCharm 进程，打开 QQ 就是启动了 QQ 进程，每一个进程的启动都会先产生一个线程，即主线程，然后由这个主线程去创建其它子线程">
@@ -351,7 +351,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,913 字
+                  2,911 字
                 </span>
               
 
@@ -460,7 +460,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'这是重写之后的 run 方法'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t = MyThread()</span><br><span class="line">t.start()</span><br></pre></td></tr></table></figure>
 <p>输出</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是重写之后的 run 方法</span><br></pre></td></tr></table></figure>
-<p>传参的版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from threading import Thread</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyThread(Thread):</span><br><span class="line">    def __init__(self, a):</span><br><span class="line">        super().__init__()</span><br><span class="line">        self.a = a</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        print(self.a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t = MyThread(666)</span><br><span class="line">t.start()</span><br></pre></td></tr></table></figure></p>
+<p>传参的版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from threading import Thread</span><br><span class="line"></span><br><span class="line">class MyThread(Thread):</span><br><span class="line">    def __init__(self, a):</span><br><span class="line">        super().__init__()</span><br><span class="line">        self.a = a</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        print(self.a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t = MyThread(666)</span><br><span class="line">t.start()</span><br></pre></td></tr></table></figure></p>
 <p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">666</span><br></pre></td></tr></table></figure></p>
 
       
@@ -639,7 +639,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -650,7 +650,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -661,7 +661,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

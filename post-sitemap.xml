@@ -7,8 +7,24 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2017/11/20/html&css/07%20background/</loc>
+        <lastmod>2018-04-06T13:21:33.445Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/06/docker/%E5%AE%89%E8%A3%85Docker/</loc>
+        <lastmod>2018-04-06T07:08:39.061Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2018/03/20/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-        <lastmod>2018-03-30T07:10:45.281Z</lastmod>
+        <lastmod>2018-03-30T08:54:46.409Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +32,7 @@
 
     <url>
         <loc>http://yoursite.com/2018/03/28/Python/Concurrency/ProcessesAndThreads/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%B1%A0/</loc>
-        <lastmod>2018-03-30T06:18:13.940Z</lastmod>
+        <lastmod>2018-03-30T08:51:41.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -89,14 +105,6 @@
     <url>
         <loc>http://yoursite.com/2017/11/22/html&css/08%20float/</loc>
         <lastmod>2018-03-29T05:45:31.405Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/11/20/html&css/07%20background/</loc>
-        <lastmod>2018-03-29T05:45:09.492Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

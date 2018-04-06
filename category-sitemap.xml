@@ -70,22 +70,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/html-css/</loc>
-        <lastmod>2018-03-29T05:46:21.264Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Linux/Vim/</loc>
         <lastmod>2018-03-29T05:48:03.159Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Linux/</loc>
-        <lastmod>2018-03-30T06:14:44.543Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -99,14 +85,35 @@
 
     <url>
         <loc>http://yoursite.com/categories/Python/</loc>
-        <lastmod>2018-03-30T06:18:13.940Z</lastmod>
+        <lastmod>2018-03-30T08:51:41.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-        <lastmod>2018-03-30T06:18:13.940Z</lastmod>
+        <lastmod>2018-03-30T08:51:41.071Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Linux/</loc>
+        <lastmod>2018-04-06T07:08:39.061Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Linux/Docker/</loc>
+        <lastmod>2018-04-06T07:08:39.061Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/html-css/</loc>
+        <lastmod>2018-04-06T13:21:33.445Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

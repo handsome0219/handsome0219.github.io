@@ -88,18 +88,20 @@
 
 
 
+<meta name="description" content="background 背景（background）每一个盒子元素都是有图层组成，前景包含文本图片边框，元素的背景层可以使用颜色填充，背景图片层在元素的背景层之上。 简单的来说在css model中我们用一个图层的概念来理解背景。文本（图片或边框）– 背景颜色 – 背景图片">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="background">
 <meta property="og:url" content="http://yoursite.com/2017/11/20/html&css/07 background/index.html">
 <meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="background 背景（background）每一个盒子元素都是有图层组成，前景包含文本图片边框，元素的背景层可以使用颜色填充，背景图片层在元素的背景层之上。 简单的来说在css model中我们用一个图层的概念来理解背景。文本（图片或边框）– 背景颜色 – 背景图片">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.wzsky.net/img2015/uploadimg/20150902/10060221.jpg">
 <meta property="og:image" content="http://yoursite.com/img/css/bg-repeat.png">
-<meta property="og:updated_time" content="2018-03-29T05:45:09.492Z">
+<meta property="og:updated_time" content="2018-04-06T13:21:33.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="background">
-<meta name="twitter:image" content="http://www.wzsky.net/img2015/uploadimg/20150902/10060221.jpg">
+<meta name="twitter:description" content="background 背景（background）每一个盒子元素都是有图层组成，前景包含文本图片边框，元素的背景层可以使用颜色填充，背景图片层在元素的背景层之上。 简单的来说在css model中我们用一个图层的概念来理解背景。文本（图片或边框）– 背景颜色 – 背景图片">
+<meta name="twitter:image" content="http://yoursite.com/img/css/bg-repeat.png">
 
 
 
@@ -409,13 +411,11 @@
       
 
       
-        <p><img src="http://www.wzsky.net/img2015/uploadimg/20150902/10060221.jpg" alt="background"></p>
-<a id="more"></a>
-<h1 id="background"><a href="#background" class="headerlink" title="background"></a>background</h1><blockquote>
-<p>背景（background）</p>
-<p>每一个盒子元素都是有图层组成，前景包含文本图片边框，元素的背景层可以使用颜色填充，背景图片层在元素的背景层之上。</p>
+        <h1 id="background"><a href="#background" class="headerlink" title="background"></a>background</h1><blockquote>
+<p>背景（background）<br>每一个盒子元素都是有图层组成，前景包含文本图片边框，元素的背景层可以使用颜色填充，背景图片层在元素的背景层之上。</p>
 <p>简单的来说在css model中我们用一个图层的概念来理解背景。文本（图片或边框）– 背景颜色 – 背景图片</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="背景属性"><a href="#背景属性" class="headerlink" title="背景属性"></a>背景属性</h2><h3 id="background-color"><a href="#background-color" class="headerlink" title="background-color"></a>background-color</h3><blockquote>
 <p>背景颜色</p>
 </blockquote>
@@ -438,7 +438,7 @@
 <p>背景尺寸</p>
 </blockquote>
 <p>CSS3规定的属性，用来控制背景图片的尺寸。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.bg</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">width</span>: 500<span class="selector-tag">px</span>;<span class="selector-tag">height</span>: 300<span class="selector-tag">px</span>;<span class="selector-tag">margin</span>: 100<span class="selector-tag">px</span> <span class="selector-tag">auto</span>;<span class="selector-tag">background-image</span>: <span class="selector-tag">url</span>(<span class="selector-tag">xxx</span><span class="selector-class">.jpg</span>);</span></span><br><span class="line"><span class="undefined">    background-size: cover;</span></span><br><span class="line"><span class="css">    <span class="comment">/* background-size: contain; */</span></span></span><br><span class="line"><span class="css">    <span class="comment">/* background-size: 50%; */</span></span></span><br><span class="line"><span class="css">    <span class="comment">/* background-size: 100% 50%; */</span></span></span><br><span class="line"><span class="css">    <span class="comment">/* background-size: 500px 300px; */</span></span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  .bg&#123;</span></span><br><span class="line"><span class="undefined">    width: 500px;height: 300px;margin: 100px auto;background-image: url(xxx.jpg);</span></span><br><span class="line"><span class="undefined">    background-size: cover;</span></span><br><span class="line"><span class="undefined">    /* background-size: contain; */</span></span><br><span class="line"><span class="undefined">    /* background-size: 50%; */</span></span><br><span class="line"><span class="undefined">    /* background-size: 100% 50%; */</span></span><br><span class="line"><span class="undefined">    /* background-size: 500px 300px; */</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>cover：拉伸，完全填满背景区，保持宽高比。</li>
 <li>contain：缩放，<strong>恰好</strong>适应背景区，保持宽高比。</li>
@@ -662,7 +662,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -673,7 +673,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -684,7 +684,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
