@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Linux下安装 Docker]]></title>
     <url>%2F2018%2F04%2F06%2Fdocker%2F%E5%AE%89%E8%A3%85Docker%2F</url>
-    <content type="text"><![CDATA[本文介绍了在 Ubuntu 中安装 Docker，在安装前我们应该检查了 Linux 的内核版本，以及 Device Mapper（存储驱动）。注意： 安装是 DockerCE 而不是 DockerEE 未完待续…]]></content>
+    <content type="text"><![CDATA[本文介绍了在 Ubuntu 中安装 Docker，在安装前我们应该检查了 Linux 的内核版本，以及 Device Mapper（存储驱动）。注意： 安装是 DockerCE 而不是 DockerEE 未完待续….]]></content>
       <categories>
         <category>Linux</category>
         <category>Docker</category>

@@ -107,15 +107,15 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Docker/</loc>
-        <lastmod>2018-04-06T07:08:39.061Z</lastmod>
+        <loc>http://yoursite.com/tags/CSS/</loc>
+        <lastmod>2018-04-06T13:21:33.445Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/CSS/</loc>
-        <lastmod>2018-04-06T13:21:33.445Z</lastmod>
+        <loc>http://yoursite.com/tags/Docker/</loc>
+        <lastmod>2018-04-16T08:58:02.924Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
