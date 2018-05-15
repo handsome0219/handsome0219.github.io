@@ -7,6 +7,54 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2018/04/15/Python/Concurrency/Socket/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</loc>
+        <lastmod>2018-05-15T06:50:28.117Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/15/Python/Concurrency/Socket/Ubuntu16.04%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85Python3.6/</loc>
+        <lastmod>2018-05-14T06:47:33.642Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/03/15/Python/Concurrency/Socket/Socket/</loc>
+        <lastmod>2018-05-11T06:44:54.259Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/03/20/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2018-05-11T06:30:41.141Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/03/28/Python/Concurrency/ProcessesAndThreads/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%B1%A0/</loc>
+        <lastmod>2018-05-11T06:30:29.028Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/05/09/SublimeText3-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/</loc>
+        <lastmod>2018-05-09T05:42:09.842Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2018/04/06/docker/%E5%AE%89%E8%A3%85Docker/</loc>
         <lastmod>2018-04-16T09:00:36.996Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,22 +65,6 @@
     <url>
         <loc>http://yoursite.com/2017/11/20/html&css/07%20background/</loc>
         <lastmod>2018-04-06T13:21:33.445Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/03/20/Python/Concurrency/ProcessesAndThreads/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-        <lastmod>2018-03-30T08:54:46.409Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/03/28/Python/Concurrency/ProcessesAndThreads/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%B1%A0/</loc>
-        <lastmod>2018-03-30T08:51:41.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -257,14 +289,6 @@
     <url>
         <loc>http://yoursite.com/2018/03/24/Python/Concurrency/ProcessesAndThreads/%E9%80%9A%E4%BF%A1/</loc>
         <lastmod>2018-03-28T15:06:00.766Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/03/15/Python/Concurrency/Socket/Socket/</loc>
-        <lastmod>2018-03-28T15:05:53.798Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
