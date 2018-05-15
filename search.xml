@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[SublimeText3 插件安装]]></title>
-    <url>%2F2018%2F05%2F09%2FSublimeText3-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[七层网络模型]]></title>
-    <url>%2F2018%2F04%2F15%2FPython%2FConcurrency%2FSocket%2FUbuntu16.04%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85Python3.6%2F</url>
+    <title><![CDATA[Ubuntu16.04源码安装Python3.6]]></title>
+    <url>%2F2018%2F05%2F10%2FPython%2FConcurrency%2FSocket%2FUbuntu16.04%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85Python3.6%2F</url>
     <content type="text"><![CDATA[Ubuntu16.04 源码安装 Python3.6 在 Ubuntu中，zlib叫zlib1g,相对应的 zlib-devel则是 zlib1g-dev，默认的安装源里面是没有zlib1g-dev的，要在packages.ubuntu.com上找 1. 安装必备的软件包123centos: yum -y groupinstall development zlib zlib-develubuntu: sudo apt-get install ruby &amp;&amp; sudo apt-get install zlib1g-dev ##2. 下载 Python3.6 并 源码安装1234567891011wget [https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz](https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz)tar xvf Python-3.6.4.tgzcd Python-3.6.4## 源码安装./configure -–prefix=/usr/bin/python3.6## 编译源码并执行安装sudo make &amp;&amp; sudo make install 安装完成后的Python位于 /usr/python3.6 文件中 删除原有的Python2的软链接，添加为Python3.6的软链123sudo rm /usr/bin/pythonln -s /usr/bin/python3.6/bin/python3.6 /usr/bin/python]]></content>
       <categories>
-        <category>源码安装</category>
+        <category>Linux</category>
+        <category>源码安装Py36</category>
       </categories>
       <tags>
         <tag>Python</tag>
+        <tag>Ubuntu16</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SublimeText3 插件安装]]></title>
+    <url>%2F2018%2F05%2F09%2FSublimeText3-%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[OSI七层模型]]></title>
