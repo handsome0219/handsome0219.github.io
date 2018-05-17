@@ -98,29 +98,29 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Python/</loc>
-        <lastmod>2018-05-11T06:30:41.141Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%B6%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-        <lastmod>2018-05-11T06:30:41.141Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Linux/</loc>
-        <lastmod>2018-05-15T06:55:34.150Z</lastmod>
+        <lastmod>2018-05-16T08:28:34.518Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Linux/%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85Py36/</loc>
-        <lastmod>2018-05-15T06:55:34.150Z</lastmod>
+        <lastmod>2018-05-16T08:28:34.518Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python/</loc>
+        <lastmod>2018-05-17T06:18:34.162Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%B6%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
+        <lastmod>2018-05-17T06:18:34.162Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
