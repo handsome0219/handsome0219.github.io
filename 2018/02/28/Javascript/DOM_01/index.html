@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="JS,DOM," />
+  <meta name="keywords" content="JS," />
 
 
 
@@ -89,7 +89,7 @@
 
 
 <meta name="description" content="网页生成过程、DOM发展1. 理解网页的性能,先了解一下网页的生成过程  HTML代码转化成DOM CSS代码转化成CSSOM（CSS Object Model） 结合DOM和CSSOM，生成一棵渲染树（包含每个节点的视觉信息） 生成布局（layout），即将所有渲染树的所有节点进行平面合成 将布局绘制（paint）在屏幕上   webkit渲染流程  Geoko渲染过程  从第一步到第三步都是很">
-<meta name="keywords" content="JS,DOM">
+<meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOM 发展">
 <meta property="og:url" content="http://yoursite.com/2018/02/28/Javascript/DOM_01/index.html">
@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://yoursite.com/img/javascript/dom/nodeType.jpg">
 <meta property="og:image" content="http://yoursite.com/img/javascript/dom/load.jpg">
 <meta property="og:image" content="http://yoursite.com/img/javascript/dom/render.jpg">
-<meta property="og:updated_time" content="2018-03-24T06:36:47.504Z">
+<meta property="og:updated_time" content="2018-05-22T09:48:08.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM 发展">
 <meta name="twitter:description" content="网页生成过程、DOM发展1. 理解网页的性能,先了解一下网页的生成过程  HTML代码转化成DOM CSS代码转化成CSSOM（CSS Object Model） 结合DOM和CSSOM，生成一棵渲染树（包含每个节点的视觉信息） 生成布局（layout），即将所有渲染树的所有节点进行平面合成 将布局绘制（paint）在屏幕上   webkit渲染流程  Geoko渲染过程  从第一步到第三步都是很">
@@ -448,7 +448,7 @@
 <p><strong>Geoko渲染过程</strong></p>
 <p><img src="/img/javascript/dom/Geoko.jpg" alt="Geoko"></p>
 <p>从第一步到第三步都是很快速的, 第四步与第五步是很耗时的</p>
-<p><strong>“生成布局”（flow）和”绘制”（paint）这两步，合称为”渲染”（render）。</strong> </p>
+<p><strong>“生成布局”（flow）和”绘制”（paint）这两步，合称为”渲染”（render）。</strong></p>
 <blockquote>
 <p><strong>ps: 火狐把Layout过程成为回流是一个意思</strong></p>
 </blockquote>
@@ -587,7 +587,7 @@
 <li><h3 id="DOM的nodeType、nodeName、nodeValue"><a href="#DOM的nodeType、nodeName、nodeValue" class="headerlink" title="DOM的nodeType、nodeName、nodeValue"></a>DOM的nodeType、nodeName、nodeValue</h3><blockquote>
 <p>通过DOM节点类型，我们可知，可以通过某个节点的nodeType属性来获得节点的类型，节点的类型可以是数值常量或者字符常量。示例代码如下：</p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>nodeName,nodeValue<span class="tag">&lt;/<span class="name">title</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>  </span><br><span class="line">    <span class="comment">&lt;!--nodeName,nodeValue实验--&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span>这是一个元素节点<span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">  </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> divNode = <span class="built_in">document</span>.getElementById(<span class="string">'container'</span>);  </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(divNode.nodeName + <span class="string">"/"</span> + divNode.nodeValue);     </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果:    DIV/null  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> attrNode = divNode.attributes[<span class="number">0</span>];  </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(attrNode.nodeName + <span class="string">"/"</span> + attrNode.nodeValue);      </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果：   id/container  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> textNode = divNode.childNodes[<span class="number">0</span>];  </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(textNode.nodeName + <span class="string">"/"</span> + textNode.nodeValue);      </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果：   #text/这是一个元素节点  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> commentNode = <span class="built_in">document</span>.body.childNodes[<span class="number">1</span>];  </span></span><br><span class="line"><span class="javascript">        <span class="comment">//表示取第二个注释节点，因为body下面的第一个注释节点为空白符。  </span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(commentNode.nodeName + <span class="string">"/"</span> +commentNode.nodeValue);  </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果：  #comment/nodeName,nodeValue实验  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">document</span>.doctype.nodeName + <span class="string">"/"</span> + <span class="built_in">document</span>.doctype.nodeValue);   </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果： html/null  </span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment();  </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(frag.nodeName + <span class="string">"/"</span> + frag.nodeValue);    </span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果： #document-fragment/null  </span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>nodeName,nodeValue<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--nodeName,nodeValue实验--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span>这是一个元素节点<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> divNode = <span class="built_in">document</span>.getElementById(<span class="string">'container'</span>);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(divNode.nodeName + <span class="string">"/"</span> + divNode.nodeValue);</span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果:    DIV/null</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> attrNode = divNode.attributes[<span class="number">0</span>];</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(attrNode.nodeName + <span class="string">"/"</span> + attrNode.nodeValue);</span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果：   id/container</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> textNode = divNode.childNodes[<span class="number">0</span>];</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(textNode.nodeName + <span class="string">"/"</span> + textNode.nodeValue);</span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果：   #text/这是一个元素节点</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> commentNode = <span class="built_in">document</span>.body.childNodes[<span class="number">1</span>];</span></span><br><span class="line"><span class="javascript">        <span class="comment">//表示取第二个注释节点，因为body下面的第一个注释节点为空白符。</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(commentNode.nodeName + <span class="string">"/"</span> +commentNode.nodeValue);</span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果：  #comment/nodeName,nodeValue实验</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">document</span>.doctype.nodeName + <span class="string">"/"</span> + <span class="built_in">document</span>.doctype.nodeValue);</span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果： html/null</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment();</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(frag.nodeName + <span class="string">"/"</span> + frag.nodeValue);</span></span><br><span class="line"><span class="javascript">        <span class="comment">//结果： #document-fragment/null</span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>总结:</p>
 <p><img src="/img/javascript/dom/nodeType.jpg" alt=""></p>
 <p>​</p>
@@ -622,7 +622,7 @@
 <ol>
 <li>另外一个解决方式</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">'header'</span>).style.color = <span class="string">'red'</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">'header'</span>).style.color = <span class="string">'red'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>有一定了解的这里肯定会去使用<code>window.onload</code> 来解决这个问题,没有任何问题</p>
 <blockquote>
 <p>window.onload方法，表示当页面所有的元素都加载完毕，并且所有要请求的资源也加载完毕才触发执行function这个匿名函数里边的具体内容。这样肯定保证了代码在domReady之后执行。使用window.onload方法在文档外部资源不多的情况下不会有什么问题，但是当页面中有大量远程图片或要请求的远程资源时，我们需要让js在点击每张图片时，进行相应的操作，如果此时外部资源还没有加载完毕，点击图片是不会有任何反应的，大大降低了用户体验。那既然window.onload方法不可行，又该怎么做呢？</p>
@@ -725,8 +725,6 @@
           
             <a href="/tags/JS/" rel="tag"># JS</a>
           
-            <a href="/tags/DOM/" rel="tag"># DOM</a>
-          
         </div>
       
 
@@ -738,8 +736,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/26/Linux/linux/" rel="next" title="linux">
-                <i class="fa fa-chevron-left"></i> linux
+              <a href="/2018/02/26/Linux/linux/" rel="next" title="linux的基本操作">
+                <i class="fa fa-chevron-left"></i> linux的基本操作
               </a>
             
           </div>
@@ -838,7 +836,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -849,7 +847,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

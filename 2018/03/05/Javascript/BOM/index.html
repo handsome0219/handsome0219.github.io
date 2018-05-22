@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="BOM," />
+  <meta name="keywords" content="JS," />
 
 
 
@@ -89,7 +89,7 @@
 
 
 <meta name="description" content="ECMAScript 是 JavaScript 语法的核心规范，如果在 web 中使用 JavaScript，那么 BOM 则是一个很重要的核心。BOM提供了很多的对象，用于访问浏览器的功能。BOM最早没有一个统一的规范导致浏览器厂商都有自己的想法随意的去扩展。后来把浏览器共有的对象做为事实上的标准。这些对象在浏览器中得以存在。W3C为了把浏览器中基本的部分标准化，将 BOM 纳入了 H5 的规范">
-<meta name="keywords" content="BOM">
+<meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BOM">
 <meta property="og:url" content="http://yoursite.com/2018/03/05/Javascript/BOM/index.html">
@@ -97,7 +97,7 @@
 <meta property="og:description" content="ECMAScript 是 JavaScript 语法的核心规范，如果在 web 中使用 JavaScript，那么 BOM 则是一个很重要的核心。BOM提供了很多的对象，用于访问浏览器的功能。BOM最早没有一个统一的规范导致浏览器厂商都有自己的想法随意的去扩展。后来把浏览器共有的对象做为事实上的标准。这些对象在浏览器中得以存在。W3C为了把浏览器中基本的部分标准化，将 BOM 纳入了 H5 的规范">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/javascript/dom/bom.jpg">
-<meta property="og:updated_time" content="2018-03-24T06:35:01.471Z">
+<meta property="og:updated_time" content="2018-05-22T09:47:08.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BOM">
 <meta name="twitter:description" content="ECMAScript 是 JavaScript 语法的核心规范，如果在 web 中使用 JavaScript，那么 BOM 则是一个很重要的核心。BOM提供了很多的对象，用于访问浏览器的功能。BOM最早没有一个统一的规范导致浏览器厂商都有自己的想法随意的去扩展。后来把浏览器共有的对象做为事实上的标准。这些对象在浏览器中得以存在。W3C为了把浏览器中基本的部分标准化，将 BOM 纳入了 H5 的规范">
@@ -431,15 +431,15 @@
 <h3 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h3><p>说screen对象之前先说一下确定浏览器可视窗口大小的属性</p>
 <p>浏览器确定一个窗口的大小不是简单的事情。有四个属性 innerWidth，innerHeight，outerWidth，outerHeight。IE8 及更早版本没有提供取得当前浏览器窗口尺寸的属性；不过，它通过 DOM 提供了页面可见区域的相关信息</p>
 <ul>
-<li>IE9+、 Safari 和 Firefox中， outerWidth 和 outerHeight 返回浏览器窗口本身的尺寸 </li>
-<li>Chrome 中， outerWidth、 outerHeight 与innerWidth、 innerHeight 返回相同的值 </li>
-<li>document.documentElement.clientWidth 和 document.documentElement.clientHeight 中保存了页面视口的信息。在 IE6 中，在标准模式下才有效；如果是混杂模式，就必须通过document.body.clientWidth 和 document.body.clientHeight 取得相同信息。而对于Chrome，则无论通过 document.documentElement 还是 document.body 中的 clientWidth 和clientHeight 属性，都可以取得视口的大小。 </li>
+<li>IE9+、 Safari 和 Firefox中， outerWidth 和 outerHeight 返回浏览器窗口本身的尺寸</li>
+<li>Chrome 中， outerWidth、 outerHeight 与innerWidth、 innerHeight 返回相同的值</li>
+<li>document.documentElement.clientWidth 和 document.documentElement.clientHeight 中保存了页面视口的信息。在 IE6 中，在标准模式下才有效；如果是混杂模式，就必须通过document.body.clientWidth 和 document.body.clientHeight 取得相同信息。而对于Chrome，则无论通过 document.documentElement 还是 document.body 中的 clientWidth 和clientHeight 属性，都可以取得视口的大小。</li>
 </ul>
 <p><em>ps</em> ：虽然最终无法确定浏览器窗口本身的大小，但却可以取得页面视口的大小。关于浏览器的渲染模式<a href="https://www.cnblogs.com/imxiu/p/3541932.html" target="_blank" rel="noopener">参考</a></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pageWidth = <span class="built_in">window</span>.innerWidth,</span><br><span class="line">	pageHeight = <span class="built_in">window</span>.innerHeight;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> pageWidth != <span class="string">"number"</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">"CSS1Compat"</span>)&#123;</span><br><span class="line">        pageWidth = <span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line">        pageHeight = <span class="built_in">document</span>.documentElement.clientHeight;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        pageWidth = <span class="built_in">document</span>.body.clientWidth;</span><br><span class="line">        pageHeight = <span class="built_in">document</span>.body.clientHeight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通常我们可能会这么写</span></span><br><span class="line"><span class="keyword">var</span> pageWidth = <span class="built_in">document</span>.documentElement.clientWidth || <span class="built_in">window</span>.innerWidth</span><br></pre></td></tr></table></figure>
 <p>screen对象其实没有很大的用处，screen对象可以表明浏览器的显示器信息。以像素表示</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.screen.availWidth  <span class="comment">// 可用的屏幕宽度 减去界面特性，比如窗口任务栏</span></span><br><span class="line"><span class="built_in">window</span>.screen.availHeight <span class="comment">// 可用的屏幕高度 减去界面特性，比如窗口任务栏</span></span><br></pre></td></tr></table></figure>
-<h3 id="location"><a href="#location" class="headerlink" title="location"></a>location</h3><p>location是BOM中很重要的对象。提供了与当前窗口相关的信息。而且 <em>location</em> 对象既是 window对象也是document对象 </p>
+<h3 id="location"><a href="#location" class="headerlink" title="location"></a>location</h3><p>location是BOM中很重要的对象。提供了与当前窗口相关的信息。而且 <em>location</em> 对象既是 window对象也是document对象</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location === <span class="built_in">document</span>.location</span><br></pre></td></tr></table></figure>
 <p>以 <a href="https://www.baidu.com/s?wd=bom" target="_blank" rel="noopener">https://www.baidu.com/s?wd=bom</a> 举例说明</p>
 <table>
@@ -496,7 +496,7 @@
 <p>查询参数，通过location对象可以审查到URL中的参数返回一个对象</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> qs = location.search;</span><br><span class="line">    <span class="keyword">var</span> str = qs.length &gt; <span class="number">0</span> ? qs.substring(<span class="number">1</span>) : <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> param = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> items = str.split(<span class="string">"&amp;"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,len = items.length;i&lt;len;i++)&#123;</span><br><span class="line">        item = items[i].split(<span class="string">"="</span>);</span><br><span class="line">        param[<span class="built_in">decodeURIComponent</span>(item[<span class="number">0</span>])] = <span class="built_in">decodeURIComponent</span>(item[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> param;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> qs = location.search;</span><br><span class="line">    <span class="keyword">var</span> str = qs.length &gt; <span class="number">0</span> ? qs.substring(<span class="number">1</span>) : <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> items = qs.match(<span class="regexp">/(\w+)=(\w+)/g</span>);</span><br><span class="line">    <span class="keyword">return</span> items.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> index = b.indexOf(<span class="string">"="</span>);</span><br><span class="line">        <span class="keyword">return</span> a[<span class="built_in">decodeURIComponent</span>(b.slice(<span class="number">0</span>,index))] = <span class="built_in">decodeURIComponent</span>(b.slice(index+<span class="number">1</span>)),a;</span><br><span class="line">    &#125;,&#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>另外location对象中除了hash属性修改不会重新加载其它的属性修改之后都会重新加载，而且会在 <em>history</em> 产生一条记录，因此可以通过回退返回。可以禁止这个行为  <code>location.replace(url);</code> 用户不能点击返回，并且不会在  <em>history</em> 产生记录。</p>
-<p>还有一个相关的方法 <code>reload()</code> 。重新加载当前的页面。无参数的时候会议最有效的方式加载。也就是会从浏览器缓存中加载。如果需要强制从服务器加载添加参数 <code>true</code> </p>
+<p>还有一个相关的方法 <code>reload()</code> 。重新加载当前的页面。无参数的时候会议最有效的方式加载。也就是会从浏览器缓存中加载。如果需要强制从服务器加载添加参数 <code>true</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">location.reload();      <span class="comment">// 可能从缓存加载</span></span><br><span class="line">location.reload(<span class="literal">true</span>);  <span class="comment">// 从服务器加载</span></span><br></pre></td></tr></table></figure>
 <p>由于是重新载入页面所以位于 <code>reload</code> 之后的代码可能不在执行。所以请记得写在最后一行。</p>
 <h3 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h3><p>Navigator 对象包含有关浏览器的信息，每个浏览器都有自己的一套属性。</p>
@@ -657,7 +657,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/BOM/" rel="tag"># BOM</a>
+            <a href="/tags/JS/" rel="tag"># JS</a>
           
         </div>
       
@@ -770,7 +770,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -781,7 +781,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

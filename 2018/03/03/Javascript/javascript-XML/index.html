@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="JS,DOM,XML," />
+  <meta name="keywords" content="JS," />
 
 
 
@@ -89,14 +89,14 @@
 
 
 <meta name="description" content="XML曾经做为存储和通过网络传输结构化数据的标准。微型的结构化的数据库，保存一些小型数据。从这里边可以看到 web 的发展 DOM 的发展。DOM的出现使得浏览器都内置了对 XML 的支持。 XML DOM 在没有正式规范之前，浏览器对 XML 的解析支持度参差不齐，DOM2 增加了对 XML DOM 的方法。DOM3 也进一步加强了。谈到标准就一定不能忘记老 IE 了。 IE 中 XMLIE 浏">
-<meta name="keywords" content="JS,DOM,XML">
+<meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript XML">
 <meta property="og:url" content="http://yoursite.com/2018/03/03/Javascript/javascript-XML/index.html">
 <meta property="og:site_name" content="付帅帅">
 <meta property="og:description" content="XML曾经做为存储和通过网络传输结构化数据的标准。微型的结构化的数据库，保存一些小型数据。从这里边可以看到 web 的发展 DOM 的发展。DOM的出现使得浏览器都内置了对 XML 的支持。 XML DOM 在没有正式规范之前，浏览器对 XML 的解析支持度参差不齐，DOM2 增加了对 XML DOM 的方法。DOM3 也进一步加强了。谈到标准就一定不能忘记老 IE 了。 IE 中 XMLIE 浏">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-24T06:37:39.711Z">
+<meta property="og:updated_time" content="2018-05-22T09:49:01.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript XML">
 <meta name="twitter:description" content="XML曾经做为存储和通过网络传输结构化数据的标准。微型的结构化的数据库，保存一些小型数据。从这里边可以看到 web 的发展 DOM 的发展。DOM的出现使得浏览器都内置了对 XML 的支持。 XML DOM 在没有正式规范之前，浏览器对 XML 的解析支持度参差不齐，DOM2 增加了对 XML DOM 的方法。DOM3 也进一步加强了。谈到标准就一定不能忘记老 IE 了。 IE 中 XMLIE 浏">
@@ -433,7 +433,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlDom = createXmlDom();</span><br><span class="line">xmlDom.loadXML(<span class="string">"&lt;root&gt;&lt;user&gt;Kobe&lt;/user&gt;&lt;/root&gt;"</span>);</span><br><span class="line">xmlDom.xml</span><br></pre></td></tr></table></figure>
 <p>需要注意的是 <em>load</em> 方法用于服务器端，所以存在 同步 or 异步, 服务器端默认异步加载</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xmlDom.async = <span class="literal">false</span>; <span class="comment">// 同步</span></span><br><span class="line">xmlDom.load(<span class="string">'src.xml'</span>);</span><br><span class="line">xmlDom.xml; <span class="comment">// 打印</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">xmlDom.async = <span class="literal">true</span>;      <span class="comment">//同步设置false，异步设置true，默认是异步</span></span><br><span class="line">xmlDom.load(<span class="string">'src.xml'</span>);</span><br><span class="line">xmlDom.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;    </span><br><span class="line">    <span class="keyword">if</span> (xmlDom.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (xmlDom.parseError.errorCode == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//alert(this === xmlDom);               //this执行的是window</span></span><br><span class="line">            xmlDom.xml <span class="comment">// 打印</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">                <span class="string">'错误代号：'</span> + xmlDom.parseError.errorCode + <span class="string">'\n'</span> +</span><br><span class="line">                <span class="string">'错误行号：'</span> + xmlDom.parseError.line + <span class="string">'\n'</span> +</span><br><span class="line">                <span class="string">'错误位置：'</span> + xmlDom.parseError.linepos + <span class="string">'\n'</span> +</span><br><span class="line">                <span class="string">'错误解释：'</span> + xmlDom.parseError.reason + <span class="string">'\n'</span> +</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">xmlDom.async = <span class="literal">true</span>;      <span class="comment">//同步设置false，异步设置true，默认是异步</span></span><br><span class="line">xmlDom.load(<span class="string">'src.xml'</span>);</span><br><span class="line">xmlDom.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xmlDom.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (xmlDom.parseError.errorCode == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//alert(this === xmlDom);               //this执行的是window</span></span><br><span class="line">            xmlDom.xml <span class="comment">// 打印</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">                <span class="string">'错误代号：'</span> + xmlDom.parseError.errorCode + <span class="string">'\n'</span> +</span><br><span class="line">                <span class="string">'错误行号：'</span> + xmlDom.parseError.line + <span class="string">'\n'</span> +</span><br><span class="line">                <span class="string">'错误位置：'</span> + xmlDom.parseError.linepos + <span class="string">'\n'</span> +</span><br><span class="line">                <span class="string">'错误解释：'</span> + xmlDom.parseError.reason + <span class="string">'\n'</span> +</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>parseError是微软提供的如果说出现了解析错误，帮助排错的。</p>
 <table>
 <thead>
@@ -559,10 +559,6 @@
           
             <a href="/tags/JS/" rel="tag"># JS</a>
           
-            <a href="/tags/DOM/" rel="tag"># DOM</a>
-          
-            <a href="/tags/XML/" rel="tag"># XML</a>
-          
         </div>
       
 
@@ -674,7 +670,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -685,7 +681,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

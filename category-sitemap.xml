@@ -7,78 +7,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/JavaScript/BOM/</loc>
-        <lastmod>2018-03-24T06:35:01.471Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/JavaScript/DOM/</loc>
-        <lastmod>2018-03-24T06:37:01.024Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/JavaScript/XML/</loc>
-        <lastmod>2018-03-24T06:37:39.711Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/JavaScript/Event/</loc>
-        <lastmod>2018-03-24T06:38:02.726Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Python/Python%E5%9F%BA%E7%A1%80/</loc>
-        <lastmod>2018-03-25T09:05:12.589Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-        <lastmod>2018-03-28T15:06:00.766Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/JavaScript/RegExp/</loc>
-        <lastmod>2018-03-29T05:38:52.730Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/JavaScript/</loc>
-        <lastmod>2018-03-29T05:41:37.940Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/html5-css3/</loc>
         <lastmod>2018-03-29T05:46:13.957Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Linux/Vim/</loc>
-        <lastmod>2018-03-29T05:48:03.159Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Linux/CentOS/</loc>
-        <lastmod>2018-03-30T06:14:44.543Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -92,35 +22,140 @@
 
     <url>
         <loc>http://yoursite.com/categories/Linux/Docker/</loc>
-        <lastmod>2018-04-16T09:00:36.996Z</lastmod>
+        <lastmod>2018-05-22T09:46:27.342Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/JavaScript/BOM/</loc>
+        <lastmod>2018-05-22T09:47:08.751Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/JavaScript/DOM/</loc>
+        <lastmod>2018-05-22T09:48:08.942Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/JavaScript/Event/</loc>
+        <lastmod>2018-05-22T09:48:20.053Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/JavaScript/function/</loc>
+        <lastmod>2018-05-22T09:48:37.965Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/JavaScript/XML/</loc>
+        <lastmod>2018-05-22T09:49:01.087Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/JavaScript/RegExp/</loc>
+        <lastmod>2018-05-22T09:49:30.167Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/JavaScript/</loc>
+        <lastmod>2018-05-22T09:49:36.349Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Linux/Vim/</loc>
+        <lastmod>2018-05-22T09:49:45.902Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Linux/CentOS/</loc>
+        <lastmod>2018-05-22T09:49:50.367Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Linux/</loc>
-        <lastmod>2018-05-16T08:28:34.518Z</lastmod>
+        <lastmod>2018-05-22T09:50:55.036Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Linux/%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85Py36/</loc>
-        <lastmod>2018-05-16T08:28:34.518Z</lastmod>
+        <loc>http://yoursite.com/categories/Linux/Ubuntu16/</loc>
+        <lastmod>2018-05-22T09:50:55.036Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2018-05-22T09:52:17.782Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python-%E5%A4%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2018-05-22T09:54:56.532Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python/Socket/</loc>
+        <lastmod>2018-05-22T09:55:33.876Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/</loc>
+        <lastmod>2018-05-22T09:56:10.684Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/TCP-IP-%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B/</loc>
+        <lastmod>2018-05-22T09:56:10.684Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Python/</loc>
-        <lastmod>2018-05-17T06:18:34.162Z</lastmod>
+        <lastmod>2018-05-22T09:56:37.581Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%B6%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-        <lastmod>2018-05-17T06:18:34.162Z</lastmod>
+        <loc>http://yoursite.com/categories/Python/Python%E5%9F%BA%E7%A1%80/</loc>
+        <lastmod>2018-05-22T09:56:37.581Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+        <lastmod>2018-05-22T09:58:01.283Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
