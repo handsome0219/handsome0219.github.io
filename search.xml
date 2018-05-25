@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Ubuntu16.04 源码安装 Python3.6]]></title>
-    <url>%2F2018%2F05%2F12%2FLinux%2FUbuntu16.04%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85Python3.6%2F</url>
-    <content type="text"><![CDATA[Ubuntu16.04 源码安装 Python3.6 在 Ubuntu中，zlib叫zlib1g,相对应的 zlib-devel则是 zlib1g-dev，默认的安装源里面是没有zlib1g-dev的，要在packages.ubuntu.com上找 1. 安装软件包1234# 可装可不装centos: yum -y groupinstall development zlib zlib-develubuntu: sudo apt-get install ruby &amp;&amp; sudo apt-get install zlib1g-dev ##2. 下载 Python3.6 并 源码安装1234567891011wget [https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz](https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz)tar xvf Python-3.6.4.tgzcd Python-3.6.4## 源码安装./configure -–prefix=/usr/bin/python3.6## 编译源码并执行安装sudo make &amp;&amp; sudo make install 安装完成后的Python位于 /usr/python3.6 文件中 删除原有的Python2的软链接，添加为Python3.6的软链123sudo rm /usr/bin/python3sudo ln -s /usr/bin/python3.6/bin/python3.6 /usr/bin/python3]]></content>
+    <title><![CDATA[Ubuntu16.0源码安装 Python3.6]]></title>
+    <url>%2F2018%2F04%2F21%2FLinux%2FUbuntu%2FUbuntu16.04%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85Python3.6%2F</url>
+    <content type="text"><![CDATA[Ubuntu16.04源码安装 Python3.6 这篇文章介绍了如何在 Ubuntu16.04 下 源码安装 Python3.6 在 Ubuntu中，zlib叫zlib1g,相对应的 zlib-devel则是 zlib1g-dev，默认的安装源里面是没有zlib1g-dev的，要在packages.ubuntu.com上找 1. 安装软件包1234# 可装可不装centos: yum -y groupinstall development zlib zlib-develubuntu: sudo apt-get install ruby &amp;&amp; sudo apt-get install zlib1g-dev ##2. 下载 Python3.6 并 源码安装1234567891011wget [https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz](https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz)tar xvf Python-3.6.4.tgzcd Python-3.6.4## 源码安装./configure -–prefix=/usr/bin/python3.6## 编译源码并执行安装sudo make &amp;&amp; sudo make install 安装完成后的Python位于 /usr/python3.6 文件中 删除原有的Python2的软链接，添加为Python3.6的软链123sudo rm /usr/bin/python3sudo ln -s /usr/bin/python3.6/bin/python3.6 /usr/bin/python3]]></content>
       <categories>
         <category>Linux</category>
-        <category>Ubuntu16</category>
+        <category>Ubuntu</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -14,8 +14,8 @@
   </entry>
   <entry>
     <title><![CDATA[contos7安装Python36]]></title>
-    <url>%2F2018%2F04%2F20%2FLinux%2Fcontos7%E5%AE%89%E8%A3%85Python36%2F</url>
-    <content type="text"><![CDATA[CentOS7 自带的 Python 的版本是 Python2.7，那么要使用 Python3.6 的版本，则需要我们自己安装了，如何在 CentOS7 下安装 Python36 CentOS7安装 Python3.6 有两种方式： 使用 CentOS 自带的 yum 源安装 Python3.6 使用 Python3.6 源文件安装 CentOS7 的 yum 源安装 Python3.6 IUS 软件源包含了 Python3.6，那么我们可以使用 IUS 软件源安装 Python3.6 1. 安装 IUS 的软件源12345# 安装 EPEL 依赖sudo yum install epel-release# 安装 IUS 的软件源sudo yum install https://centos7.iuscommunity.org/ius-release.rpm 2. 安装 Python3.61sudo yum install python36u 安装 Python3 完成后的命令为 Python3.6，为了使用方便，创建一个 Python3 的软链接1sudo ln -s /bin/python3.6 /bin/python3 3. 安装 pip3 仅仅安装了 Python36u 并没有安装 pip ，所以要安装 pip 1sudo yum install python36u-pip 安装 pip 后的命令也是为 pip3.6，为了方便，我们还有设置软链接1sudo ln -s /bin/pip3.6 /bin/pip3 CentOS7 的源码安装 Python3.61.安装依赖1sudo yum -y groupinstall development zlib-devel 2. 安装 Python3.61234567891011121314# 从官网下载压缩包wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz# 解压压缩包tar xJf Python-3.6.0.tar.xz# 进入 Python36 的文件目录cd Python-3.6.0# 运行 configure 文件sudo ./configure# 运行 make 以及 make installsudo make &amp;&amp; make install 安装完成后的 Python3.6 ，是位于 /usr/local 文件目录中]]></content>
+    <url>%2F2018%2F04%2F20%2FLinux%2FcentOS%2FcentOS7%E5%AE%89%E8%A3%85Python36%2F</url>
+    <content type="text"><![CDATA[contos7安装Python36 CentOS7 自带的 Python 的版本是 Python2.7，那么要使用 Python3.6 的版本，则需要我们自己安装了，如何在 CentOS7 下安装 Python36 CentOS7安装 Python3.6 有两种方式： 使用 CentOS 自带的 yum 源安装 Python3.6 使用 Python3.6 源文件安装 CentOS7 的 yum 源安装 Python3.6 IUS 软件源包含了 Python3.6，那么我们可以使用 IUS 软件源安装 Python3.6 1. 安装 IUS 的软件源12345# 安装 EPEL 依赖sudo yum install epel-release# 安装 IUS 的软件源sudo yum install https://centos7.iuscommunity.org/ius-release.rpm 2. 安装 Python3.61sudo yum install python36u 安装 Python3 完成后的命令为 Python3.6，为了使用方便，创建一个 Python3 的软链接1sudo ln -s /bin/python3.6 /bin/python3 3. 安装 pip3 仅仅安装了 Python36u 并没有安装 pip ，所以要安装 pip 1sudo yum install python36u-pip 安装 pip 后的命令也是为 pip3.6，为了方便，我们还有设置软链接1sudo ln -s /bin/pip3.6 /bin/pip3 CentOS7 的源码安装 Python3.61.安装依赖1sudo yum -y groupinstall development zlib-devel 2. 安装 Python3.61234567891011121314# 从官网下载压缩包wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz# 解压压缩包tar xJf Python-3.6.0.tar.xz# 进入 Python36 的文件目录cd Python-3.6.0# 运行 configure 文件sudo ./configure# 运行 make 以及 make installsudo make &amp;&amp; make install 安装完成后的 Python3.6 ，是位于 /usr/local 文件目录中]]></content>
       <categories>
         <category>Linux</category>
         <category>CentOS</category>

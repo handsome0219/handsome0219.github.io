@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2018/04/20/Linux/centOS/centOS7%E5%AE%89%E8%A3%85Python36/</loc>
+        <lastmod>2018-05-25T07:17:19.030Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/21/Linux/Ubuntu/Ubuntu16.04%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85Python3.6/</loc>
+        <lastmod>2018-05-25T07:16:46.071Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2018/03/15/Python/Concurrency/Socket/IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/</loc>
         <lastmod>2018-05-25T07:11:30.110Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -41,14 +57,6 @@
     <url>
         <loc>http://yoursite.com/2018/03/06/docker/%E5%AE%89%E8%A3%85Docker/</loc>
         <lastmod>2018-05-25T06:33:37.734Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/20/Linux/contos7%E5%AE%89%E8%A3%85Python36/</loc>
-        <lastmod>2018-05-25T06:33:29.462Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -97,14 +105,6 @@
     <url>
         <loc>http://yoursite.com/2018/01/01/Python/Python3-6%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/</loc>
         <lastmod>2018-05-22T09:56:37.581Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/05/12/Linux/Ubuntu16.04%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85Python3.6/</loc>
-        <lastmod>2018-05-22T09:50:55.036Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
