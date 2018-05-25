@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="socket">
+<meta name="description" content="套接字编程（Socket）  Socket 也就是我们常说的套接字编程，是一种比较底层通信的原理，一般高级语言能够接触的最底层也就是 Socket的，位于传输层">
 <meta name="keywords" content="网络编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Socket编程">
 <meta property="og:url" content="http://yoursite.com/2018/03/15/Python/Concurrency/Socket/Socket/index.html">
 <meta property="og:site_name" content="付帅帅">
-<meta property="og:description" content="socket">
+<meta property="og:description" content="套接字编程（Socket）  Socket 也就是我们常说的套接字编程，是一种比较底层通信的原理，一般高级语言能够接触的最底层也就是 Socket的，位于传输层">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T09:55:33.876Z">
+<meta property="og:updated_time" content="2018-05-25T06:52:15.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Socket编程">
-<meta name="twitter:description" content="socket">
+<meta name="twitter:description" content="套接字编程（Socket）  Socket 也就是我们常说的套接字编程，是一种比较底层通信的原理，一般高级语言能够接触的最底层也就是 Socket的，位于传输层">
 
 
 
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1 字
+                  730 字
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -420,8 +420,15 @@
       
 
       
-        <p>socket</p>
+        <h1 id="套接字编程（Socket）"><a href="#套接字编程（Socket）" class="headerlink" title="套接字编程（Socket）"></a>套接字编程（Socket）</h1><blockquote>
+<p> Socket 也就是我们常说的套接字编程，是一种比较底层通信的原理，一般高级语言能够接触的最底层也就是 Socket的，位于传输层</p>
+</blockquote>
 <a id="more"></a>
+<p>以下是服务端代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认是建立在 TCP协议之上的</span></span><br><span class="line">server = socket.socket()</span><br><span class="line"><span class="comment"># 绑定ip地址和端口  不写的话就是代表 0.0.0.0</span></span><br><span class="line">server.bind((<span class="string">''</span>, <span class="number">8888</span>))</span><br><span class="line"><span class="comment"># 开启监听</span></span><br><span class="line">server.listen(<span class="number">1000</span>)</span><br><span class="line">print(<span class="string">"监听开始..."</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    connection, remote_address = server.accept()</span><br><span class="line">    print(<span class="string">"客户端&#123;&#125;成功连接"</span>.format(remote_address))</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        data = connection.recv(<span class="number">1000</span>)</span><br><span class="line">        <span class="keyword">if</span> data:</span><br><span class="line">            <span class="comment"># 打印接收到的数据</span></span><br><span class="line">            print(data.decode())</span><br><span class="line">            <span class="comment"># 将接收到的数据发回客户端</span></span><br><span class="line">            connection.send(data)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 关闭连接</span></span><br><span class="line">            connection.close()</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure></p>
+<p>客户端代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成客户端socket</span></span><br><span class="line">client = socket.socket()</span><br><span class="line"><span class="comment"># 向服务端发起连接</span></span><br><span class="line">client.connect((<span class="string">'127.0.0.1'</span>, <span class="number">8888</span>))</span><br><span class="line"><span class="comment"># 循环发送和接收</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    msg = input(<span class="string">'&gt;&gt;'</span>)</span><br><span class="line">    client.send(msg.encode())</span><br><span class="line">    data = client.recv(<span class="number">1000</span>)</span><br><span class="line">    print(<span class="string">'服务端返回的数据&#123;&#125;'</span>.format(data.decode()))</span><br></pre></td></tr></table></figure></p>
+<p>以上是一个比较简单的套接字，但是也是最原始的，这种套接字是会阻塞的，也就是一次只能对一个客户端进行服务，直到这个客户端断开连接，那么我们就需要将这种套接字设置为非阻塞，其实设置非阻塞很容易，加上一个 <code>setblocking(False)</code> 就可以了，但是如果设置了非阻塞，我们就要考虑异常问题了，下面我们来看非阻塞的套接字</p>
+<p>非阻塞套接字服务端<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认是建立在 TCP协议之上的</span></span><br><span class="line">server = socket.socket()</span><br><span class="line"><span class="comment"># 设置非阻塞 要写在所有操作之前</span></span><br><span class="line">server.setblocking(<span class="keyword">False</span>)</span><br><span class="line"><span class="comment"># 绑定ip地址和端口</span></span><br><span class="line">server.bind((<span class="string">''</span>, <span class="number">8080</span>))</span><br><span class="line"><span class="comment"># 开启监听</span></span><br><span class="line">server.listen(<span class="number">1000</span>)</span><br><span class="line">print(<span class="string">"监听开始..."</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个列表用于存放全部已经成功连接上客户端</span></span><br><span class="line">all_connection = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        connection, remote_address = server.accept()</span><br><span class="line">        print(<span class="string">"客户端&#123;&#125;成功连接"</span>.format(remote_address))</span><br><span class="line">        <span class="comment"># 新生成的套接字也要设置非阻塞</span></span><br><span class="line">        connection.setblocking(<span class="keyword">False</span>)</span><br><span class="line">        all_connection.append(connection)</span><br><span class="line">    <span class="keyword">except</span> BlockingIOError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 浅复制一个</span></span><br><span class="line">    tmp_connection = [connection <span class="keyword">for</span> connection <span class="keyword">in</span> all_connection]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> connection <span class="keyword">in</span> tmp_connection:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = connection.recv(<span class="number">1000</span>)</span><br><span class="line">            <span class="keyword">if</span> data:</span><br><span class="line">                <span class="comment"># 打印接收到的数据</span></span><br><span class="line">                print(data.decode())</span><br><span class="line">                <span class="comment"># 将接收到的数据发回客户端</span></span><br><span class="line">                connection.send(data)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 从列表中移除</span></span><br><span class="line">                all_connection.remove(connection)</span><br><span class="line">        <span class="keyword">except</span> BlockingIOError <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></p>
+<p>客户端同上和第一个客户端一样，将重点放在服务端，那么其实这种非阻塞的也算是实现了伪并发了，这样的话，其实对于cpu的比较浪费的，因为这种方式，采用的是不断的轮询，比较浪费CPU，所有下篇文章所讲的IO多路复用</p>
 
       
     </div>
@@ -516,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/12/JavaScript/Event_02/" rel="next" title="Event">
-                <i class="fa fa-chevron-left"></i> Event
+              <a href="/2018/03/13/Python/Concurrency/Socket/网络协议/" rel="next" title="OSI七层模型">
+                <i class="fa fa-chevron-left"></i> OSI七层模型
               </a>
             
           </div>
@@ -526,8 +533,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/20/Python/Concurrency/ProcessesAndThreads/多进程、多线程/" rel="prev" title="多进程、多线程">
-                多进程、多线程 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/15/Python/Concurrency/Socket/IO多路复用/" rel="prev" title="IO多路复用">
+                IO多路复用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -576,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -596,7 +612,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -726,6 +742,22 @@ data-autoplay : 自动播放，支持如下参数:
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#套接字编程（Socket）"><span class="nav-number">1.</span> <span class="nav-text">套接字编程（Socket）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

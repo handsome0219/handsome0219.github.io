@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googled1f062b2c8449c40.html" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="协程（Coroutine） 什么是协程，协程又被称为微线程，那么协程是作用在于执行函数 A 的时候， 可以随时中断，然后执行函数 B ，然后又可以中断函数 B 去执行函数 A，也就是说可以进行自由来回切换，但是这个一个过程并不是调用函数，我们要注意一个点，就是这个过程看起来是多线程，但是协程是位于线程里面的，是单线程的">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="协程">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/Python/Concurrency/Coroutine/协程/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="协程（Coroutine） 什么是协程，协程又被称为微线程，那么协程是作用在于执行函数 A 的时候， 可以随时中断，然后执行函数 B ，然后又可以中断函数 B 去执行函数 A，也就是说可以进行自由来回切换，但是这个一个过程并不是调用函数，我们要注意一个点，就是这个过程看起来是多线程，但是协程是位于线程里面的，是单线程的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-25T06:33:10.389Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="协程">
+<meta name="twitter:description" content="协程（Coroutine） 什么是协程，协程又被称为微线程，那么协程是作用在于执行函数 A 的时候， 可以随时中断，然后执行函数 B ，然后又可以中断函数 B 去执行函数 A，也就是说可以进行自由来回切换，但是这个一个过程并不是调用函数，我们要注意一个点，就是这个过程看起来是多线程，但是协程是位于线程里面的，是单线程的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/18/Python/Concurrency/Coroutine/协程/"/>
+
+
+
+
+
+  <title>协程 | 付帅帅</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ecf701914946cceef8229d782851c7d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-关于我"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/Python/Concurrency/Coroutine/协程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="付帅帅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">协程</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T14:01:10+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/协程/" itemprop="url" rel="index">
+                    <span itemprop="name">协程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          <!-- 热度 -->
+          <!-- 在下面的位置加上如下代码 -->
+          <span id="busuanzi_container_page_pv">
+            &nbsp; | &nbsp; 热度&nbsp; <span id="busuanzi_value_page_pv"></span>°C
+          </span>
+          <!-- 在上面的位置加上如上代码 -->
+
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,656 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="协程（Coroutine）"><a href="#协程（Coroutine）" class="headerlink" title="协程（Coroutine）"></a>协程（<code>Coroutine</code>）</h1><blockquote>
+<p>什么是协程，协程又被称为微线程，那么协程是作用在于执行函数 A 的时候， 可以随时中断，然后执行函数 B ，然后又可以中断函数 B 去执行函数 A，也就是说可以进行自由来回切换，但是这个一个过程并不是调用函数，我们要注意一个点，就是这个过程看起来是多线程，但是协程是位于线程里面的，是单线程的</p>
+</blockquote>
+<a id="more"></a>
+<p>在了解协程之前，先来看看生成器（<code>generator</code>），很多人一听到生成器，第一反应可能就是 <code>yield</code>，那么先用一些案例来看下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"> 可迭代对象(Iterable)</span></span><br><span class="line"><span class="string"> 迭代器(Iterator)</span></span><br><span class="line"><span class="string"> 生成器(Generator)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    l = []</span><br><span class="line">    <span class="keyword">while</span> index &lt; n:</span><br><span class="line">        <span class="comment"># l.append(b)</span></span><br><span class="line">        <span class="keyword">yield</span> b</span><br><span class="line">        a, b = b, a+b</span><br><span class="line">        index += <span class="number">1</span></span><br><span class="line">    <span class="comment"># return l  # 在返回之前 要保留整个列表</span></span><br><span class="line"></span><br><span class="line">start_time = time.time()</span><br><span class="line"><span class="comment"># fib(3000000) # 一次全部返回</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fib(<span class="number">100000</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">print(time.time() - start_time)</span><br></pre></td></tr></table></figure>
+<p>通过这个案例可以，可以清楚的知道使用生成器的时间比列表返回快，因为如果使用列表，那么每次返回的时候，必须计算好整个列表的值，然后返回，那么就需要一个比较大的空间用来保存，但是生成器不需要</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yield  send  通过yield暂停函数 然后返回数据  如果向函数内部发送数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    a, b = <span class="number">0</span>,<span class="number">1</span></span><br><span class="line">    l = []</span><br><span class="line">    <span class="keyword">while</span> index &lt; n:</span><br><span class="line">        r = <span class="keyword">yield</span> b  <span class="comment"># 程序只有运行到这一行才能接受数据</span></span><br><span class="line">        print(r)</span><br><span class="line">        a, b = b, a+b</span><br><span class="line">        index += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f = fib(<span class="number">5</span>)</span><br><span class="line">print(f.send(<span class="keyword">None</span>))</span><br><span class="line">print(f.send(<span class="string">'w'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">()</span>:</span></span><br><span class="line">    r = <span class="string">''</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        n = <span class="keyword">yield</span> r</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> n:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        print(<span class="string">'消费者 &#123;&#125;'</span>.format(n))</span><br><span class="line">        r = <span class="string">'Ok'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span><span class="params">(c)</span>:</span></span><br><span class="line">    c.send(<span class="keyword">None</span>) <span class="comment"># 启动生成器  运行到yield 哪一行代码</span></span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n&lt;<span class="number">10</span>:</span><br><span class="line">        n += <span class="number">1</span></span><br><span class="line">        r = c.send(n)</span><br><span class="line">        print(<span class="string">'消费者  返回 &#123;&#125;'</span>.format(r))</span><br><span class="line"></span><br><span class="line">    c.close()</span><br><span class="line"></span><br><span class="line">c = consumer() <span class="comment"># 生成了c</span></span><br><span class="line">producer(c) <span class="comment"># 做了函数调用</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 线程和进程 不能自己控制进行  协程可以控制</span></span><br></pre></td></tr></table></figure>
+<h3 id="greenlet-和-gevent-的使用"><a href="#greenlet-和-gevent-的使用" class="headerlink" title="greenlet 和 gevent 的使用"></a>greenlet 和 gevent 的使用</h3><blockquote>
+<p><a href="http://greenlet.readthedocs.io/en/latest/#introduction" target="_blank" rel="noopener">http://greenlet.readthedocs.io/en/latest/#introduction</a></p>
+</blockquote>
+<p>greenlet的案例<br><a href="http://www.bjhee.com/greenlet.html" target="_blank" rel="noopener">http://www.bjhee.com/greenlet.html</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> greenlet <span class="keyword">import</span> greenlet</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="number">1</span>)</span><br><span class="line">    gr2.switch()</span><br><span class="line">    print(<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># gr2.switch()  # 如果这个不写 就不能打印4</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test2</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="number">3</span>)</span><br><span class="line">    gr1.switch()</span><br><span class="line">    print(<span class="number">4</span>)</span><br><span class="line">gr1 = greenlet(test1)</span><br><span class="line">gr2 = greenlet(test2)</span><br><span class="line">gr1.switch() <span class="comment"># 开始运行  水调用了switch 就会切换到哪里去</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">这里创建了两个greenlet协程对象，gr1和gr2，分别对应于函数test1()和test2()。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">使用greenlet对象的switch()方法，即可以切换协程。上例中，我们先调用”gr1.switch()”，函数test1()被执行，</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">然后打印出”1″；接着由于”gr2.switch()”被调用，协程切换到函数test2()，打印出”3″；之后”gr1.switch()”又被调用，</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">所以又切换到函数test1()。但注意，由于之前test1()已经执行到第5行，也就是”gr2.switch()”，所以切换回来后会继续往下执行，</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">也就是打印”2″；现在函数test1()退出，同时程序退出。由于再没有”gr2.switch()”来切换至函数test2()，所以程序”print 4″不会被执行。</span></span><br></pre></td></tr></table></figure></p>
+<p>switch带参数的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> greenlet <span class="keyword">import</span> greenlet</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="number">12</span>)</span><br><span class="line">    y = gr2.switch(<span class="number">34</span>)</span><br><span class="line">    print(y)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test2</span><span class="params">(x)</span>:</span></span><br><span class="line">    print(x)</span><br><span class="line">    gr1.switch(<span class="number">56</span>)</span><br><span class="line">    print(<span class="number">78</span>)</span><br><span class="line">gr1 = greenlet(test1)</span><br><span class="line">gr2 = greenlet(test2)</span><br><span class="line">gr1.switch() <span class="comment"># 开始运行  水调用了switch 就会切换到哪里去</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">在test1()中调用”gr2.switch()”，由于协程”gr2″之前未被启动，所以传入的参数”56″会被赋在test2()函数的参数”x”上；</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">在test2()中调用”gr1.switch()”，</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">由于协程”gr1″之前已执行到第5行”y = gr2.switch(56)”这里，</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">所以传入的参数”34″会作为”gr2.switch(56)”的返回值，赋给变量”y”。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">这样，两个协程之间的互传消息就实现了。</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<h4 id="gevent"><a href="#gevent" class="headerlink" title="gevent"></a>gevent</h4><p>有了gevent，协程的使用将无比简单，你根本无须像greenlet一样显式的切换，每当一个协程阻塞时，程序将自动调度，gevent处理了所有的底层细节</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fn2</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="number">3</span>)</span><br><span class="line">    print(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">fn1 = gevent.spawn(fn1)</span><br><span class="line">fn2 = gevent.spawn(fn2)</span><br><span class="line">gevent.joinall([fn1, fn2])</span><br></pre></td></tr></table></figure>
+<p>“””<br>解释下，”gevent.spawn()”方法会创建一个新的greenlet协程对象，<br>并运行它。”gevent.joinall()”方法会等待所有传入的greenlet协程运行结束后再退出，<br>这个方法可以接受一个”timeout”参数来设置超时时间，单位是秒。运行上面的程序，<br>执行顺序如下：<br>先进入协程test1，打印1<br>遇到”gevent.sleep(0)”时，test1被阻塞，自动切换到协程test2，打印3<br>之后test2被阻塞，这时test1阻塞已结束，自动切换回test1，打印2<br>当test1运行完毕返回后，此时test2阻塞已结束，再自动切换回test2，打印78<br>所有协程执行完毕，程序退出<br>“””<br>greenlet一个协程运行完后，必须显式切换，不然会返回其父协程。而在gevent中，一个协程运行完后，它会自动调度那些未完成的协程</p>
+<p>gevent生产者和消费者<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gevent.queue <span class="keyword">import</span> Queue</span><br><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"></span><br><span class="line">queue = Queue(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        item = random.randint(<span class="number">0</span>, <span class="number">99</span>)</span><br><span class="line">        queue.put(item)</span><br><span class="line">        print(<span class="string">'生产者  生产了 &#123;&#125;'</span>.format(item))</span><br><span class="line">        gevent.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        item = queue.get()</span><br><span class="line">        print(<span class="string">'消费者 消费了 &#123;&#125;'</span>.format(item))</span><br><span class="line">        gevent.sleep(<span class="number">2</span>)  <span class="comment"># 模拟阻塞</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = gevent.spawn(producer) <span class="comment"># spawn启动协程  第二个是参数</span></span><br><span class="line">c = gevent.spawn(consumer)</span><br><span class="line">gevent.joinall([p, c]) <span class="comment"># 阻塞当前流程 执行给定的 greenlet 执行完了 在继续</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="并发服务器"><a href="#并发服务器" class="headerlink" title="并发服务器"></a>并发服务器</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gevent <span class="keyword">import</span> monkey; monkey.patch_socket()</span><br><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">此后socket标准库中的类和方法都会被替换成非阻塞式的</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">有些别的库，可能也有这么阻塞 所以 提供了monkey.patch_all()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">动态修改</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server = socket.socket()</span><br><span class="line">server.bind((<span class="string">''</span>, <span class="number">8000</span>))</span><br><span class="line">server.listen(<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(con)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        data = con.recv(<span class="number">1000</span>)</span><br><span class="line">        <span class="keyword">if</span> data:</span><br><span class="line">            print(data)</span><br><span class="line">            con.send(data)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            con.close()</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'等待客户端连接..'</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    con, addr = server.accept()</span><br><span class="line">    print(<span class="string">'客户端&#123;&#125;成功连接'</span>.format(addr))</span><br><span class="line">    gevent.spawn(read, con)</span><br></pre></td></tr></table></figure>
+<p>仅用于个人参考</p>
+
+      
+    </div>
+
+    <!-- 添加文章结束标记 -->
+    <div style="text-align:center;color: #ccc;font-size:14px;">
+        ----------------&emsp;The&emsp;&emsp;&emsp;End&emsp;----------------
+    </div>
+
+
+
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="付帅帅 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="付帅帅 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+    
+    <div>
+      
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文作者：</strong>
+            <a href="/" title="欢迎访问 付帅帅 的个人博客">
+              付帅帅
+            </a>
+          </li>
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="/2018/03/18/Python/Concurrency/Coroutine/协程/" title="2018/03/18/Python/Concurrency/Coroutine/协程/">
+              2018/03/18/Python/Concurrency/Coroutine/协程/
+            </a>
+          </li>
+          <li class="post-copyright-date">
+              <strong>发布时间：</strong>2018年3月18日 -- 14时03分
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本文由 付帅帅 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank"> 保留署名-非商业性使用-禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
+          </li>
+        </ul>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/17/Python/Concurrency/ProcessesAndThreads/线程池和进程池/" rel="next" title="进程池和线程池">
+                <i class="fa fa-chevron-left"></i> 进程池和线程池
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/20/Linux/contos7安装Python36/" rel="prev" title="contos7安装Python36">
+                contos7安装Python36 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="付帅帅" />
+            
+              <p class="site-author-name" itemprop="name">付帅帅</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-GitHub"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/handsome0219" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-Twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/handsome0219" target="_blank" title="FaceBook">
+                      
+                        <i class="fa fa-fw fa-FaceBook"></i>FaceBook</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.weibo.com/u/5311080871" target="_blank" title="WeiBo">
+                      
+                        <i class="fa fa-fw fa-WeiBo"></i>WeiBo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ssdcc.github.io/" title="深水丶虫" target="_blank">深水丶虫</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- 这是第一个文件 必须-->
+<script src="https://cdn.bootcss.com/aplayer/1.6.0/APlayer.min.js"></script>
+<!-- 下面是第二个文件的原文件 可以直接使用
+<script src="https://api.i-meto.com/music/player.js"></script>
+-->
+<!-- 下面是我修改后的文件 可删除-->
+<script type="text/javascript" src="/js/src/player.js"></script>
+<!-- aplayer 使用-->
+<div class="aplayer"
+	data-id="491241167"
+	data-server="netease"
+	data-type="playlist"
+	data-mode="random"
+	data-autoplay="true"
+	data-volume="0.66"
+	data-lrc="true"
+	dataset="height:250px">
+</div>
+
+<!--
+
+
+
+data-id : 歌曲/专辑/歌单 ID 。此参数必填。 890805124
+data-server : 音乐平台，此参数必填。支持如下参数:
+	netease
+	tencent
+	xiami
+	kugou
+	baidu
+data-type : 请求类型，此参数必填。支持如下参数:
+	song （单曲）
+	album （专辑）
+	playlist （歌单）
+	search （搜索）
+data-mode : 播放模式，支持如下参数:
+	random （随机）
+	single （单曲）
+	circulation （列表循环）
+	order （列表）
+data-autoplay : 自动播放，支持如下参数:
+	false
+	true
+-->
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#协程（Coroutine）"><span class="nav-number">1.</span> <span class="nav-text">协程（Coroutine）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#greenlet-和-gevent-的使用"><span class="nav-number">1.0.1.</span> <span class="nav-text">greenlet 和 gevent 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gevent"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">gevent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发服务器"><span class="nav-number">1.0.2.</span> <span class="nav-text">并发服务器</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+    &copy;
+  2017
+    &mdash;
+  
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">付帅帅
+  </span>
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="javascript:void(0)"></a> 个人专属 
+  </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    博客 - handsomeFu
+  </div>
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- github -->
+  <!--   <a href="https://github.com/handsome0219/handsome0219.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a> -->
+</body>
+</html>

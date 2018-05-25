@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googled1f062b2c8449c40.html" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="进程通信及线程安全 什么是进程间的通信，以及如何解决进程间的通信，线程共享同一片内存空间，那么这样又有什么危害，线程锁是什么，它能干嘛，队列又应该怎么用，以及生产者和消费者模式">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进程通信和线程安全">
+<meta property="og:url" content="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/并发通信/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="进程通信及线程安全 什么是进程间的通信，以及如何解决进程间的通信，线程共享同一片内存空间，那么这样又有什么危害，线程锁是什么，它能干嘛，队列又应该怎么用，以及生产者和消费者模式">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/5A0DC96C7070430A8E6444B9D7CE91F8?method=download&shareKey=147c58507ab4d85a8b3c8709b059aa3e">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/59404E78ABE54C2C80A6B9F346F5E09B?method=download&shareKey=dd0237aa192dde1e73af01625a88a12b">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/FEBA40128AB040AD99257AA113DC6E0D?method=download&shareKey=3041113233330dbe1367a93e8a3649e7">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/48D8D5909D4F42E18269609046042960?method=download&shareKey=1d0adb3b5d56b8baeb78c01645494fea">
+<meta property="og:updated_time" content="2018-05-25T06:32:50.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="进程通信和线程安全">
+<meta name="twitter:description" content="进程通信及线程安全 什么是进程间的通信，以及如何解决进程间的通信，线程共享同一片内存空间，那么这样又有什么危害，线程锁是什么，它能干嘛，队列又应该怎么用，以及生产者和消费者模式">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/5A0DC96C7070430A8E6444B9D7CE91F8?method=download&shareKey=147c58507ab4d85a8b3c8709b059aa3e">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/并发通信/"/>
+
+
+
+
+
+  <title>进程通信和线程安全 | 付帅帅</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ecf701914946cceef8229d782851c7d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-关于我"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/Python/Concurrency/ProcessesAndThreads/并发通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="付帅帅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">进程通信和线程安全</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T22:22:03+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/多进程、多线程/" itemprop="url" rel="index">
+                    <span itemprop="name">多进程、多线程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          <!-- 热度 -->
+          <!-- 在下面的位置加上如下代码 -->
+          <span id="busuanzi_container_page_pv">
+            &nbsp; | &nbsp; 热度&nbsp; <span id="busuanzi_value_page_pv"></span>°C
+          </span>
+          <!-- 在上面的位置加上如上代码 -->
+
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,590 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="进程通信及线程安全"><a href="#进程通信及线程安全" class="headerlink" title="进程通信及线程安全"></a>进程通信及线程安全</h1><blockquote>
+<p>什么是进程间的通信，以及如何解决进程间的通信，线程共享同一片内存空间，那么这样又有什么危害，线程锁是什么，它能干嘛，队列又应该怎么用，以及生产者和消费者模式</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="进程间的通信"><a href="#进程间的通信" class="headerlink" title="进程间的通信"></a>进程间的通信</h3><p>先看代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">age = <span class="number">10</span> <span class="comment"># 全局变量</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> age</span><br><span class="line">    age = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># func()</span></span><br><span class="line">p = Process(target=func)</span><br><span class="line">p.start()</span><br><span class="line">p.join()</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure></p>
+<p>打印输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure></p>
+<p>通过上面的代码的运行结果，我们可以看出，进程和进程之间的内存地址是相互独立的，如下图<br><img src="https://note.youdao.com/yws/api/personal/file/5A0DC96C7070430A8E6444B9D7CE91F8?method=download&amp;shareKey=147c58507ab4d85a8b3c8709b059aa3e" alt="进程间独立的内存空间"><br>那么既然进程间内存地址是独立的，那么线程之间内存地址是不是独立的呢？ 这个还有想吗，肯定不是独立的嘛，<strong>注意</strong> 线程是通过进程创建的，所有的线程位于同一进程，所以线程共享一块内存地址，看代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span>  Thread</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">age = <span class="number">10</span>  <span class="comment"># 全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> age</span><br><span class="line">    age = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># func()</span></span><br><span class="line">t = Thread(target=func)</span><br><span class="line">t.start()</span><br><span class="line">t.join()</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure></p>
+<p>打印输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20</span><br></pre></td></tr></table></figure></p>
+<p>上面的例子可以说明，进程间的内存地址是相互独立的，而线程间的则是共享同一个内存地址,那么我们首先解决进程间通信的这么一个障碍</p>
+<h3 id="Manager"><a href="#Manager" class="headerlink" title="Manager"></a>Manager</h3><p>先看图：<br><img src="https://note.youdao.com/yws/api/personal/file/59404E78ABE54C2C80A6B9F346F5E09B?method=download&amp;shareKey=dd0237aa192dde1e73af01625a88a12b" alt="进程解决方案"><br>然后看代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from multiprocessing import Process, Manager</span><br><span class="line"># 先生成一个管理器  生成管理器的同时 也生成了一个公共的进程</span><br><span class="line">mgr = Manager()</span><br><span class="line"></span><br><span class="line">tmp_list = mgr.list()  # 从公共空间中开辟一个 list　空间</span><br><span class="line"></span><br><span class="line">def func():</span><br><span class="line">    tmp_list.append(1)</span><br><span class="line">    tmp_list.append(2)</span><br><span class="line"></span><br><span class="line">p = Process(target=func)</span><br><span class="line">p.start()</span><br><span class="line">p.join()</span><br><span class="line">print(tmp_list)</span><br></pre></td></tr></table></figure></p>
+<p>输出结果<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>] <span class="comment"># 是一个列表</span></span><br></pre></td></tr></table></figure></p>
+<p>上述代码说明了，通过这个 Manager 我们可以在进程间通信，当然，不仅仅只有 list 还有 dict 以及 queue<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Manager</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mgr = Manager() <span class="comment"># 生成一个服务器进程，并返回与其通信的管理器</span></span><br><span class="line"></span><br><span class="line">tmp_list = mgr.list()</span><br><span class="line">tmp_dict = mgr.dict()</span><br><span class="line">tmp_queue = mgr.Queue()</span><br><span class="line"></span><br><span class="line">print(tmp_list)</span><br><span class="line">print(type(tmp_list))</span><br><span class="line">print(type(tmp_dict))</span><br><span class="line">print(type(tmp_queue))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">()</span>:</span></span><br><span class="line">    tmp_list.append(<span class="string">'a'</span>)</span><br><span class="line">    tmp_dict.update(&#123;<span class="string">"a"</span>: <span class="number">1</span>&#125;)</span><br><span class="line">    tmp_queue.put(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t = Process(target=b)</span><br><span class="line">t.start()</span><br><span class="line">t.join()</span><br><span class="line">print(tmp_list)</span><br><span class="line">print(tmp_dict)</span><br><span class="line">print(tmp_queue.get())</span><br></pre></td></tr></table></figure></p>
+<p>讲完了，进程间的通信，接下来我们来看看，线程间的问题应该怎么解决呢， 什么？ 线程间还需要解决通信吗，不是说线程共用一块内存地址，那还需要解决说什么问题呢？线程其实需要解决，共用同一片内存地址的问题，就是因为线程共有同一片内存空间，所以，有时候会造成当两个线程同时对一个变量进行修改的同时就会出现问题，那么应该怎么解决呢？别急，请往下看</p>
+<h3 id="线程锁"><a href="#线程锁" class="headerlink" title="线程锁"></a>线程锁</h3><blockquote>
+<p>因为线程共享一块内存地址，所以当多个线程修改共享资源的时候，就会出现各种各样的问题</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  threading  <span class="keyword">import</span> Thread</span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line">n = <span class="number">10000000</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">t = Thread(target=calc, args=(n, ))</span><br><span class="line">t1 = Thread(target=calc, args=(n, ))</span><br><span class="line">t.start()</span><br><span class="line">t1.start()</span><br><span class="line">t.join()</span><br><span class="line">t1.join()</span><br><span class="line">print(count)</span><br></pre></td></tr></table></figure>
+<p>输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一次--&gt; 13417734</span><br><span class="line">第二次--&gt; 13641278</span><br><span class="line">第三次--&gt; 23328333</span><br></pre></td></tr></table></figure></p>
+<p>为什么每次的结果会不一样呢，如果你给的值较小的话，是不会出现这种问题的，只有你的值给的比较大的话，那么就会出现这种问题了，首先我们分析一下，当 Python 解释器遇到 <code>count += 1</code>的时候，其实的分了这么几个步骤的</p>
+<ul>
+<li>先将 <code>count += 1</code> 变成 <code>count = count + 1</code></li>
+<li>然后先计算 <code>count + 1</code></li>
+<li>将 <code>count + 1</code> 得到的值重新赋值给 <code>count</code><br>那么应该怎么解决这个问题呢， Python 给我们提供了一个 锁 的东西，那么这个锁应该怎么用，其实也很简单</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  threading  <span class="keyword">import</span> Thread, Lock</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line">n = <span class="number">10000000</span></span><br><span class="line">lock = Lock() <span class="comment"># 生成锁</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        lock.acquire() <span class="comment"># 加锁</span></span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        lock.release() <span class="comment">#  解锁</span></span><br><span class="line"></span><br><span class="line">t = Thread(target=calc, args=(n, ))</span><br><span class="line">t1 = Thread(target=calc, args=(n, ))</span><br><span class="line">t.start()</span><br><span class="line">t1.start()</span><br><span class="line">t.join()</span><br><span class="line">t1.join()</span><br><span class="line">print(count)</span><br></pre></td></tr></table></figure>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一个运行结果--&gt; 20000000</span><br><span class="line">第二个运行结果--&gt; 19999999</span><br><span class="line">第三个运行结果--&gt; 20000000</span><br></pre></td></tr></table></figure></p>
+<p>这样就算是解决了线程之间的资源竞争问题，锁的作用就是保证，在任何一个时刻，都只有一个线程在运行，但是，锁重要吗，其实在项目中，几乎不会用到，大家知道有这么个东西就可以了，<strong>注意</strong>： 锁可能会降低一点效率，但是，如果去了锁， 又要保持公共资源前提下，效率会降低 10 ~ 20 倍。而且多线程有个特性，就是会避开阻塞，所以大家就不要考虑怎么把锁去掉</p>
+<p>对于给公共资源上锁，还有一种更优雅的写法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  threading  <span class="keyword">import</span> Thread, Lock</span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line">n = <span class="number">10000000</span></span><br><span class="line">lock = Lock() <span class="comment"># 生成锁</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">with</span> lock:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">t = Thread(target=calc, args=(n, ))</span><br><span class="line">t1 = Thread(target=calc, args=(n, ))</span><br><span class="line">t.start()</span><br><span class="line">t1.start()</span><br><span class="line">t.join()</span><br><span class="line">t1.join()</span><br><span class="line">print(count)</span><br></pre></td></tr></table></figure></p>
+<p>然后接下来，我们再来看看队列这么一个知识点</p>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><blockquote>
+<p>队列，是一种数据结构，因为队列底层已经实现了锁，所以我们只需要会用就行了，所以队列就是用来解决安全问题的，队列一般是用在生产者和消费者直接的信息传递</p>
+</blockquote>
+<p>我们在学习队列之前，先看看队列的原理<br><img src="https://note.youdao.com/yws/api/personal/file/FEBA40128AB040AD99257AA113DC6E0D?method=download&amp;shareKey=3041113233330dbe1367a93e8a3649e7" alt="队列的原理"></p>
+<p>队列只有一个入口，一个出口，遵循先出先出（FIFO:<code>First in First Out</code>）</p>
+<p>先看代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span>  Queue</span><br><span class="line"></span><br><span class="line">q = Queue() <span class="comment"># 实例一个队列对象　里面有一个　maxsize 参数，如果不传，那么则是无穷大，传了则表示 队列的一个最大值</span></span><br><span class="line"></span><br><span class="line">q.put(<span class="string">'a'</span>) <span class="comment"># 向队列里面塞东西  入队</span></span><br><span class="line"></span><br><span class="line">print(q.get()) <span class="comment"># 向队列里面取东西  出队</span></span><br></pre></td></tr></table></figure></p>
+<p>上面就是一个最简单的队列，那么队列当然不止只有这么两个方法，还有比如说 <code>full()</code>、<code>empty()</code>、<code>qsize()</code>、<code>task_done()</code>和<code>join()</code>，当然需要注意的是，<code>full()</code>和<code>empty()</code>是近似值，就是说，不是很正确，然后<code>join()</code>和<code>task_done()</code>这两个方法在下面会讲到，我们回过头来看看，<code>get()</code>和<code>put()</code>这么两个方法，一个就是塞，一个取，但是要注意，这玩意也会阻塞，比如当你 <code>put</code>  超过了，当初定义队列的最大值，那么就会阻塞，另外　<code>get()</code> 如果取出超过队列长度，它也会阻塞，接下来操作一下队列的其它一些方法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span>  Queue</span><br><span class="line"></span><br><span class="line">q = Queue(<span class="number">3</span>) <span class="comment"># 这个队列最大长度为3</span></span><br><span class="line"></span><br><span class="line">q.put(<span class="string">'a'</span>) <span class="comment"># 向队列里面塞东西</span></span><br><span class="line">q.put(<span class="string">'b'</span>)</span><br><span class="line">q.put(<span class="string">'a'</span>)</span><br><span class="line">print(q.empty()) <span class="comment"># False</span></span><br><span class="line">print(q.full()) <span class="comment"># True</span></span><br><span class="line">print(q.qsize()) <span class="comment"># 3</span></span><br><span class="line">print(q.get()) <span class="comment"># 向队列里面取东西</span></span><br></pre></td></tr></table></figure></p>
+<p>接下来我们看下<code>task_done</code>和<code>join</code>这两个方法，先看代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span>  Queue</span><br><span class="line"></span><br><span class="line">q = Queue(<span class="number">3</span>) <span class="comment"># 这个队列最大长度为3</span></span><br><span class="line"></span><br><span class="line">q.put(<span class="number">1</span>) <span class="comment"># 往队列添加数据  计数器 +1</span></span><br><span class="line">print(q.get()) <span class="comment"># 仅仅取数据，不做任何操作</span></span><br><span class="line">q.task_done() <span class="comment"># 告诉队列 当前任务结束  计数器 -1</span></span><br><span class="line">q.join() <span class="comment"># 阻塞，一直到计数器为 0 才会停止阻塞</span></span><br></pre></td></tr></table></figure></p>
+<p>首先，我们要了解一个概念，在队列里面，存在着一个计数器的东西，当对队列进行 <code>put</code>的时候，这个计数器就会 +1 ，但是，当对队列进行 <code>get</code> 的时候，计数器，并不会做任何操作，只有使用了 <code>task_done</code>，这个计算器才会 -1 ，而 <code>join</code>表示，只有当计算器为 0的时候，才不阻塞，否则就阻塞</p>
+<p>除了 Python 自带的 queue 这么一个队列，还记得前面说过的 manager 本身带的一个 queue 吗，用法和使用本身自带的是一模一样的，只不过一个是针对线程，一个是进程，自带的是针对线程，manager 是针对进程<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Manager</span><br><span class="line"></span><br><span class="line">mgr = Manager()</span><br><span class="line">q = mgr.Queue()</span><br><span class="line"></span><br><span class="line">q.put(<span class="string">'1'</span>)</span><br><span class="line">print(q.get())</span><br></pre></td></tr></table></figure></p>
+<h3 id="生产者和消费者"><a href="#生产者和消费者" class="headerlink" title="生产者和消费者"></a>生产者和消费者</h3><p>怎么说呢，其实生产者和消费者模式，就是一个负责生产，一个负责消费，它们之间通过队列进行传输数据，先看张图<br><img src="https://note.youdao.com/yws/api/personal/file/48D8D5909D4F42E18269609046042960?method=download&amp;shareKey=1d0adb3b5d56b8baeb78c01645494fea" alt="生产者和消费者传输模式"><br>可以把生产者和消费者都看成进程或线程</p>
+<h4 id="多线程实现生产者和消费者"><a href="#多线程实现生产者和消费者" class="headerlink" title="多线程实现生产者和消费者"></a>多线程实现生产者和消费者</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span>  Thread</span><br><span class="line"><span class="keyword">import</span> queue, random</span><br><span class="line"></span><br><span class="line">q = queue.Queue(<span class="number">5</span>) <span class="comment"># 最多放5个，多了就会阻塞</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生产者  在写生产者的时候 不要考虑消费者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span><span class="params">(Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, queue)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.queue = queue</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            item = random.randint(<span class="number">100</span>, <span class="number">1000</span>) <span class="comment"># 使用随机数来代替</span></span><br><span class="line">            self.queue.put(item)</span><br><span class="line">            print(<span class="string">'生产者，生产了&#123;&#125;'</span>.format(item))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 消费者  在写消费者的时候  不要考虑生产者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span><span class="params">(Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, queue)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.queue = queue</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            item = self.queue.get()</span><br><span class="line">            print(<span class="string">'消费者，消费了&#123;&#125;'</span>.format(item))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">producer = Producer(q)</span><br><span class="line">consumer = Consumer(q)</span><br><span class="line"></span><br><span class="line">producer.start()</span><br><span class="line">consumer.start()</span><br></pre></td></tr></table></figure>
+<p>因为不是守护线程，所以不需要加 join</p>
+<p>代码输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">消费者，消费了987</span><br><span class="line">生产者，生产了203</span><br><span class="line">生产者，生产了540</span><br><span class="line">消费者，消费了775</span><br><span class="line">消费者，消费了432</span><br><span class="line">生产者，生产了190</span><br><span class="line">生产者，生产了779</span><br><span class="line">消费者，消费了981</span><br><span class="line">消费者，消费了203</span><br><span class="line">消费者，消费了540</span><br><span class="line">生产者，生产了198</span><br><span class="line">生产者，生产了399</span><br><span class="line">生产者，生产了951</span><br><span class="line">消费者，消费了190</span><br><span class="line">消费者，消费了779</span><br><span class="line">生产者，生产了465</span><br><span class="line">生产者，生产了318</span><br><span class="line">消费者，消费了198</span><br><span class="line">消费者，消费了399</span><br><span class="line">生产者，生产了945</span><br><span class="line">生产者，生产了947</span><br><span class="line">消费者，消费了951</span><br><span class="line">消费者，消费了465</span><br><span class="line">生产者，生产了416</span><br><span class="line">生产者，生产了776</span><br><span class="line">消费者，消费了318</span><br><span class="line">消费者，消费了945</span><br><span class="line">生产者，生产了652</span><br><span class="line">生产者，生产了304</span><br><span class="line">消费者，消费了947</span><br><span class="line">消费者，消费了416</span><br><span class="line">生产者，生产了287</span><br><span class="line">生产者，生产了449</span><br><span class="line">消费者，消费了776</span><br><span class="line">消费者，消费了652</span><br><span class="line">消费者，消费了304</span><br><span class="line">消费者，消费了287</span><br><span class="line">生产者，生产了456</span><br><span class="line">生产者，生产了883</span><br><span class="line">生产者，生产了262</span><br><span class="line">生产者，生产了703</span><br><span class="line">消费者，消费了449</span><br><span class="line">消费者，消费了456</span><br><span class="line">生产者，生产了970</span><br><span class="line">生产者，生产了517</span><br><span class="line">消费者，消费了883</span><br><span class="line">消费者，消费了262</span><br><span class="line">生产者，生产了310</span><br><span class="line">生产者，生产了563</span><br><span class="line">消费者，消费了703</span><br><span class="line">消费者，消费了970</span><br><span class="line">生产者，生产了991</span><br><span class="line">生产者，生产了743</span><br><span class="line">消费者，消费了517</span><br><span class="line">消费者，消费了310</span><br><span class="line">消费者，消费了563</span><br><span class="line">消费者，消费了991</span><br><span class="line">生产者，生产了276</span><br><span class="line">生产者，生产了326</span><br><span class="line">生产者，生产了519</span><br><span class="line">生产者，生产了292</span><br><span class="line">消费者，消费了743</span><br><span class="line">消费者，消费了276</span><br></pre></td></tr></table></figure></p>
+<p>为什么会有时候生产一个，获取两个，生产两个，获取一个等等，线程不仅仅阻塞会切换，还有轮询的切换，所以就会出现上述的情况，但是我们这个我们不用管为什么会这样，因为生产者就负责生产，消费者就负责消费，知道这个就够了</p>
+<h4 id="多进程实现生产者和消费者"><a href="#多进程实现生产者和消费者" class="headerlink" title="多进程实现生产者和消费者"></a>多进程实现生产者和消费者</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Manager</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mgr = Manager()</span><br><span class="line">q = mgr.Queue(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生产者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, queue)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.queue = queue</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            item = random.randint(<span class="number">100</span>, <span class="number">1000</span>)</span><br><span class="line">            self.queue.put(item)</span><br><span class="line">            print(<span class="string">'生产者，生产了&#123;&#125;'</span>.format(item))</span><br><span class="line"><span class="comment"># 消费者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, queue)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.queue = queue</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            item = self.queue.get()</span><br><span class="line">            print(<span class="string">'消费者，消费了&#123;&#125;'</span>.format(item))</span><br><span class="line"></span><br><span class="line">producer = Producer(q)</span><br><span class="line">consumer = Consumer(q)</span><br><span class="line">producer.start()</span><br><span class="line">consumer.start()</span><br><span class="line">producer.join()</span><br><span class="line">consumer.join()</span><br></pre></td></tr></table></figure>
+<p>运行结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">生产者，生产了576</span><br><span class="line">消费者，消费了786</span><br><span class="line">生产者，生产了786</span><br><span class="line">消费者，消费了971</span><br><span class="line">生产者，生产了971</span><br><span class="line">消费者，消费了989</span><br><span class="line">生产者，生产了989</span><br><span class="line">消费者，消费了290</span><br><span class="line">生产者，生产了290</span><br><span class="line">生产者，生产了695</span><br><span class="line">消费者，消费了695</span><br><span class="line">生产者，生产了988</span><br><span class="line">消费者，消费了988</span><br><span class="line">生产者，生产了300</span><br><span class="line">消费者，消费了300</span><br><span class="line">消费者，消费了830</span><br><span class="line">生产者，生产了830</span><br><span class="line">消费者，消费了728</span><br><span class="line">生产者，生产了728</span><br><span class="line">消费者，消费了626</span><br><span class="line">生产者，生产了626</span><br><span class="line">消费者，消费了315</span><br><span class="line">生产者，生产了315</span><br><span class="line">生产者，生产了945</span><br><span class="line">消费者，消费了945</span><br><span class="line">生产者，生产了197</span><br><span class="line">消费者，消费了197</span><br><span class="line">消费者，消费了755</span><br><span class="line">生产者，生产了755</span><br><span class="line">生产者，生产了691</span><br><span class="line">消费者，消费了691</span><br><span class="line">消费者，消费了438</span><br><span class="line">生产者，生产了438</span><br><span class="line">消费者，消费了296</span><br><span class="line">生产者，生产了296</span><br><span class="line">消费者，消费了806</span><br><span class="line">生产者，生产了806</span><br><span class="line">消费者，消费了957</span><br><span class="line">生产者，生产了957</span><br><span class="line">消费者，消费了916</span><br><span class="line">生产者，生产了916</span><br><span class="line">消费者，消费了231</span><br><span class="line">生产者，生产了231</span><br><span class="line">生产者，生产了325</span><br><span class="line">消费者，消费了325</span><br><span class="line">生产者，生产了904</span><br><span class="line">消费者，消费了904</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：为什么多进程的一定要加 Join ，因为 Manger 的是守护进程，所以要使用 join 来防止子进程会随着父进程的结束而终止</p>
+
+      
+    </div>
+
+    <!-- 添加文章结束标记 -->
+    <div style="text-align:center;color: #ccc;font-size:14px;">
+        ----------------&emsp;The&emsp;&emsp;&emsp;End&emsp;----------------
+    </div>
+
+
+
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="付帅帅 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="付帅帅 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+    
+    <div>
+      
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文作者：</strong>
+            <a href="/" title="欢迎访问 付帅帅 的个人博客">
+              付帅帅
+            </a>
+          </li>
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="/2018/03/16/Python/Concurrency/ProcessesAndThreads/并发通信/" title="2018/03/16/Python/Concurrency/ProcessesAndThreads/并发通信/">
+              2018/03/16/Python/Concurrency/ProcessesAndThreads/并发通信/
+            </a>
+          </li>
+          <li class="post-copyright-date">
+              <strong>发布时间：</strong>2018年3月16日 -- 22时03分
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本文由 付帅帅 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank"> 保留署名-非商业性使用-禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
+          </li>
+        </ul>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/16/Python/Concurrency/ProcessesAndThreads/多进程、多线程/" rel="next" title="多进程、多线程">
+                <i class="fa fa-chevron-left"></i> 多进程、多线程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/17/Python/Concurrency/ProcessesAndThreads/线程池和进程池/" rel="prev" title="进程池和线程池">
+                进程池和线程池 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="付帅帅" />
+            
+              <p class="site-author-name" itemprop="name">付帅帅</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-GitHub"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/handsome0219" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-Twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/handsome0219" target="_blank" title="FaceBook">
+                      
+                        <i class="fa fa-fw fa-FaceBook"></i>FaceBook</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.weibo.com/u/5311080871" target="_blank" title="WeiBo">
+                      
+                        <i class="fa fa-fw fa-WeiBo"></i>WeiBo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ssdcc.github.io/" title="深水丶虫" target="_blank">深水丶虫</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- 这是第一个文件 必须-->
+<script src="https://cdn.bootcss.com/aplayer/1.6.0/APlayer.min.js"></script>
+<!-- 下面是第二个文件的原文件 可以直接使用
+<script src="https://api.i-meto.com/music/player.js"></script>
+-->
+<!-- 下面是我修改后的文件 可删除-->
+<script type="text/javascript" src="/js/src/player.js"></script>
+<!-- aplayer 使用-->
+<div class="aplayer"
+	data-id="491241167"
+	data-server="netease"
+	data-type="playlist"
+	data-mode="random"
+	data-autoplay="true"
+	data-volume="0.66"
+	data-lrc="true"
+	dataset="height:250px">
+</div>
+
+<!--
+
+
+
+data-id : 歌曲/专辑/歌单 ID 。此参数必填。 890805124
+data-server : 音乐平台，此参数必填。支持如下参数:
+	netease
+	tencent
+	xiami
+	kugou
+	baidu
+data-type : 请求类型，此参数必填。支持如下参数:
+	song （单曲）
+	album （专辑）
+	playlist （歌单）
+	search （搜索）
+data-mode : 播放模式，支持如下参数:
+	random （随机）
+	single （单曲）
+	circulation （列表循环）
+	order （列表）
+data-autoplay : 自动播放，支持如下参数:
+	false
+	true
+-->
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程通信及线程安全"><span class="nav-number">1.</span> <span class="nav-text">进程通信及线程安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程间的通信"><span class="nav-number">1.0.1.</span> <span class="nav-text">进程间的通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manager"><span class="nav-number">1.0.2.</span> <span class="nav-text">Manager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程锁"><span class="nav-number">1.0.3.</span> <span class="nav-text">线程锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列"><span class="nav-number">1.0.4.</span> <span class="nav-text">队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生产者和消费者"><span class="nav-number">1.0.5.</span> <span class="nav-text">生产者和消费者</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程实现生产者和消费者"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">多线程实现生产者和消费者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多进程实现生产者和消费者"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">多进程实现生产者和消费者</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+    &copy;
+  2017
+    &mdash;
+  
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">付帅帅
+  </span>
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="javascript:void(0)"></a> 个人专属 
+  </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    博客 - handsomeFu
+  </div>
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- github -->
+  <!--   <a href="https://github.com/handsome0219/handsome0219.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a> -->
+</body>
+</html>

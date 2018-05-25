@@ -21,13 +21,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Linux/Docker/</loc>
-        <lastmod>2018-05-22T09:46:27.342Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/JavaScript/BOM/</loc>
         <lastmod>2018-05-22T09:47:08.751Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -77,50 +70,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Linux/Vim/</loc>
-        <lastmod>2018-05-22T09:49:45.902Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Linux/CentOS/</loc>
-        <lastmod>2018-05-22T09:49:50.367Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Linux/</loc>
-        <lastmod>2018-05-22T09:50:55.036Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Linux/Ubuntu16/</loc>
         <lastmod>2018-05-22T09:50:55.036Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Python/Socket/</loc>
-        <lastmod>2018-05-22T09:55:33.876Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/</loc>
-        <lastmod>2018-05-22T09:56:10.684Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/TCP-IP-%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B/</loc>
-        <lastmod>2018-05-22T09:56:10.684Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -141,21 +92,70 @@
 
     <url>
         <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-        <lastmod>2018-05-24T06:08:22.066Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Python/</loc>
-        <lastmod>2018-05-24T11:12:16.212Z</lastmod>
+        <lastmod>2018-05-25T06:33:01.238Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Python/%E5%8D%8F%E7%A8%8B/</loc>
-        <lastmod>2018-05-24T11:12:16.212Z</lastmod>
+        <lastmod>2018-05-25T06:33:10.389Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Linux/CentOS/</loc>
+        <lastmod>2018-05-25T06:33:29.462Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Linux/Docker/</loc>
+        <lastmod>2018-05-25T06:33:37.734Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Linux/</loc>
+        <lastmod>2018-05-25T06:35:14.597Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Linux/Vim/</loc>
+        <lastmod>2018-05-25T06:35:14.597Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/</loc>
+        <lastmod>2018-05-25T06:35:37.174Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python/Socket/</loc>
+        <lastmod>2018-05-25T06:52:15.989Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python/</loc>
+        <lastmod>2018-05-25T07:11:30.110Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python/IO-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/</loc>
+        <lastmod>2018-05-25T07:11:30.110Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
