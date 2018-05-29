@@ -44,13 +44,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
-        <lastmod>2018-05-22T09:58:01.283Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/Docker/</loc>
         <lastmod>2018-05-25T06:33:37.734Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -66,14 +59,21 @@
 
     <url>
         <loc>http://yoursite.com/tags/Python/</loc>
-        <lastmod>2018-05-25T10:46:48.170Z</lastmod>
+        <lastmod>2018-05-29T13:36:45.760Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+        <lastmod>2018-05-29T13:38:43.641Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/Linux/</loc>
-        <lastmod>2018-05-25T15:04:46.983Z</lastmod>
+        <lastmod>2018-05-29T15:09:18.045Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

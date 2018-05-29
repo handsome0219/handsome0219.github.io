@@ -77,13 +77,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
-        <lastmod>2018-05-22T09:58:01.283Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Python/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
         <lastmod>2018-05-25T06:33:01.238Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -133,13 +126,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Python/</loc>
-        <lastmod>2018-05-25T10:46:48.170Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Python/%E5%8D%8F%E7%A8%8B/</loc>
         <lastmod>2018-05-25T10:46:48.170Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -147,15 +133,43 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/categories/Python/</loc>
+        <lastmod>2018-05-29T13:36:45.760Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Python/Python%E8%BF%9B%E9%98%B6/</loc>
+        <lastmod>2018-05-29T13:36:45.760Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+        <lastmod>2018-05-29T13:38:43.641Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/PyCharm/</loc>
+        <lastmod>2018-05-29T13:38:43.641Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/categories/Linux/</loc>
-        <lastmod>2018-05-25T15:04:46.983Z</lastmod>
+        <lastmod>2018-05-29T15:09:18.045Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Linux/CentOS/</loc>
-        <lastmod>2018-05-25T15:04:46.983Z</lastmod>
+        <lastmod>2018-05-29T15:09:18.045Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

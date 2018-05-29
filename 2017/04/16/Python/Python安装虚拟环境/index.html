@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googled1f062b2c8449c40.html" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Python 安装虚拟环境 在安装虚拟环境之前，我们要了解虚拟环境是干啥的，为什么要有虚拟机环境的存在，其实，这个涉及到一个名字叫包污染的概念，我们都知道，在写项目的时候，可能有很多第三方依赖包，可能当时包的版本还是比较老的，当项目重构的时候，我们可能需要这些包，那么等到项目重构我们再去安装可能已经更新了，虽然能指定安装，但是还是不太友好，所以一般来说，我们在项目创建的时候就会创建一个虚拟环境，用">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python安装虚拟环境">
+<meta property="og:url" content="http://yoursite.com/2017/04/16/Python/Python安装虚拟环境/index.html">
+<meta property="og:site_name" content="付帅帅">
+<meta property="og:description" content="Python 安装虚拟环境 在安装虚拟环境之前，我们要了解虚拟环境是干啥的，为什么要有虚拟机环境的存在，其实，这个涉及到一个名字叫包污染的概念，我们都知道，在写项目的时候，可能有很多第三方依赖包，可能当时包的版本还是比较老的，当项目重构的时候，我们可能需要这些包，那么等到项目重构我们再去安装可能已经更新了，虽然能指定安装，但是还是不太友好，所以一般来说，我们在项目创建的时候就会创建一个虚拟环境，用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-29T13:36:45.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python安装虚拟环境">
+<meta name="twitter:description" content="Python 安装虚拟环境 在安装虚拟环境之前，我们要了解虚拟环境是干啥的，为什么要有虚拟机环境的存在，其实，这个涉及到一个名字叫包污染的概念，我们都知道，在写项目的时候，可能有很多第三方依赖包，可能当时包的版本还是比较老的，当项目重构的时候，我们可能需要这些包，那么等到项目重构我们再去安装可能已经更新了，虽然能指定安装，但是还是不太友好，所以一般来说，我们在项目创建的时候就会创建一个虚拟环境，用">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/16/Python/Python安装虚拟环境/"/>
+
+
+
+
+
+  <title>Python安装虚拟环境 | 付帅帅</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ecf701914946cceef8229d782851c7d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付帅帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-主页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-关于我"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-分类"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-所有文章"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/16/Python/Python安装虚拟环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="付帅帅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付帅帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Python安装虚拟环境</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-16T13:45:50+08:00">
+                2017-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/Python进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Python进阶</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          <!-- 热度 -->
+          <!-- 在下面的位置加上如下代码 -->
+          <span id="busuanzi_container_page_pv">
+            &nbsp; | &nbsp; 热度&nbsp; <span id="busuanzi_value_page_pv"></span>°C
+          </span>
+          <!-- 在上面的位置加上如上代码 -->
+
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,786 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Python-安装虚拟环境"><a href="#Python-安装虚拟环境" class="headerlink" title="Python 安装虚拟环境"></a>Python 安装虚拟环境</h1><blockquote>
+<p>在安装虚拟环境之前，我们要了解虚拟环境是干啥的，为什么要有虚拟机环境的存在，其实，这个涉及到一个名字叫包污染的概念，我们都知道，在写项目的时候，可能有很多第三方依赖包，可能当时包的版本还是比较老的，当项目重构的时候，我们可能需要这些包，那么等到项目重构我们再去安装可能已经更新了，虽然能指定安装，但是还是不太友好，所以一般来说，我们在项目创建的时候就会创建一个虚拟环境，用来安装项目中的所有第三方库…</p>
+</blockquote>
+<a id="more"></a>
+<p>Python 安装虚拟环境有三种，</p>
+<ul>
+<li><code>virtualenv</code></li>
+<li><code>virtualenvwrapper</code></li>
+<li><code>pipenv</code></li>
+</ul>
+<h2 id="使用virtualenv-虚拟化-进行项目管理"><a href="#使用virtualenv-虚拟化-进行项目管理" class="headerlink" title="使用virtualenv(虚拟化)进行项目管理"></a>使用<code>virtualenv</code>(虚拟化)进行项目管理</h2><p><code>virtualenv</code>:可以创建一个单独的虚拟环境，安装私有包，而不会污染全局环境,它让你的电脑从项目目录而不是系统全局的<code>python</code>主目录下查找和安装包。<br>使用<code>virtualenv</code>步骤如下(已经在<code>Linux(ubuntu)</code>上操作过，<code>window</code>还未实践)：</p>
+<p>1.虚拟环境使用第三方实用工具<code>virtualenv</code>创建，可以输入以下命令可以检查系统是否安装了<code>virtualenv</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv  --version</span><br></pre></td></tr></table></figure></p>
+<p>如果结果显示错误，那么你就需要安装这个工具</p>
+<p><strong>注意</strong>：<code>python3.3</code>通过 <code>venv</code> 模块原生支持虚拟环境，命令为<code>pyvenv</code>。<code>pyvenv</code>可以替代<code>virtualenv</code>。不过<strong>要注意</strong>，在<code>python3.3</code>中使用<code>pyvenv</code>命令创建的虚拟环境不包括<code>pip</code>，你需要手动安装。<code>python3.4</code>改进了这一缺陷，<code>pyvenv</code>完全可以替代<code>virtualenv</code></p>
+<ol>
+<li><p>大多数的Linux发行版都提供了<code>virtualenv</code>，例如linux用户可以使用下述命令安装</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-virtualenv 或 pip install virtualenv</span><br></pre></td></tr></table></figure>
+<p> 如果你的电脑是Mac OS X 系统，就可以使用easy_install 安装 virtualenv</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo easy_install virtualenv</span><br></pre></td></tr></table></figure>
+<p> 如果你的Window系统或没有其它官方virtualenv的包的操作系统，那么安装过程要稍微复杂点，在浏览器中输入<a href="http://bitbucket.org/pypa/setuptools/" target="_blank" rel="noopener">http://bitbucket.org/pypa/setuptools/</a> 回车后会进入<code>setuptools</code>安装程序的主页。在这个页面中华找到下载安装脚本的链接，脚本名为<code>ez_setup.py</code>。把这个保存到电脑的一个临时文件夹中，然后在这个文件夹中执行以下我命令：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python ez_setup.py install</span><br><span class="line">easy_install virtualenv</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong> 注意</strong>：上述命令必须具有管理员权限的用户身份执行，在window系统中，请使用 <strong>以管理员身份运行</strong>选项打开命令行窗口，在基于Unix中，要在上面两个命令前加上 <code>sudo</code>，或者以根用户身份执行，一旦安装完毕<code>virtualenv</code>实用工具就可以从常规账号中调用</p>
+<p><em>哈哈，说了这么多，还是一直在安讲安装，接下来我们就开始讲如何操作</em></p>
+<ol>
+<li>首先要使用<code>virtualenv</code>来初始化项目<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv env</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>后面的这个<code>env</code> 告诉 <code>virtualenv</code>，把所有的包都装在一个叫作<code>env</code>的文件夹里，这个文件夹保存的是一个全新的虚拟环境，</p>
+<ol>
+<li>激活<code>virtualenv</code> 使用前需要激活这个环境，如果你是 <code>bash</code>命令行(Linux和Mac OS X用户)，可以通过以下的命令来激活这个虚拟环境：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source env\bin\activate</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果你是window用户，激活命令为；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env/bin/activate</span><br></pre></td></tr></table></figure></p>
+<p>当虚拟环境被激活后，python解释器的路径就被添加到了PATH中，但是这种环境不是永久的，它只会影响当前的命令行会话。为了提醒你已经激活了虚拟环境，激活虚拟环境的命令会修改命令行的提示符，加入环境名： <code>(evn)</code> $<br>然后我们就可以在这个虚拟环境中愉快的装包了，不用担心会影响全局变量</p>
+<ol>
+<li>退出 <code>virtualenv</code><ul>
+<li>退出你只需要一个命令就能完成了，那就是<code>deactivate</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="使用-pipenv-安装虚拟环境（Linux环境）"><a href="#使用-pipenv-安装虚拟环境（Linux环境）" class="headerlink" title="使用 pipenv 安装虚拟环境（Linux环境）"></a>使用 pipenv 安装虚拟环境（Linux环境）</h2><blockquote>
+<p>Pipenv 是 Python 项目的依赖管理器,类似 NodeJS的 npm 或 Ruby 的 bundler,那么为什么我们要使用pipenv呢，就是因为lockfile，所以我们要使用pipenv来进行项目的虚拟环境</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --user pipenv</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong> 这样安装完之后，就去立马使用 pipenv 是会报错的，找不到这个命令，那么应该怎么做呢，</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PYTHON_BIN_PATH=<span class="string">"<span class="variable">$(python3 -m site --user-base)</span>/bin"</span></span><br><span class="line">PATH=<span class="string">"<span class="variable">$PATH</span>:<span class="variable">$PYTHON_BIN_PATH</span>"</span></span><br></pre></td></tr></table></figure>
+<p>把上述配置写入 <code>/etc/profile</code> 文件 ，然后 <code>source /etc/profile</code> 激活一下 就可以永久使用了，不然只能在当前环境使用</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">$ pipenv</span><br><span class="line">Usage: pipenv [OPTIONS] COMMAND [ARGS]...</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  --update         Update Pipenv &amp; pip to latest.     <span class="comment"># 更新pipenv和pip到最新版本</span></span><br><span class="line">  --<span class="built_in">where</span>          Output project home information.   <span class="comment"># 获取项目路径</span></span><br><span class="line">  --venv           Output virtualenv information.     <span class="comment"># 获取虚拟环境的路径</span></span><br><span class="line">  --py             Output Python interpreter information. <span class="comment"># 获取python解释器的路径</span></span><br><span class="line">  --envs           Output Environment Variable options. <span class="comment"># 输出当前的环境变量</span></span><br><span class="line">  --rm             Remove the virtualenv.   <span class="comment"># 删除虚拟环境</span></span><br><span class="line">  --bare           Minimal output.</span><br><span class="line">  --completion     Output completion (to be <span class="built_in">eval</span><span class="string">'d).</span></span><br><span class="line"><span class="string">  --man            Display manpage.</span></span><br><span class="line"><span class="string">  --three / --two  Use Python 3/2 when creating virtualenv. # 使用python3/2创建虚拟环境</span></span><br><span class="line"><span class="string">  --python TEXT    Specify which version of Python virtualenv should use. # 指定python的版本信息</span></span><br><span class="line"><span class="string">  --site-packages  Enable site-packages for the virtualenv.</span></span><br><span class="line"><span class="string">  --jumbotron      An easter egg, effectively.</span></span><br><span class="line"><span class="string">  --version        Show the version and exit.</span></span><br><span class="line"><span class="string">  -h, --help       Show this message and exit.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Usage Examples:</span></span><br><span class="line"><span class="string">   Create a new project using Python 3.6, specifically:</span></span><br><span class="line"><span class="string">   $ pipenv --python 3.6</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Install all dependencies for a project (including dev):</span></span><br><span class="line"><span class="string">   $ pipenv install --dev</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Create a lockfile containing pre-releases:</span></span><br><span class="line"><span class="string">   $ pipenv lock --pre</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Show a graph of your installed dependencies:</span></span><br><span class="line"><span class="string">   $ pipenv graph</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Check your installed dependencies for security vulnerabilities:</span></span><br><span class="line"><span class="string">   $ pipenv check</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Install a local setup.py into your virtual environment/Pipfile:</span></span><br><span class="line"><span class="string">   $ pipenv install -e .</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Commands:</span></span><br><span class="line"><span class="string">  check      Checks for security vulnerabilities and against PEP 508 markers</span></span><br><span class="line"><span class="string">             provided in Pipfile.</span></span><br><span class="line"><span class="string">  graph      Displays currently–installed dependency graph information.</span></span><br><span class="line"><span class="string">  install    Installs provided packages and adds them to Pipfile, or (if none</span></span><br><span class="line"><span class="string">             is given), installs all packages.</span></span><br><span class="line"><span class="string">  lock       Generates Pipfile.lock.</span></span><br><span class="line"><span class="string">  open       View a given module in your editor.</span></span><br><span class="line"><span class="string">  run        Spawns a command installed into the virtualenv.</span></span><br><span class="line"><span class="string">  shell      Spawns a shell within the virtualenv.</span></span><br><span class="line"><span class="string">  uninstall  Un-installs a provided package and removes it from Pipfile.</span></span><br><span class="line"><span class="string">  update     Uninstalls all packages, and re-installs package(s) in [packages]</span></span><br><span class="line"><span class="string">             to latest compatible versions.</span></span><br></pre></td></tr></table></figure>
+<h4 id="pipenv-创建虚拟环境"><a href="#pipenv-创建虚拟环境" class="headerlink" title="pipenv 创建虚拟环境"></a>pipenv 创建虚拟环境</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前虚拟环境</span></span><br><span class="line">pipenv --venv</span><br><span class="line"><span class="comment"># 生成3 或者2 的虚拟机环境</span></span><br><span class="line">pipenv --three</span><br><span class="line">pipenv --two</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装包</span></span><br><span class="line">pipenv install packageName</span><br><span class="line"></span><br><span class="line"><span class="comment">#激活虚拟环境</span></span><br><span class="line">pipenv shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出虚拟环境</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 图形查看依赖关系</span></span><br><span class="line">pipenv graph</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装开发依赖包</span></span><br><span class="line">pipenv install  packageName --dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成 lockfile 也就是 Pipfile.lock</span></span><br><span class="line">pipenv lock</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载安装包</span></span><br><span class="line">pipenv uninstall packageName</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除所有的安装包</span></span><br><span class="line">pipenv uninstall --all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成requirements.txt文件</span></span><br><span class="line">$ pipenv lock -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成dev-packages的requirements.txt文件</span></span><br><span class="line">pipenv lock -r -d</span><br></pre></td></tr></table></figure>
+<p>请参考 <a href="https://docs.pipenv.org/#cmdoption-pipenv-venv" target="_blank" rel="noopener">https://docs.pipenv.org/#cmdoption-pipenv-venv</a></p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><blockquote>
+<p>出处 <a href="http://www.dongwm.com/archives/%E4%BD%BF%E7%94%A8pipenv%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE/" target="_blank" rel="noopener">董伟明</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># demo.py</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">package = sys.argv[<span class="number">1</span>]</span><br><span class="line">other_dependencies = set()</span><br><span class="line">removing_dependencies = set([package])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> json.load(sys.stdin):</span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> i[<span class="string">'dependencies'</span>]:</span><br><span class="line">        key = p[<span class="string">'key'</span>]</span><br><span class="line">        <span class="keyword">if</span> i[<span class="string">'package'</span>][<span class="string">'key'</span>] == package:</span><br><span class="line">            removing_dependencies.add(key)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            other_dependencies.add(key)</span><br><span class="line"></span><br><span class="line">print(<span class="string">' '</span>.join(removing_dependencies - other_dependencies))</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipenv uninstall `pipenv graph --json |python3 demo.py packageName`</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <!-- 添加文章结束标记 -->
+    <div style="text-align:center;color: #ccc;font-size:14px;">
+        ----------------&emsp;The&emsp;&emsp;&emsp;End&emsp;----------------
+    </div>
+
+
+
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="付帅帅 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="付帅帅 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+    
+    <div>
+      
+        <ul class="post-copyright">
+          <li class="post-copyright-link">
+            <strong>本文作者：</strong>
+            <a href="/" title="欢迎访问 付帅帅 的个人博客">
+              付帅帅
+            </a>
+          </li>
+          <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+            <a href="/2017/04/16/Python/Python安装虚拟环境/" title="2017/04/16/Python/Python安装虚拟环境/">
+              2017/04/16/Python/Python安装虚拟环境/
+            </a>
+          </li>
+          <li class="post-copyright-date">
+              <strong>发布时间：</strong>2017年4月16日 -- 13时04分
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明： </strong>
+            本文由 付帅帅 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" rel="license" target="_blank"> 保留署名-非商业性使用-禁止演绎 4.0-国际许可协议</a> </br>转载请保留以上声明信息！
+          </li>
+        </ul>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/09/tool/SublimeText3-插件安装/" rel="prev" title="SublimeText3 基本使用">
+                SublimeText3 基本使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="付帅帅" />
+            
+              <p class="site-author-name" itemprop="name">付帅帅</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/handsome0219" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-GitHub"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/handsome0219" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-Twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/handsome0219" target="_blank" title="FaceBook">
+                      
+                        <i class="fa fa-fw fa-FaceBook"></i>FaceBook</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.weibo.com/u/5311080871" target="_blank" title="WeiBo">
+                      
+                        <i class="fa fa-fw fa-WeiBo"></i>WeiBo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ssdcc.github.io/" title="深水丶虫" target="_blank">深水丶虫</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- 这是第一个文件 必须-->
+<script src="https://cdn.bootcss.com/aplayer/1.6.0/APlayer.min.js"></script>
+<!-- 下面是第二个文件的原文件 可以直接使用
+<script src="https://api.i-meto.com/music/player.js"></script>
+-->
+<!-- 下面是我修改后的文件 可删除-->
+<script type="text/javascript" src="/js/src/player.js"></script>
+<!-- aplayer 使用-->
+<div class="aplayer"
+	data-id="491241167"
+	data-server="netease"
+	data-type="playlist"
+	data-mode="random"
+	data-autoplay="true"
+	data-volume="0.66"
+	data-lrc="true"
+	dataset="height:250px">
+</div>
+
+<!--
+
+
+
+data-id : 歌曲/专辑/歌单 ID 。此参数必填。 890805124
+data-server : 音乐平台，此参数必填。支持如下参数:
+	netease
+	tencent
+	xiami
+	kugou
+	baidu
+data-type : 请求类型，此参数必填。支持如下参数:
+	song （单曲）
+	album （专辑）
+	playlist （歌单）
+	search （搜索）
+data-mode : 播放模式，支持如下参数:
+	random （随机）
+	single （单曲）
+	circulation （列表循环）
+	order （列表）
+data-autoplay : 自动播放，支持如下参数:
+	false
+	true
+-->
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-安装虚拟环境"><span class="nav-number">1.</span> <span class="nav-text">Python 安装虚拟环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用virtualenv-虚拟化-进行项目管理"><span class="nav-number">1.1.</span> <span class="nav-text">使用virtualenv(虚拟化)进行项目管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-pipenv-安装虚拟环境（Linux环境）"><span class="nav-number">1.2.</span> <span class="nav-text">使用 pipenv 安装虚拟环境（Linux环境）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pipenv-创建虚拟环境"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">pipenv 创建虚拟环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">补充</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+    &copy;
+  2017
+    &mdash;
+  
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">付帅帅
+  </span>
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="javascript:void(0)"></a> 个人专属 
+  </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+    博客 - handsomeFu
+  </div>
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.8"  zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97672, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97672/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- github -->
+  <!--   <a href="https://github.com/handsome0219/handsome0219.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a> -->
+</body>
+</html>

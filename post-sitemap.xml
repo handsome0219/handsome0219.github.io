@@ -8,7 +8,31 @@
 
     <url>
         <loc>http://yoursite.com/2018/05/10/Linux/centOS/CentOS7%E9%85%8D%E7%BD%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
-        <lastmod>2018-05-25T15:04:46.983Z</lastmod>
+        <lastmod>2018-05-29T15:09:18.045Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/12/10/tool/Pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+        <lastmod>2018-05-29T13:38:43.641Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/04/16/Python/Python%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</loc>
+        <lastmod>2018-05-29T13:36:45.760Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/05/20/Linux/centOS/centOS7%E5%BC%80%E5%85%B3%E9%98%B2%E7%81%AB%E5%A2%99/</loc>
+        <lastmod>2018-05-29T04:39:49.672Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
